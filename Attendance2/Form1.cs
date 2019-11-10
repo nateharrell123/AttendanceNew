@@ -20,8 +20,12 @@ namespace Attendance
 
         string date; // final date
         List<string> allNames = new List<string>();
-        int counter = 0;
+        List<string> peoplePresent = new List<string>();
+        List<string> peopleAbsent = new List<string>();
+        int counter = 1;
         int presentCount = 0;
+        int absentCount = 0;
+        int deCount = 0;
 
         StreamReader fileReading;
         private void CheckEnterKeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
@@ -59,7 +63,6 @@ namespace Attendance
 
         private void UxStartButton_Click(object sender, EventArgs e)
         {
-           
             if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = uxOpenFileDialog.FileName;
@@ -72,19 +75,51 @@ namespace Attendance
                     }
                 }
             }
+            uxStartButton.Enabled = false;
+            uxRosterNames.Text = allNames[0];
         }
 
         private void UxPresentButton_Click(object sender, EventArgs e)
         {
             if(allNames.Count > 0)
             {
-                uxRosterNames.Text = allNames[counter++];
-                presentCount++;
-                using (StreamWriter sw = new StreamWriter(date + "_Attendance.txt"))
+                int index = counter++;
+                if(index <= allNames.Count - 1)
                 {
-                    sw.WriteLine("There were " + presentCount + "people present today.");
-                    sw.WriteLine("These people were: ");
+                    uxRosterNames.Text = allNames[index + 1];
+                    presentCount++;
+                    peoplePresent.Add(allNames[index - 1]);
+                    uxPeoplePresentCount.Text = peoplePresent.Count.ToString();
 
+                    deCount = index;
+                }
+                else if(index >= allNames.Count)
+                {
+                    MessageBox.Show("All names entered.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("The file is empty.");
+            }
+        }
+
+        private void UxAbsentButton_Click(object sender, EventArgs e)
+        {
+            if (allNames.Count > 0)
+            {
+                int index = deCount++;
+                if (index <= allNames.Count - 1)
+                {
+                    index++;
+                    uxRosterNames.Text = allNames[index + 1];
+                    absentCount++;
+                    peopleAbsent.Add(allNames[index - 1]);
+                    uxAbsentCount.Text = peopleAbsent.Count.ToString();
+                }
+                else if (index >= allNames.Count)
+                {
+                    MessageBox.Show("All names entered.");
                 }
             }
             else

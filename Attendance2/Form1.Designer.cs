@@ -45,6 +45,11 @@
             this.uxPresentButton = new System.Windows.Forms.Button();
             this.uxAbsentButton = new System.Windows.Forms.Button();
             this.uxSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.uxPPLabel = new System.Windows.Forms.Label();
+            this.uxPeoplePresentCount = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.uxPeopleAbsentLabel = new System.Windows.Forms.Label();
+            this.uxAbsentCount = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,6 +165,7 @@
             this.uxRosterNames.Location = new System.Drawing.Point(309, 258);
             this.uxRosterNames.Multiline = true;
             this.uxRosterNames.Name = "uxRosterNames";
+            this.uxRosterNames.ReadOnly = true;
             this.uxRosterNames.Size = new System.Drawing.Size(172, 38);
             this.uxRosterNames.TabIndex = 7;
             // 
@@ -183,12 +189,62 @@
             this.uxAbsentButton.TabIndex = 6;
             this.uxAbsentButton.Text = "Absent";
             this.uxAbsentButton.UseVisualStyleBackColor = true;
+            this.uxAbsentButton.Click += new System.EventHandler(this.UxAbsentButton_Click);
+            // 
+            // uxPPLabel
+            // 
+            this.uxPPLabel.AutoSize = true;
+            this.uxPPLabel.Location = new System.Drawing.Point(16, 128);
+            this.uxPPLabel.Name = "uxPPLabel";
+            this.uxPPLabel.Size = new System.Drawing.Size(103, 13);
+            this.uxPPLabel.TabIndex = 8;
+            this.uxPPLabel.Text = "# of People present:";
+            // 
+            // uxPeoplePresentCount
+            // 
+            this.uxPeoplePresentCount.AutoSize = true;
+            this.uxPeoplePresentCount.Location = new System.Drawing.Point(136, 128);
+            this.uxPeoplePresentCount.Name = "uxPeoplePresentCount";
+            this.uxPeoplePresentCount.Size = new System.Drawing.Size(0, 13);
+            this.uxPeoplePresentCount.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(487, 218);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(247, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Start will prompt you to open a .txt file full of names.";
+            // 
+            // uxPeopleAbsentLabel
+            // 
+            this.uxPeopleAbsentLabel.AutoSize = true;
+            this.uxPeopleAbsentLabel.Location = new System.Drawing.Point(16, 154);
+            this.uxPeopleAbsentLabel.Name = "uxPeopleAbsentLabel";
+            this.uxPeopleAbsentLabel.Size = new System.Drawing.Size(100, 13);
+            this.uxPeopleAbsentLabel.TabIndex = 8;
+            this.uxPeopleAbsentLabel.Text = "# of People absent:";
+            // 
+            // uxAbsentCount
+            // 
+            this.uxAbsentCount.AutoSize = true;
+            this.uxAbsentCount.Location = new System.Drawing.Point(117, 154);
+            this.uxAbsentCount.Name = "uxAbsentCount";
+            this.uxAbsentCount.Size = new System.Drawing.Size(0, 13);
+            this.uxAbsentCount.TabIndex = 8;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.uxPeoplePresentCount);
+            this.Controls.Add(this.uxAbsentCount);
+            this.Controls.Add(this.uxPeopleAbsentLabel);
+            this.Controls.Add(this.uxPPLabel);
             this.Controls.Add(this.uxRosterNames);
             this.Controls.Add(this.uxAbsentButton);
             this.Controls.Add(this.uxPresentButton);
@@ -229,5 +285,10 @@
         private System.Windows.Forms.Button uxPresentButton;
         private System.Windows.Forms.Button uxAbsentButton;
         private System.Windows.Forms.SaveFileDialog uxSaveFileDialog;
+        private System.Windows.Forms.Label uxPPLabel;
+        private System.Windows.Forms.Label uxPeoplePresentCount;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label uxPeopleAbsentLabel;
+        private System.Windows.Forms.Label uxAbsentCount;
     }
 }
