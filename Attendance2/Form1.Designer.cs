@@ -40,6 +40,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.uxRosterNameLabel = new System.Windows.Forms.Label();
+            this.uxStartButton = new System.Windows.Forms.Button();
+            this.uxRosterNames = new System.Windows.Forms.TextBox();
+            this.uxPresentButton = new System.Windows.Forms.Button();
+            this.uxAbsentButton = new System.Windows.Forms.Button();
+            this.uxSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +60,7 @@
             // uxDate
             // 
             this.uxDate.AutoSize = true;
-            this.uxDate.Location = new System.Drawing.Point(105, 86);
+            this.uxDate.Location = new System.Drawing.Point(111, 85);
             this.uxDate.Name = "uxDate";
             this.uxDate.Size = new System.Drawing.Size(0, 13);
             this.uxDate.TabIndex = 1;
@@ -63,7 +68,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 86);
+            this.label1.Location = new System.Drawing.Point(16, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 2;
@@ -139,11 +144,55 @@
             this.uxRosterNameLabel.Size = new System.Drawing.Size(0, 13);
             this.uxRosterNameLabel.TabIndex = 5;
             // 
+            // uxStartButton
+            // 
+            this.uxStartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxStartButton.Location = new System.Drawing.Point(309, 193);
+            this.uxStartButton.Name = "uxStartButton";
+            this.uxStartButton.Size = new System.Drawing.Size(172, 59);
+            this.uxStartButton.TabIndex = 6;
+            this.uxStartButton.Text = "Start";
+            this.uxStartButton.UseVisualStyleBackColor = true;
+            this.uxStartButton.Click += new System.EventHandler(this.UxStartButton_Click);
+            // 
+            // uxRosterNames
+            // 
+            this.uxRosterNames.Location = new System.Drawing.Point(309, 258);
+            this.uxRosterNames.Multiline = true;
+            this.uxRosterNames.Name = "uxRosterNames";
+            this.uxRosterNames.Size = new System.Drawing.Size(172, 38);
+            this.uxRosterNames.TabIndex = 7;
+            // 
+            // uxPresentButton
+            // 
+            this.uxPresentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPresentButton.Location = new System.Drawing.Point(309, 312);
+            this.uxPresentButton.Name = "uxPresentButton";
+            this.uxPresentButton.Size = new System.Drawing.Size(80, 57);
+            this.uxPresentButton.TabIndex = 6;
+            this.uxPresentButton.Text = "Present";
+            this.uxPresentButton.UseVisualStyleBackColor = true;
+            this.uxPresentButton.Click += new System.EventHandler(this.UxPresentButton_Click);
+            // 
+            // uxAbsentButton
+            // 
+            this.uxAbsentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxAbsentButton.Location = new System.Drawing.Point(403, 312);
+            this.uxAbsentButton.Name = "uxAbsentButton";
+            this.uxAbsentButton.Size = new System.Drawing.Size(78, 57);
+            this.uxAbsentButton.TabIndex = 6;
+            this.uxAbsentButton.Text = "Absent";
+            this.uxAbsentButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.uxRosterNames);
+            this.Controls.Add(this.uxAbsentButton);
+            this.Controls.Add(this.uxPresentButton);
+            this.Controls.Add(this.uxStartButton);
             this.Controls.Add(this.uxRosterNameLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -175,5 +224,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.OpenFileDialog uxOpenFileDialog;
         private System.Windows.Forms.Label uxRosterNameLabel;
+        private System.Windows.Forms.Button uxStartButton;
+        private System.Windows.Forms.TextBox uxRosterNames;
+        private System.Windows.Forms.Button uxPresentButton;
+        private System.Windows.Forms.Button uxAbsentButton;
+        private System.Windows.Forms.SaveFileDialog uxSaveFileDialog;
     }
 }

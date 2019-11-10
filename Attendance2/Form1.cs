@@ -19,6 +19,11 @@ namespace Attendance
         }
 
         string date; // final date
+        List<string> allNames = new List<string>();
+        int counter = 0;
+        int presentCount = 0;
+
+        StreamReader fileReading;
         private void CheckEnterKeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
@@ -45,10 +50,46 @@ namespace Attendance
             if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string fileName = uxOpenFileDialog.FileName;
-                using (StreamReader sr = new StreamReader(fileName))
+                using (StreamReader temp = new StreamReader(fileName))
                 {
                     uxRosterNameLabel.Text = fileName;
                 }
+            }
+        }
+
+        private void UxStartButton_Click(object sender, EventArgs e)
+        {
+           
+            if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = uxOpenFileDialog.FileName;
+                using (StreamReader temp = new StreamReader(fileName))
+                {
+                    uxRosterNameLabel.Text = fileName;
+                    while (!temp.EndOfStream)
+                    {
+                        allNames.Add(temp.ReadLine());
+                    }
+                }
+            }
+        }
+
+        private void UxPresentButton_Click(object sender, EventArgs e)
+        {
+            if(allNames.Count > 0)
+            {
+                uxRosterNames.Text = allNames[counter++];
+                presentCount++;
+                using (StreamWriter sw = new StreamWriter(date + "_Attendance.txt"))
+                {
+                    sw.WriteLine("There were " + presentCount + "people present today.");
+                    sw.WriteLine("These people were: ");
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("The file is empty.");
             }
         }
     }
