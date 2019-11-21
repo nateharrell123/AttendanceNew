@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Author: Nate Harrell (Chintan Patel helped a bit too :-) )
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +12,7 @@ using System.IO;
 
 namespace Attendance
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form 
     {
         public Form1()
         {
@@ -22,12 +23,17 @@ namespace Attendance
         List<string> allNames = new List<string>();
         List<string> peoplePresent = new List<string>();
         List<string> peopleAbsent = new List<string>();
-        int counter = 1;
+        int counter = 0;
         int presentCount = 0;
         int absentCount = 0;
         int deCount = 0;
 
         StreamReader fileReading;
+        /// <summary>
+        /// This displays the date in the label when the user presses enter.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckEnterKeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
@@ -37,11 +43,21 @@ namespace Attendance
                 uxDate.Text = date;
             }
         }
+        /// <summary>
+        /// This checks if enter was pressed on the date text box.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UxDateText_TextChanged(object sender, EventArgs e)
         {
             this.uxDateText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(CheckEnterKeyPress);
         }
 
+        /// <summary>
+        /// Resets the date.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UxNewDate_Click(object sender, EventArgs e)
         {
             uxDateText.Enabled = true;
@@ -49,34 +65,75 @@ namespace Attendance
             uxDate.Text = date;
         }
 
+        /// <summary>
+        /// TODO: Finish this!
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UxImportRoster_Click(object sender, EventArgs e)
         {
-            if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                string fileName = uxOpenFileDialog.FileName;
-                using (StreamReader temp = new StreamReader(fileName))
+                if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    uxRosterNameLabel.Text = fileName;
-                }
-            }
-        }
-
-        private void UxStartButton_Click(object sender, EventArgs e)
-        {
-            if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string fileName = uxOpenFileDialog.FileName;
-                using (StreamReader temp = new StreamReader(fileName))
-                {
-                    uxRosterNameLabel.Text = fileName;
-                    while (!temp.EndOfStream)
+                    string fileName = uxOpenFileDialog.FileName;
+                    if (!fileName.EndsWith(".txt"))
                     {
-                        allNames.Add(temp.ReadLine());
+                        throw new Exception();
+                    }
+                    using (StreamReader temp = new StreamReader(fileName))
+                    {
+                        uxRosterNameLabel.Text = fileName;
+                        while (!temp.EndOfStream)
+                        {
+                            allNames.Add(temp.ReadLine());
+                        }
+                        int idk = 1;
+                        allNames.AddRange();
                     }
                 }
+                uxRosterNames.Text = allNames[0];
             }
-            uxStartButton.Enabled = false;
-            uxRosterNames.Text = allNames[0];
+            catch(Exception ex)
+            {
+                MessageBox.Show("The roster file needs to end with '.txt'");
+            }
+          
+        }
+
+        /// <summary>
+        /// Prompts the user to open a roster .txt file 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UxStartButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = uxOpenFileDialog.FileName;
+                    if (!fileName.EndsWith(".txt"))
+                    {
+                        throw new Exception();
+                    }
+                    using (StreamReader temp = new StreamReader(fileName))
+                    {
+                        uxRosterNameLabel.Text = fileName;
+                        while (!temp.EndOfStream)
+                        {
+                            allNames.Add(temp.ReadLine());
+                        }
+                    }
+                }
+                uxStartButton.Enabled = false;
+                uxRosterNames.Text = allNames[0];
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("The roster file needs to end with '.txt'");
+            }
+           
         }
 
         private void UxPresentButton_Click(object sender, EventArgs e)
@@ -88,12 +145,10 @@ namespace Attendance
                 {
                     uxRosterNames.Text = allNames[index + 1];
                     presentCount++;
-                    peoplePresent.Add(allNames[index - 1]);
+                    peoplePresent.Add(allNames[index]);
                     uxPeoplePresentCount.Text = peoplePresent.Count.ToString();
-
-                    deCount = index;
                 }
-                else if(index >= allNames.Count)
+                else if(index > allNames.Count)
                 {
                     MessageBox.Show("All names entered.");
                 }
