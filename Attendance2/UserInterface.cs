@@ -89,7 +89,6 @@ namespace Attendance
                             allNames.Add(temp.ReadLine());
                         }
                         int idk = 1;
-                        allNames.AddRange();
                     }
                 }
                 uxRosterNames.Text = allNames[0];
@@ -143,7 +142,7 @@ namespace Attendance
                 int index = counter++;
                 if(index <= allNames.Count - 1)
                 {
-                    uxRosterNames.Text = allNames[index + 1];
+                    uxRosterNames.Text = allNames[index + 1]; // TODO: Index out of range
                     presentCount++;
                     peoplePresent.Add(allNames[index]);
                     uxPeoplePresentCount.Text = peoplePresent.Count.ToString();
