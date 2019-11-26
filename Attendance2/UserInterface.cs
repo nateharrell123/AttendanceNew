@@ -133,6 +133,23 @@ namespace Attendance
            
         }
         int presentCount = 0;
+
+
+        /// <summary>
+        /// Very self explanatory!
+        /// </summary>
+        public void DisableEverything()
+        {
+            uxStartButton.Enabled = false;
+            uxPresentButton.Enabled = false;
+            uxAbsentButton.Enabled = false;
+            uxDateText.Enabled = false;
+        }
+        /// <summary>
+        /// Goes through allNames, imported from roster, and displays their names one by one, adding them to the peoplePresent list.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UxPresentButton_Click(object sender, EventArgs e)
         {
             try
@@ -141,6 +158,8 @@ namespace Attendance
                 {
                     uxCurrentTextBox.Text = allNames[presentIndex];
                     uxUpNextTextBox.Text = allNames[presentIndex + 1]; // this is screwing it up
+
+                    allNames.Add(""); // adds it to the end
 
                     uxCurrentTextBox.Clear();
 
@@ -151,28 +170,47 @@ namespace Attendance
 
                     presentIndex++;
                     presentCount++;
-                 
+
                     uxPeoplePresentCount.Text = presentCount.ToString();
                 }
 
+                if(uxUpNextTextBox.Text == "")
+                {
+                    MessageBox.Show("All names entered.");
+                    DisableEverything();
+                    uxSaveResults.Enabled = true;
+                }
+
             }
-            catch(ArgumentOutOfRangeException i)
+            catch (ArgumentOutOfRangeException i)
             {
-                peoplePresent.Add(allNames[presentIndex]);
-                uxAttendanceStatus.Text = "All names entered.";
-                uxCurrentTextBox.Clear();
-                uxUpNextTextBox.Clear();
-                MessageBox.Show("All names entered. Don't worry, " + allNames[presentIndex] + " was counted!");
+                MessageBox.Show("Fix this!");
             }
-
-       
-
         }
 
 
         private void UxAbsentButton_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void UxSaveResults_Click(object sender, EventArgs e)
+        {
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            using (StreamWriter sw = new StreamWriter(Path.Combine(docPath, "Attendance.txt")))
+            {
+                while (peoplePresent != null)
+                {
+                    for (int i = 0; i < peoplePresent.Count; i++)
+                    {
+                        sw.WriteLine(peoplePresent[i]);
+                    }
+                }
+                if(peoplePresent.Count == 0)
+                {
+                    MessageBox.Show("done!");
+                }
+            }
         }
     }
 }

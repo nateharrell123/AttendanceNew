@@ -32,10 +32,9 @@
             this.uxDate = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.uxMenuStrip = new System.Windows.Forms.MenuStrip();
             this.uxFileStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.uxNewDate = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxImportRoster = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -56,7 +55,8 @@
             this.uxAttendanceStatus = new System.Windows.Forms.Label();
             this.uxPeoplePresentDebug = new System.Windows.Forms.TextBox();
             this.uxPeoplePresentDebugLabel = new System.Windows.Forms.Label();
-            this.menuStrip1.SuspendLayout();
+            this.uxSaveResults = new System.Windows.Forms.Button();
+            this.uxMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // uxDateText
@@ -94,21 +94,20 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Enter Date:";
             // 
-            // menuStrip1
+            // uxMenuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uxMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uxFileStrip});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
+            this.uxMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.uxMenuStrip.Name = "uxMenuStrip";
+            this.uxMenuStrip.Size = new System.Drawing.Size(800, 24);
+            this.uxMenuStrip.TabIndex = 4;
+            this.uxMenuStrip.Text = "menuStrip1";
             // 
             // uxFileStrip
             // 
             this.uxFileStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uxNewDate,
-            this.saveResultsToolStripMenuItem,
             this.uxImportRoster});
             this.uxFileStrip.Name = "uxFileStrip";
             this.uxFileStrip.Size = new System.Drawing.Size(37, 20);
@@ -117,20 +116,14 @@
             // uxNewDate
             // 
             this.uxNewDate.Name = "uxNewDate";
-            this.uxNewDate.Size = new System.Drawing.Size(155, 22);
+            this.uxNewDate.Size = new System.Drawing.Size(180, 22);
             this.uxNewDate.Text = "Enter New Date";
             this.uxNewDate.Click += new System.EventHandler(this.UxNewDate_Click);
-            // 
-            // saveResultsToolStripMenuItem
-            // 
-            this.saveResultsToolStripMenuItem.Name = "saveResultsToolStripMenuItem";
-            this.saveResultsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.saveResultsToolStripMenuItem.Text = "Save Results";
             // 
             // uxImportRoster
             // 
             this.uxImportRoster.Name = "uxImportRoster";
-            this.uxImportRoster.Size = new System.Drawing.Size(155, 22);
+            this.uxImportRoster.Size = new System.Drawing.Size(180, 22);
             this.uxImportRoster.Text = "Import Roster";
             this.uxImportRoster.Click += new System.EventHandler(this.UxImportRoster_Click);
             // 
@@ -293,11 +286,24 @@
             this.uxPeoplePresentDebugLabel.TabIndex = 8;
             this.uxPeoplePresentDebugLabel.Text = "# of People present:";
             // 
+            // uxSaveResults
+            // 
+            this.uxSaveResults.Enabled = false;
+            this.uxSaveResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxSaveResults.Location = new System.Drawing.Point(561, 252);
+            this.uxSaveResults.Name = "uxSaveResults";
+            this.uxSaveResults.Size = new System.Drawing.Size(161, 99);
+            this.uxSaveResults.TabIndex = 12;
+            this.uxSaveResults.Text = "Save Results";
+            this.uxSaveResults.UseVisualStyleBackColor = true;
+            this.uxSaveResults.Click += new System.EventHandler(this.UxSaveResults_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.uxSaveResults);
             this.Controls.Add(this.uxPeoplePresentDebug);
             this.Controls.Add(this.uxAttendanceStatus);
             this.Controls.Add(this.uxCurrentLabel);
@@ -319,12 +325,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.uxDate);
             this.Controls.Add(this.uxDateText);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.uxMenuStrip);
+            this.MainMenuStrip = this.uxMenuStrip;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.uxMenuStrip.ResumeLayout(false);
+            this.uxMenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,10 +342,9 @@
         private System.Windows.Forms.Label uxDate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip uxMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem uxFileStrip;
         private System.Windows.Forms.ToolStripMenuItem uxNewDate;
-        private System.Windows.Forms.ToolStripMenuItem saveResultsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uxImportRoster;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.OpenFileDialog uxOpenFileDialog;
@@ -360,5 +365,6 @@
         private System.Windows.Forms.Label uxAttendanceStatus;
         private System.Windows.Forms.TextBox uxPeoplePresentDebug;
         private System.Windows.Forms.Label uxPeoplePresentDebugLabel;
+        private System.Windows.Forms.Button uxSaveResults;
     }
 }
