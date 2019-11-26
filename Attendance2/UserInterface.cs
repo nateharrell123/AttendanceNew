@@ -158,10 +158,17 @@ namespace Attendance
             }
             catch(ArgumentOutOfRangeException i)
             {
+                peoplePresent.Add(allNames[presentIndex]);
+                uxAttendanceStatus.Text = "All names entered.";
+                uxCurrentTextBox.Clear();
+                uxUpNextTextBox.Clear();
                 MessageBox.Show("All names entered. Don't worry, " + allNames[presentIndex] + " was counted!");
             }
-           
+
+       
+
         }
+
 
         private void UxAbsentButton_Click(object sender, EventArgs e)
         {

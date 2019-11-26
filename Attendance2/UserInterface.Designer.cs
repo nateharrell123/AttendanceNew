@@ -55,6 +55,7 @@
             this.uxCurrentLabel = new System.Windows.Forms.Label();
             this.uxAttendanceStatus = new System.Windows.Forms.Label();
             this.uxPeoplePresentDebug = new System.Windows.Forms.TextBox();
+            this.uxPeoplePresentDebugLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -277,11 +278,20 @@
             // 
             // uxPeoplePresentDebug
             // 
-            this.uxPeoplePresentDebug.Location = new System.Drawing.Point(12, 177);
+            this.uxPeoplePresentDebug.Location = new System.Drawing.Point(12, 229);
             this.uxPeoplePresentDebug.Multiline = true;
             this.uxPeoplePresentDebug.Name = "uxPeoplePresentDebug";
             this.uxPeoplePresentDebug.Size = new System.Drawing.Size(241, 153);
             this.uxPeoplePresentDebug.TabIndex = 11;
+            // 
+            // uxPeoplePresentDebugLabel
+            // 
+            this.uxPeoplePresentDebugLabel.AutoSize = true;
+            this.uxPeoplePresentDebugLabel.Location = new System.Drawing.Point(12, 213);
+            this.uxPeoplePresentDebugLabel.Name = "uxPeoplePresentDebugLabel";
+            this.uxPeoplePresentDebugLabel.Size = new System.Drawing.Size(103, 13);
+            this.uxPeoplePresentDebugLabel.TabIndex = 8;
+            this.uxPeoplePresentDebugLabel.Text = "# of People present:";
             // 
             // Form1
             // 
@@ -296,6 +306,7 @@
             this.Controls.Add(this.uxPeoplePresentCount);
             this.Controls.Add(this.uxAbsentCount);
             this.Controls.Add(this.uxPeopleAbsentLabel);
+            this.Controls.Add(this.uxPeoplePresentDebugLabel);
             this.Controls.Add(this.uxPPLabel);
             this.Controls.Add(this.uxUpNextTextBox);
             this.Controls.Add(this.uxCurrentTextBox);
@@ -348,5 +359,6 @@
         private System.Windows.Forms.Label uxCurrentLabel;
         private System.Windows.Forms.Label uxAttendanceStatus;
         private System.Windows.Forms.TextBox uxPeoplePresentDebug;
+        private System.Windows.Forms.Label uxPeoplePresentDebugLabel;
     }
 }
