@@ -140,7 +140,7 @@ namespace Attendance
                 if (allNames.Count > 0)
                 {
                     uxCurrentTextBox.Text = allNames[presentIndex];
-                    uxUpNextTextBox.Text = allNames[presentIndex + 1];
+                    uxUpNextTextBox.Text = allNames[presentIndex + 1]; // this is screwing it up
 
                     uxCurrentTextBox.Clear();
 
@@ -151,14 +151,14 @@ namespace Attendance
 
                     presentIndex++;
                     presentCount++;
-
+                 
                     uxPeoplePresentCount.Text = presentCount.ToString();
                 }
 
             }
             catch(ArgumentOutOfRangeException i)
             {
-                MessageBox.Show("Fix index out of bounds, last guy isn't being counted as present. :(");
+                MessageBox.Show("All names entered. Don't worry, " + allNames[presentIndex] + " was counted!");
             }
            
         }

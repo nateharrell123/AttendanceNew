@@ -272,9 +272,8 @@
             this.uxAttendanceStatus.AutoSize = true;
             this.uxAttendanceStatus.Location = new System.Drawing.Point(304, 343);
             this.uxAttendanceStatus.Name = "uxAttendanceStatus";
-            this.uxAttendanceStatus.Size = new System.Drawing.Size(62, 13);
+            this.uxAttendanceStatus.Size = new System.Drawing.Size(0, 13);
             this.uxAttendanceStatus.TabIndex = 10;
-            this.uxAttendanceStatus.Text = "placeholder";
             // 
             // uxPeoplePresentDebug
             // 
