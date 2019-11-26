@@ -23,10 +23,8 @@ namespace Attendance
         List<string> allNames = new List<string>();
         List<string> peoplePresent = new List<string>();
         List<string> peopleAbsent = new List<string>();
-        int counter = 0;
-        int presentCount = 0;
-        int absentCount = 0;
-        int deCount = 0;
+        int presentIndex = 0;
+
 
         StreamReader fileReading;
         /// <summary>
@@ -91,7 +89,7 @@ namespace Attendance
                         int idk = 1;
                     }
                 }
-                uxRosterNames.Text = allNames[0];
+                uxCurrentTextBox.Text = allNames[0];
             }
             catch(Exception ex)
             {
@@ -126,7 +124,7 @@ namespace Attendance
                     }
                 }
                 uxStartButton.Enabled = false;
-                uxRosterNames.Text = allNames[0];
+                uxCurrentTextBox.Text = allNames[0];
             }
             catch(Exception ex)
             {
@@ -134,52 +132,40 @@ namespace Attendance
             }
            
         }
-
+        int presentCount = 0;
         private void UxPresentButton_Click(object sender, EventArgs e)
         {
-            if(allNames.Count > 0)
+            try
             {
-                int index = counter++;
-                if(index <= allNames.Count - 1)
+                if (allNames.Count > 0)
                 {
-                    uxRosterNames.Text = allNames[index + 1]; // TODO: Index out of range
+                    uxCurrentTextBox.Text = allNames[presentIndex];
+                    uxUpNextTextBox.Text = allNames[presentIndex + 1];
+
+                    uxCurrentTextBox.Clear();
+
+                    uxAttendanceStatus.Text = allNames[presentIndex] + " was present.";
+                    peoplePresent.Add(allNames[presentIndex]);
+
+                    uxPeoplePresentDebug.Text = peoplePresent[presentIndex];
+
+                    presentIndex++;
                     presentCount++;
-                    peoplePresent.Add(allNames[index]);
-                    uxPeoplePresentCount.Text = peoplePresent.Count.ToString();
+
+                    uxPeoplePresentCount.Text = presentCount.ToString();
                 }
-                else if(index > allNames.Count)
-                {
-                    MessageBox.Show("All names entered.");
-                }
+
             }
-            else
+            catch(ArgumentOutOfRangeException i)
             {
-                MessageBox.Show("The file is empty.");
+                MessageBox.Show("Fix index out of bounds, last guy isn't being counted as present. :(");
             }
+           
         }
 
         private void UxAbsentButton_Click(object sender, EventArgs e)
         {
-            if (allNames.Count > 0)
-            {
-                int index = deCount++;
-                if (index <= allNames.Count - 1)
-                {
-                    index++;
-                    uxRosterNames.Text = allNames[index + 1];
-                    absentCount++;
-                    peopleAbsent.Add(allNames[index - 1]);
-                    uxAbsentCount.Text = peopleAbsent.Count.ToString();
-                }
-                else if (index >= allNames.Count)
-                {
-                    MessageBox.Show("All names entered.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("The file is empty.");
-            }
+           
         }
     }
 }

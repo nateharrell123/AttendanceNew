@@ -41,7 +41,7 @@
             this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.uxRosterNameLabel = new System.Windows.Forms.Label();
             this.uxStartButton = new System.Windows.Forms.Button();
-            this.uxRosterNames = new System.Windows.Forms.TextBox();
+            this.uxCurrentTextBox = new System.Windows.Forms.TextBox();
             this.uxPresentButton = new System.Windows.Forms.Button();
             this.uxAbsentButton = new System.Windows.Forms.Button();
             this.uxSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -50,6 +50,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.uxPeopleAbsentLabel = new System.Windows.Forms.Label();
             this.uxAbsentCount = new System.Windows.Forms.Label();
+            this.uxUpNextTextBox = new System.Windows.Forms.TextBox();
+            this.uxUpNextLabel = new System.Windows.Forms.Label();
+            this.uxCurrentLabel = new System.Windows.Forms.Label();
+            this.uxAttendanceStatus = new System.Windows.Forms.Label();
+            this.uxPeoplePresentDebug = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,20 +116,20 @@
             // uxNewDate
             // 
             this.uxNewDate.Name = "uxNewDate";
-            this.uxNewDate.Size = new System.Drawing.Size(180, 22);
+            this.uxNewDate.Size = new System.Drawing.Size(155, 22);
             this.uxNewDate.Text = "Enter New Date";
             this.uxNewDate.Click += new System.EventHandler(this.UxNewDate_Click);
             // 
             // saveResultsToolStripMenuItem
             // 
             this.saveResultsToolStripMenuItem.Name = "saveResultsToolStripMenuItem";
-            this.saveResultsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveResultsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.saveResultsToolStripMenuItem.Text = "Save Results";
             // 
             // uxImportRoster
             // 
             this.uxImportRoster.Name = "uxImportRoster";
-            this.uxImportRoster.Size = new System.Drawing.Size(180, 22);
+            this.uxImportRoster.Size = new System.Drawing.Size(155, 22);
             this.uxImportRoster.Text = "Import Roster";
             this.uxImportRoster.Click += new System.EventHandler(this.UxImportRoster_Click);
             // 
@@ -152,7 +157,7 @@
             // uxStartButton
             // 
             this.uxStartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxStartButton.Location = new System.Drawing.Point(309, 193);
+            this.uxStartButton.Location = new System.Drawing.Point(307, 128);
             this.uxStartButton.Name = "uxStartButton";
             this.uxStartButton.Size = new System.Drawing.Size(172, 59);
             this.uxStartButton.TabIndex = 6;
@@ -160,19 +165,19 @@
             this.uxStartButton.UseVisualStyleBackColor = true;
             this.uxStartButton.Click += new System.EventHandler(this.UxStartButton_Click);
             // 
-            // uxRosterNames
+            // uxCurrentTextBox
             // 
-            this.uxRosterNames.Location = new System.Drawing.Point(309, 258);
-            this.uxRosterNames.Multiline = true;
-            this.uxRosterNames.Name = "uxRosterNames";
-            this.uxRosterNames.ReadOnly = true;
-            this.uxRosterNames.Size = new System.Drawing.Size(172, 38);
-            this.uxRosterNames.TabIndex = 7;
+            this.uxCurrentTextBox.Location = new System.Drawing.Point(307, 229);
+            this.uxCurrentTextBox.Multiline = true;
+            this.uxCurrentTextBox.Name = "uxCurrentTextBox";
+            this.uxCurrentTextBox.ReadOnly = true;
+            this.uxCurrentTextBox.Size = new System.Drawing.Size(80, 38);
+            this.uxCurrentTextBox.TabIndex = 7;
             // 
             // uxPresentButton
             // 
             this.uxPresentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPresentButton.Location = new System.Drawing.Point(309, 312);
+            this.uxPresentButton.Location = new System.Drawing.Point(307, 273);
             this.uxPresentButton.Name = "uxPresentButton";
             this.uxPresentButton.Size = new System.Drawing.Size(80, 57);
             this.uxPresentButton.TabIndex = 6;
@@ -183,7 +188,7 @@
             // uxAbsentButton
             // 
             this.uxAbsentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAbsentButton.Location = new System.Drawing.Point(403, 312);
+            this.uxAbsentButton.Location = new System.Drawing.Point(401, 273);
             this.uxAbsentButton.Name = "uxAbsentButton";
             this.uxAbsentButton.Size = new System.Drawing.Size(78, 57);
             this.uxAbsentButton.TabIndex = 6;
@@ -212,7 +217,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(487, 218);
+            this.label4.Location = new System.Drawing.Point(485, 153);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(247, 13);
             this.label4.TabIndex = 9;
@@ -235,17 +240,66 @@
             this.uxAbsentCount.Size = new System.Drawing.Size(0, 13);
             this.uxAbsentCount.TabIndex = 8;
             // 
+            // uxUpNextTextBox
+            // 
+            this.uxUpNextTextBox.Location = new System.Drawing.Point(401, 229);
+            this.uxUpNextTextBox.Multiline = true;
+            this.uxUpNextTextBox.Name = "uxUpNextTextBox";
+            this.uxUpNextTextBox.ReadOnly = true;
+            this.uxUpNextTextBox.Size = new System.Drawing.Size(78, 38);
+            this.uxUpNextTextBox.TabIndex = 7;
+            // 
+            // uxUpNextLabel
+            // 
+            this.uxUpNextLabel.AutoSize = true;
+            this.uxUpNextLabel.Location = new System.Drawing.Point(398, 203);
+            this.uxUpNextLabel.Name = "uxUpNextLabel";
+            this.uxUpNextLabel.Size = new System.Drawing.Size(49, 13);
+            this.uxUpNextLabel.TabIndex = 10;
+            this.uxUpNextLabel.Text = "Up Next:";
+            // 
+            // uxCurrentLabel
+            // 
+            this.uxCurrentLabel.AutoSize = true;
+            this.uxCurrentLabel.Location = new System.Drawing.Point(304, 203);
+            this.uxCurrentLabel.Name = "uxCurrentLabel";
+            this.uxCurrentLabel.Size = new System.Drawing.Size(32, 13);
+            this.uxCurrentLabel.TabIndex = 10;
+            this.uxCurrentLabel.Text = "Start:";
+            // 
+            // uxAttendanceStatus
+            // 
+            this.uxAttendanceStatus.AutoSize = true;
+            this.uxAttendanceStatus.Location = new System.Drawing.Point(304, 343);
+            this.uxAttendanceStatus.Name = "uxAttendanceStatus";
+            this.uxAttendanceStatus.Size = new System.Drawing.Size(62, 13);
+            this.uxAttendanceStatus.TabIndex = 10;
+            this.uxAttendanceStatus.Text = "placeholder";
+            // 
+            // uxPeoplePresentDebug
+            // 
+            this.uxPeoplePresentDebug.Location = new System.Drawing.Point(12, 177);
+            this.uxPeoplePresentDebug.Multiline = true;
+            this.uxPeoplePresentDebug.Name = "uxPeoplePresentDebug";
+            this.uxPeoplePresentDebug.Size = new System.Drawing.Size(241, 153);
+            this.uxPeoplePresentDebug.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.uxPeoplePresentDebug);
+            this.Controls.Add(this.uxAttendanceStatus);
+            this.Controls.Add(this.uxCurrentLabel);
+            this.Controls.Add(this.uxUpNextLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.uxPeoplePresentCount);
             this.Controls.Add(this.uxAbsentCount);
             this.Controls.Add(this.uxPeopleAbsentLabel);
             this.Controls.Add(this.uxPPLabel);
-            this.Controls.Add(this.uxRosterNames);
+            this.Controls.Add(this.uxUpNextTextBox);
+            this.Controls.Add(this.uxCurrentTextBox);
             this.Controls.Add(this.uxAbsentButton);
             this.Controls.Add(this.uxPresentButton);
             this.Controls.Add(this.uxStartButton);
@@ -281,7 +335,7 @@
         private System.Windows.Forms.OpenFileDialog uxOpenFileDialog;
         private System.Windows.Forms.Label uxRosterNameLabel;
         private System.Windows.Forms.Button uxStartButton;
-        private System.Windows.Forms.TextBox uxRosterNames;
+        private System.Windows.Forms.TextBox uxCurrentTextBox;
         private System.Windows.Forms.Button uxPresentButton;
         private System.Windows.Forms.Button uxAbsentButton;
         private System.Windows.Forms.SaveFileDialog uxSaveFileDialog;
@@ -290,5 +344,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label uxPeopleAbsentLabel;
         private System.Windows.Forms.Label uxAbsentCount;
+        private System.Windows.Forms.TextBox uxUpNextTextBox;
+        private System.Windows.Forms.Label uxUpNextLabel;
+        private System.Windows.Forms.Label uxCurrentLabel;
+        private System.Windows.Forms.Label uxAttendanceStatus;
+        private System.Windows.Forms.TextBox uxPeoplePresentDebug;
     }
 }
