@@ -133,7 +133,7 @@ namespace Attendance
            
         }
         int presentCount = 0;
-
+        int absentCount = 0;
 
         /// <summary>
         /// Very self explanatory!
@@ -152,8 +152,7 @@ namespace Attendance
         /// <param name="e"></param>
         private void UxPresentButton_Click(object sender, EventArgs e)
         {
-            try
-            {
+            
                 if (allNames.Count > 0)
                 {
                     uxCurrentTextBox.Text = allNames[presentIndex];
@@ -181,17 +180,42 @@ namespace Attendance
                     uxSaveResults.Enabled = true;
                 }
 
-            }
-            catch (ArgumentOutOfRangeException i)
-            {
-                MessageBox.Show("Fix this!");
-            }
+            
+          
         }
 
 
         private void UxAbsentButton_Click(object sender, EventArgs e)
         {
-           
+            
+                if (allNames.Count > 0)
+                {
+                    uxCurrentTextBox.Text = allNames[presentIndex];
+                    uxUpNextTextBox.Text = allNames[presentIndex + 1]; // this is screwing it up
+
+                    allNames.Add(""); // adds it to the end
+
+                    uxCurrentTextBox.Clear();
+
+                    uxAttendanceStatus.Text = allNames[presentIndex] + " was absent.";
+                    peopleAbsent.Add(allNames[presentIndex]);
+
+
+                    presentIndex++;
+                    absentCount++;
+
+                    uxAbsentCount.Text = absentCount.ToString();
+                }
+
+                if (uxUpNextTextBox.Text == "")
+                {
+                    MessageBox.Show("All names entered.");
+                    DisableEverything();
+                    uxSaveResults.Enabled = true;
+                }
+
+            
+          
         }
 
         private void UxSaveResults_Click(object sender, EventArgs e)
@@ -199,11 +223,14 @@ namespace Attendance
             string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             using (StreamWriter sw = new StreamWriter(Path.Combine(docPath, "Attendance.txt")))
             {
-                while (peoplePresent != null)
+                sw.WriteLine("Attendance report for " + date + ":");
+                sw.WriteLine("People present: ");
+                while (peoplePresent.Count > 0)
                 {
                     for (int i = 0; i < peoplePresent.Count; i++)
                     {
                         sw.WriteLine(peoplePresent[i]);
+                        peoplePresent.RemoveAt(i);
                     }
                 }
                 if(peoplePresent.Count == 0)
