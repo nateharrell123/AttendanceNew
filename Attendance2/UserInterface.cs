@@ -191,7 +191,7 @@ namespace Attendance
                 if (allNames.Count > 0)
                 {
                     uxCurrentTextBox.Text = allNames[presentIndex];
-                    uxUpNextTextBox.Text = allNames[presentIndex + 1]; // this is screwing it up
+                    uxUpNextTextBox.Text = allNames[presentIndex + 1]; 
 
                     allNames.Add(""); // adds it to the end
 
