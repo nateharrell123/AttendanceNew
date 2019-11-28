@@ -26,6 +26,7 @@ namespace Attendance
 
         int counter = 0;
         int peoplePresent = 0;
+        int peopleAbsent = 0;
         string attendanceStatus;
 
 
@@ -103,15 +104,17 @@ namespace Attendance
             uxPeoplePresentCount.Text = peoplePresent.ToString();
             
             allNames[uxCurrentTextBox.Text] = true;
-            attendanceStatus = "here.";
+            attendanceStatus = " here.";
             IncrementNames();
         }
 
 
         private void UxAbsentButton_Click(object sender, EventArgs e)
         {
+            peopleAbsent++;
+            uxAbsentCount.Text = peopleAbsent.ToString();
             allNames[uxCurrentTextBox.Text] = false;
-            attendanceStatus = "absent.";
+            attendanceStatus = " absent.";
             IncrementNames();
         }
 
@@ -126,7 +129,7 @@ namespace Attendance
                 MessageBox.Show("All names entered.");
                 DisableEverything();
             }
-            uxCurrentTextBox.Text = allNames.Keys.ElementAt(counter - 1).ToString();
+            uxCurrentTextBox.Text = allNames.Keys.ElementAt(counter - 1).ToString(); // TODO: Fix this 
 
             uxAttendanceStatus.Text = allNames.Keys.ElementAt(counter - 1).ToString() + " was" + attendanceStatus;
         }
