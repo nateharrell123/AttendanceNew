@@ -23,6 +23,8 @@ namespace Attendance
 
 
         Dictionary<string, bool> allNames = new Dictionary<string, bool>();
+        Dictionary<int, KeyValuePair<string, bool>> dict = new Dictionary<int, KeyValuePair<string, bool>>();
+        // int is placeholder, KVP is "name", and whether they're present or not.
 
         int counter = 0;
         int peoplePresent = 0;
@@ -129,9 +131,17 @@ namespace Attendance
                 MessageBox.Show("All names entered.");
                 DisableEverything();
             }
-            uxCurrentTextBox.Text = allNames.Keys.ElementAt(counter - 1).ToString(); // TODO: Fix this 
 
             uxAttendanceStatus.Text = allNames.Keys.ElementAt(counter - 1).ToString() + " was" + attendanceStatus;
+            if (!allNames.TryGetValue(uxCurrentTextBox.Text, out _))
+            {
+                DisableEverything();
+            }
+            else
+            {
+                uxCurrentTextBox.Text = allNames.Keys.ElementAt(counter - 1).ToString(); // TODO: Fix this 
+
+            }
         }
 
         private void UxSaveResults_Click(object sender, EventArgs e)
