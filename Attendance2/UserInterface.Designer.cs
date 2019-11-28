@@ -28,14 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.uxDateText = new System.Windows.Forms.TextBox();
-            this.uxDate = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.uxMenuStrip = new System.Windows.Forms.MenuStrip();
             this.uxFileStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.uxNewDate = new System.Windows.Forms.ToolStripMenuItem();
-            this.uxImportRoster = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.uxRosterNameLabel = new System.Windows.Forms.Label();
@@ -56,34 +52,9 @@
             this.uxPeoplePresentDebug = new System.Windows.Forms.TextBox();
             this.uxPeoplePresentDebugLabel = new System.Windows.Forms.Label();
             this.uxSaveResults = new System.Windows.Forms.Button();
+            this.uxDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.uxMenuStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // uxDateText
-            // 
-            this.uxDateText.Location = new System.Drawing.Point(78, 39);
-            this.uxDateText.Multiline = true;
-            this.uxDateText.Name = "uxDateText";
-            this.uxDateText.Size = new System.Drawing.Size(139, 32);
-            this.uxDateText.TabIndex = 0;
-            this.uxDateText.TextChanged += new System.EventHandler(this.UxDateText_TextChanged);
-            // 
-            // uxDate
-            // 
-            this.uxDate.AutoSize = true;
-            this.uxDate.Location = new System.Drawing.Point(111, 85);
-            this.uxDate.Name = "uxDate";
-            this.uxDate.Size = new System.Drawing.Size(0, 13);
-            this.uxDate.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 85);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Today\'s Date:";
             // 
             // label2
             // 
@@ -107,8 +78,7 @@
             // uxFileStrip
             // 
             this.uxFileStrip.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.uxNewDate,
-            this.uxImportRoster});
+            this.uxNewDate});
             this.uxFileStrip.Name = "uxFileStrip";
             this.uxFileStrip.Size = new System.Drawing.Size(37, 20);
             this.uxFileStrip.Text = "File";
@@ -116,16 +86,9 @@
             // uxNewDate
             // 
             this.uxNewDate.Name = "uxNewDate";
-            this.uxNewDate.Size = new System.Drawing.Size(180, 22);
+            this.uxNewDate.Size = new System.Drawing.Size(155, 22);
             this.uxNewDate.Text = "Enter New Date";
             this.uxNewDate.Click += new System.EventHandler(this.UxNewDate_Click);
-            // 
-            // uxImportRoster
-            // 
-            this.uxImportRoster.Name = "uxImportRoster";
-            this.uxImportRoster.Size = new System.Drawing.Size(180, 22);
-            this.uxImportRoster.Text = "Import Roster";
-            this.uxImportRoster.Click += new System.EventHandler(this.UxImportRoster_Click);
             // 
             // label3
             // 
@@ -298,11 +261,20 @@
             this.uxSaveResults.UseVisualStyleBackColor = true;
             this.uxSaveResults.Click += new System.EventHandler(this.UxSaveResults_Click);
             // 
+            // uxDateTimePicker
+            // 
+            this.uxDateTimePicker.Location = new System.Drawing.Point(83, 42);
+            this.uxDateTimePicker.Name = "uxDateTimePicker";
+            this.uxDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.uxDateTimePicker.TabIndex = 13;
+            this.uxDateTimePicker.ValueChanged += new System.EventHandler(this.UxDateTimePicker_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.uxDateTimePicker);
             this.Controls.Add(this.uxSaveResults);
             this.Controls.Add(this.uxPeoplePresentDebug);
             this.Controls.Add(this.uxAttendanceStatus);
@@ -322,9 +294,6 @@
             this.Controls.Add(this.uxRosterNameLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.uxDate);
-            this.Controls.Add(this.uxDateText);
             this.Controls.Add(this.uxMenuStrip);
             this.MainMenuStrip = this.uxMenuStrip;
             this.Name = "Form1";
@@ -337,15 +306,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox uxDateText;
-        private System.Windows.Forms.Label uxDate;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MenuStrip uxMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem uxFileStrip;
         private System.Windows.Forms.ToolStripMenuItem uxNewDate;
-        private System.Windows.Forms.ToolStripMenuItem uxImportRoster;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.OpenFileDialog uxOpenFileDialog;
         private System.Windows.Forms.Label uxRosterNameLabel;
@@ -366,5 +330,6 @@
         private System.Windows.Forms.TextBox uxPeoplePresentDebug;
         private System.Windows.Forms.Label uxPeoplePresentDebugLabel;
         private System.Windows.Forms.Button uxSaveResults;
+        private System.Windows.Forms.DateTimePicker uxDateTimePicker;
     }
 }
