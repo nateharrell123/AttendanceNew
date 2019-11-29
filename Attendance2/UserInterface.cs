@@ -22,8 +22,8 @@ namespace Attendance
         DateTime date = new DateTime(); // final date
 
 
-        Dictionary<string, bool> allNames = new Dictionary<string, bool>();
-        Dictionary<int, KeyValuePair<string, bool>> dict = new Dictionary<int, KeyValuePair<string, bool>>();
+        // Dictionary<string, bool> allNames = new Dictionary<string, bool>();
+        Dictionary<int, Attendee> allNames = new Dictionary<int, Attendee>();
         // int is placeholder, KVP is "name", and whether they're present or not.
 
         int counter = 0;
@@ -64,26 +64,27 @@ namespace Attendance
                     {
                         throw new Exception();
                     }
-                    using (StreamReader temp = new StreamReader(fileName))
+                    
+                    uxRosterNameLabel.Text = fileName;
+
+                    string[] fileContents = File.ReadAllLines(fileName);
+                    for (int i = 0; i < fileContents.Length; i++)
                     {
-                        uxRosterNameLabel.Text = fileName;
-                        while (!temp.EndOfStream)
-                        {
-                            allNames.Add(temp.ReadLine(), false);
-                            
-                        }
+                        allNames.Add(i, new Attendee(fileContents[i], false));
                     }
                 }
+
                 uxStartButton.Enabled = false;
-                uxCurrentTextBox.Text = allNames.Keys.ElementAt(0);
+                uxCurrentTextBox.Text = allNames[0].Name;
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("The roster file needs to end with '.txt'");
             }
            
         }
 
+        
 
         /// <summary>
         /// Very self explanatory!
@@ -103,9 +104,14 @@ namespace Attendance
         private void UxPresentButton_Click(object sender, EventArgs e)
         {
             peoplePresent++;
-            uxPeoplePresentCount.Text = peoplePresent.ToString();
+            uxCurrentTextBox.Text = allNames[peoplePresent].Name;
+
+            if (allNames[peoplePresent].Present == false)
+            {
+                allNames[peoplePresent].Present = true;
+            }
             
-            allNames[uxCurrentTextBox.Text] = true;
+
             attendanceStatus = " here.";
             IncrementNames();
         }
@@ -115,7 +121,7 @@ namespace Attendance
         {
             peopleAbsent++;
             uxAbsentCount.Text = peopleAbsent.ToString();
-            allNames[uxCurrentTextBox.Text] = false;
+            allNames[peoplePresent].Present = false;
             attendanceStatus = " absent.";
             IncrementNames();
         }
@@ -132,11 +138,7 @@ namespace Attendance
                 DisableEverything();
             }
 
-            uxAttendanceStatus.Text = allNames.Keys.ElementAt(counter - 1).ToString() + " was" + attendanceStatus;
-            if (!allNames.TryGetValue(uxCurrentTextBox.Text, out _))
-            {
-                DisableEverything();
-            }
+            //uxAttendanceStatus.Text = allNames.Keys.ElementAt(counter - 1).ToString() + " was" + attendanceStatus;
             else
             {
                 uxCurrentTextBox.Text = allNames.Keys.ElementAt(counter - 1).ToString(); // TODO: Fix this 
@@ -169,6 +171,21 @@ namespace Attendance
         private void UxDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             date = uxDateTimePicker.Value;
+        }
+
+        /// <summary>
+        /// Attributes of an Attendee. They have names, and whether they were present or not.
+        /// </summary>
+        private class Attendee
+        {
+            public string Name { get; set; }
+            public bool Present { get; set; }
+
+            public Attendee(string name, bool present)
+            {
+                this.Name = name;
+                this.Present = present;
+            }
         }
     }
 }
