@@ -183,7 +183,7 @@
             // uxPeopleAbsentLabel
             // 
             this.uxPeopleAbsentLabel.AutoSize = true;
-            this.uxPeopleAbsentLabel.Location = new System.Drawing.Point(15, 154);
+            this.uxPeopleAbsentLabel.Location = new System.Drawing.Point(15, 153);
             this.uxPeopleAbsentLabel.Name = "uxPeopleAbsentLabel";
             this.uxPeopleAbsentLabel.Size = new System.Drawing.Size(100, 13);
             this.uxPeopleAbsentLabel.TabIndex = 8;
