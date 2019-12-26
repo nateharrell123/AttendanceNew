@@ -17,24 +17,24 @@ namespace Attendance
         public Attendance()
         {
             InitializeComponent();
+            DisableEverything();
+            uxStartButton.Enabled = true;
         }
 
-        DateTime date = new DateTime(); // final date
+        DateTime date = new DateTime();
 
 
-        // Dictionary<string, bool> allNames = new Dictionary<string, bool>();
+        /// <summary>
+        /// int = placeholder. Attendee has two properties: name, and whether they were here or not.
+        /// </summary>
         Dictionary<int, Attendee> allNames = new Dictionary<int, Attendee>();
-        // int is placeholder, Attendee has two properties: name, and whether they were here or not. 
 
         int counter = 0;
         int peoplePresent = 0;
         int peopleAbsent = 0;
         string attendanceStatus;
 
-
-        StreamReader fileReading;
         
-     
 
         /// <summary>
         /// Resets the date.
@@ -55,6 +55,7 @@ namespace Attendance
         /// <param name="e"></param>
         private void UxStartButton_Click(object sender, EventArgs e)
         {
+            EnableEverything();
             try
             {
                 if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
@@ -71,7 +72,7 @@ namespace Attendance
                     for (int i = 0; i < fileContents.Length; i++)
                     {
                         allNames.Add(i, new Attendee(fileContents[i], false));
-                        uxRosterNames.Text = allNames[i].Name;
+                        uxRosterNames.Text = allNames[i].Name; // fix later
                     }
                 }
 
@@ -95,6 +96,15 @@ namespace Attendance
             uxStartButton.Enabled = false;
             uxPresentButton.Enabled = false;
             uxAbsentButton.Enabled = false;
+            uxAbsentUnexcused.Enabled = false;
+        }
+
+        public void EnableEverything()
+        {
+            uxStartButton.Enabled = true;
+            uxPresentButton.Enabled = true;
+            uxAbsentButton.Enabled = true;
+            uxAbsentUnexcused.Enabled = true;
         }
 
         /// <summary>
@@ -106,8 +116,6 @@ namespace Attendance
         {
             peoplePresent++;
 
-          
-
             uxNameTextBox.Text = allNames[counter].Name;
 
             if (allNames[peoplePresent].Present == false)
@@ -117,7 +125,6 @@ namespace Attendance
 
             uxPeoplePresentCount.Text = peoplePresent.ToString();
 
-
             attendanceStatus = " here.";
             IncrementNames();
         }
@@ -126,13 +133,6 @@ namespace Attendance
         private void UxAbsentButton_Click(object sender, EventArgs e)
         {
             peopleAbsent++;
-
-
-            //if (peopleAbsent > allNames.Count - 1)
-            //{
-            //    MessageBox.Show("All names entered.");
-            //    return;
-            //}
             uxNameTextBox.Text = allNames[counter].Name;
             uxAbsentCount.Text = peopleAbsent.ToString();
             allNames[peoplePresent].Present = false;
@@ -152,33 +152,29 @@ namespace Attendance
                 DisableEverything();
                 uxSaveResults.Enabled = true;
             }
-
             uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;
-
-
-           
         }
 
         private void UxSaveResults_Click(object sender, EventArgs e)
         {
-            //string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //using (StreamWriter sw = new StreamWriter(Path.Combine(docPath, "Attendance.txt")))
-            //{
-            //    sw.WriteLine("Attendance report for " + date + ":");
-            //    sw.WriteLine("People present: ");
-            //    while (peoplePresent.Count > 0)
-            //    {
-            //        for (int i = 0; i < peoplePresent.Count; i++)
-            //        {
-            //            sw.WriteLine(peoplePresent[i]);
-            //            peoplePresent.RemoveAt(i);
-            //        }
-            //    }
-            //    if(peoplePresent.Count == 0)
-            //    {
-            //        MessageBox.Show("done!");
-            //    }
-            //}
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            using (StreamWriter sw = new StreamWriter(Path.Combine(docPath, "Attendance.txt")))
+            {
+                sw.WriteLine("Attendance report for " + date + ":");
+                sw.WriteLine("People present: ");
+                while (allNames.Count > 0)
+                {
+                    for (int i = 0; i < allNames.Count; i++)
+                    {
+                        sw.WriteLine(allNames[i]);
+                        allNames.Remove(i); // fix
+                    }
+                }
+                if (allNames.Count == 0)
+                {
+                    MessageBox.Show("done!");
+                }
+            }
         }
 
         private void UxDateTimePicker_ValueChanged(object sender, EventArgs e)
