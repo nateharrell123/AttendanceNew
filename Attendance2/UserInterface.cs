@@ -71,6 +71,7 @@ namespace Attendance
                     for (int i = 0; i < fileContents.Length; i++)
                     {
                         allNames.Add(i, new Attendee(fileContents[i], false));
+                        uxRosterNames.Text = allNames[i].Name;
                     }
                 }
 
@@ -105,11 +106,7 @@ namespace Attendance
         {
             peoplePresent++;
 
-            //if (peoplePresent > allNames.Count - 1)
-            //{
-            //    MessageBox.Show("All names entered.");
-            //    return;
-            //}
+          
 
             uxNameTextBox.Text = allNames[counter].Name;
 
@@ -157,6 +154,7 @@ namespace Attendance
             }
 
             uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;
+
 
            
         }
