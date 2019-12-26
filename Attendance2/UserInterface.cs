@@ -12,9 +12,9 @@ using System.IO;
 
 namespace Attendance
 {
-    public partial class Form1 : Form 
+    public partial class Attendance : Form 
     {
-        public Form1()
+        public Attendance()
         {
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace Attendance
 
         // Dictionary<string, bool> allNames = new Dictionary<string, bool>();
         Dictionary<int, Attendee> allNames = new Dictionary<int, Attendee>();
-        // int is placeholder, KVP is "name", and whether they're present or not.
+        // int is placeholder, Attendee has two properties: name, and whether they were here or not. 
 
         int counter = 0;
         int peoplePresent = 0;
@@ -75,7 +75,7 @@ namespace Attendance
                 }
 
                 uxStartButton.Enabled = false;
-                uxCurrentTextBox.Text = allNames[0].Name;
+                uxNameTextBox.Text = allNames[0].Name;
             }
             catch
             {
@@ -105,13 +105,13 @@ namespace Attendance
         {
             peoplePresent++;
 
-            if (peoplePresent > allNames.Count - 1)
-            {
-                MessageBox.Show("All names entered.");
-                return;
-            }
+            //if (peoplePresent > allNames.Count - 1)
+            //{
+            //    MessageBox.Show("All names entered.");
+            //    return;
+            //}
 
-            uxCurrentTextBox.Text = allNames[peoplePresent].Name;
+            uxNameTextBox.Text = allNames[counter].Name;
 
             if (allNames[peoplePresent].Present == false)
             {
@@ -131,12 +131,12 @@ namespace Attendance
             peopleAbsent++;
 
 
-            if (peopleAbsent > allNames.Count - 1)
-            {
-                MessageBox.Show("All names entered.");
-                return;
-            }
-            uxCurrentTextBox.Text = allNames[counter].Name;
+            //if (peopleAbsent > allNames.Count - 1)
+            //{
+            //    MessageBox.Show("All names entered.");
+            //    return;
+            //}
+            uxNameTextBox.Text = allNames[counter].Name;
             uxAbsentCount.Text = peopleAbsent.ToString();
             allNames[peoplePresent].Present = false;
             attendanceStatus = " absent.";
@@ -149,10 +149,11 @@ namespace Attendance
         private void IncrementNames()
         {
             counter++;
-            if (counter > allNames.Count)
+            if (counter >= allNames.Count)
             {
                 MessageBox.Show("All names entered.");
                 DisableEverything();
+                uxSaveResults.Enabled = true;
             }
 
             uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;

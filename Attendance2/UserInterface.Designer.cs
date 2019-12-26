@@ -1,6 +1,6 @@
 ﻿namespace Attendance
 {
-    partial class Form1
+    partial class Attendance
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,7 @@
             this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.uxRosterNameLabel = new System.Windows.Forms.Label();
             this.uxStartButton = new System.Windows.Forms.Button();
-            this.uxCurrentTextBox = new System.Windows.Forms.TextBox();
+            this.uxNameTextBox = new System.Windows.Forms.TextBox();
             this.uxPresentButton = new System.Windows.Forms.Button();
             this.uxAbsentButton = new System.Windows.Forms.Button();
             this.uxSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -45,14 +45,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.uxPeopleAbsentLabel = new System.Windows.Forms.Label();
             this.uxAbsentCount = new System.Windows.Forms.Label();
-            this.uxUpNextTextBox = new System.Windows.Forms.TextBox();
-            this.uxUpNextLabel = new System.Windows.Forms.Label();
-            this.uxCurrentLabel = new System.Windows.Forms.Label();
+            this.uxNameLabel = new System.Windows.Forms.Label();
             this.uxAttendanceStatus = new System.Windows.Forms.Label();
-            this.uxPeoplePresentDebug = new System.Windows.Forms.TextBox();
-            this.uxPeoplePresentDebugLabel = new System.Windows.Forms.Label();
             this.uxSaveResults = new System.Windows.Forms.Button();
             this.uxDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.uxCheckBox = new System.Windows.Forms.CheckedListBox();
+            this.uxRoster = new System.Windows.Forms.Label();
             this.uxMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,14 +120,14 @@
             this.uxStartButton.UseVisualStyleBackColor = true;
             this.uxStartButton.Click += new System.EventHandler(this.UxStartButton_Click);
             // 
-            // uxCurrentTextBox
+            // uxNameTextBox
             // 
-            this.uxCurrentTextBox.Location = new System.Drawing.Point(307, 229);
-            this.uxCurrentTextBox.Multiline = true;
-            this.uxCurrentTextBox.Name = "uxCurrentTextBox";
-            this.uxCurrentTextBox.ReadOnly = true;
-            this.uxCurrentTextBox.Size = new System.Drawing.Size(80, 38);
-            this.uxCurrentTextBox.TabIndex = 7;
+            this.uxNameTextBox.Location = new System.Drawing.Point(307, 229);
+            this.uxNameTextBox.Multiline = true;
+            this.uxNameTextBox.Name = "uxNameTextBox";
+            this.uxNameTextBox.ReadOnly = true;
+            this.uxNameTextBox.Size = new System.Drawing.Size(172, 38);
+            this.uxNameTextBox.TabIndex = 7;
             // 
             // uxPresentButton
             // 
@@ -197,32 +195,15 @@
             this.uxAbsentCount.Size = new System.Drawing.Size(0, 13);
             this.uxAbsentCount.TabIndex = 8;
             // 
-            // uxUpNextTextBox
+            // uxNameLabel
             // 
-            this.uxUpNextTextBox.Location = new System.Drawing.Point(401, 229);
-            this.uxUpNextTextBox.Multiline = true;
-            this.uxUpNextTextBox.Name = "uxUpNextTextBox";
-            this.uxUpNextTextBox.ReadOnly = true;
-            this.uxUpNextTextBox.Size = new System.Drawing.Size(78, 38);
-            this.uxUpNextTextBox.TabIndex = 7;
-            // 
-            // uxUpNextLabel
-            // 
-            this.uxUpNextLabel.AutoSize = true;
-            this.uxUpNextLabel.Location = new System.Drawing.Point(398, 203);
-            this.uxUpNextLabel.Name = "uxUpNextLabel";
-            this.uxUpNextLabel.Size = new System.Drawing.Size(49, 13);
-            this.uxUpNextLabel.TabIndex = 10;
-            this.uxUpNextLabel.Text = "Up Next:";
-            // 
-            // uxCurrentLabel
-            // 
-            this.uxCurrentLabel.AutoSize = true;
-            this.uxCurrentLabel.Location = new System.Drawing.Point(304, 203);
-            this.uxCurrentLabel.Name = "uxCurrentLabel";
-            this.uxCurrentLabel.Size = new System.Drawing.Size(32, 13);
-            this.uxCurrentLabel.TabIndex = 10;
-            this.uxCurrentLabel.Text = "Start:";
+            this.uxNameLabel.AutoSize = true;
+            this.uxNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxNameLabel.Location = new System.Drawing.Point(365, 206);
+            this.uxNameLabel.Name = "uxNameLabel";
+            this.uxNameLabel.Size = new System.Drawing.Size(55, 20);
+            this.uxNameLabel.TabIndex = 10;
+            this.uxNameLabel.Text = "Name:";
             // 
             // uxAttendanceStatus
             // 
@@ -231,23 +212,6 @@
             this.uxAttendanceStatus.Name = "uxAttendanceStatus";
             this.uxAttendanceStatus.Size = new System.Drawing.Size(0, 13);
             this.uxAttendanceStatus.TabIndex = 10;
-            // 
-            // uxPeoplePresentDebug
-            // 
-            this.uxPeoplePresentDebug.Location = new System.Drawing.Point(12, 229);
-            this.uxPeoplePresentDebug.Multiline = true;
-            this.uxPeoplePresentDebug.Name = "uxPeoplePresentDebug";
-            this.uxPeoplePresentDebug.Size = new System.Drawing.Size(241, 153);
-            this.uxPeoplePresentDebug.TabIndex = 11;
-            // 
-            // uxPeoplePresentDebugLabel
-            // 
-            this.uxPeoplePresentDebugLabel.AutoSize = true;
-            this.uxPeoplePresentDebugLabel.Location = new System.Drawing.Point(12, 213);
-            this.uxPeoplePresentDebugLabel.Name = "uxPeoplePresentDebugLabel";
-            this.uxPeoplePresentDebugLabel.Size = new System.Drawing.Size(103, 13);
-            this.uxPeoplePresentDebugLabel.TabIndex = 8;
-            this.uxPeoplePresentDebugLabel.Text = "# of People present:";
             // 
             // uxSaveResults
             // 
@@ -269,25 +233,40 @@
             this.uxDateTimePicker.TabIndex = 13;
             this.uxDateTimePicker.ValueChanged += new System.EventHandler(this.UxDateTimePicker_ValueChanged);
             // 
-            // Form1
+            // uxCheckBox
+            // 
+            this.uxCheckBox.FormattingEnabled = true;
+            this.uxCheckBox.Location = new System.Drawing.Point(12, 218);
+            this.uxCheckBox.Name = "uxCheckBox";
+            this.uxCheckBox.Size = new System.Drawing.Size(247, 169);
+            this.uxCheckBox.TabIndex = 14;
+            // 
+            // uxRoster
+            // 
+            this.uxRoster.AutoSize = true;
+            this.uxRoster.Location = new System.Drawing.Point(12, 202);
+            this.uxRoster.Name = "uxRoster";
+            this.uxRoster.Size = new System.Drawing.Size(41, 13);
+            this.uxRoster.TabIndex = 15;
+            this.uxRoster.Text = "Roster:";
+            // 
+            // Attendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.uxRoster);
+            this.Controls.Add(this.uxCheckBox);
             this.Controls.Add(this.uxDateTimePicker);
             this.Controls.Add(this.uxSaveResults);
-            this.Controls.Add(this.uxPeoplePresentDebug);
             this.Controls.Add(this.uxAttendanceStatus);
-            this.Controls.Add(this.uxCurrentLabel);
-            this.Controls.Add(this.uxUpNextLabel);
+            this.Controls.Add(this.uxNameLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.uxPeoplePresentCount);
             this.Controls.Add(this.uxAbsentCount);
             this.Controls.Add(this.uxPeopleAbsentLabel);
-            this.Controls.Add(this.uxPeoplePresentDebugLabel);
             this.Controls.Add(this.uxPPLabel);
-            this.Controls.Add(this.uxUpNextTextBox);
-            this.Controls.Add(this.uxCurrentTextBox);
+            this.Controls.Add(this.uxNameTextBox);
             this.Controls.Add(this.uxAbsentButton);
             this.Controls.Add(this.uxPresentButton);
             this.Controls.Add(this.uxStartButton);
@@ -296,7 +275,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.uxMenuStrip);
             this.MainMenuStrip = this.uxMenuStrip;
-            this.Name = "Form1";
+            this.Name = "Attendance";
             this.Text = "Form1";
             this.uxMenuStrip.ResumeLayout(false);
             this.uxMenuStrip.PerformLayout();
@@ -314,7 +293,7 @@
         private System.Windows.Forms.OpenFileDialog uxOpenFileDialog;
         private System.Windows.Forms.Label uxRosterNameLabel;
         private System.Windows.Forms.Button uxStartButton;
-        private System.Windows.Forms.TextBox uxCurrentTextBox;
+        private System.Windows.Forms.TextBox uxNameTextBox;
         private System.Windows.Forms.Button uxPresentButton;
         private System.Windows.Forms.Button uxAbsentButton;
         private System.Windows.Forms.SaveFileDialog uxSaveFileDialog;
@@ -323,13 +302,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label uxPeopleAbsentLabel;
         private System.Windows.Forms.Label uxAbsentCount;
-        private System.Windows.Forms.TextBox uxUpNextTextBox;
-        private System.Windows.Forms.Label uxUpNextLabel;
-        private System.Windows.Forms.Label uxCurrentLabel;
+        private System.Windows.Forms.Label uxNameLabel;
         private System.Windows.Forms.Label uxAttendanceStatus;
-        private System.Windows.Forms.TextBox uxPeoplePresentDebug;
-        private System.Windows.Forms.Label uxPeoplePresentDebugLabel;
         private System.Windows.Forms.Button uxSaveResults;
         private System.Windows.Forms.DateTimePicker uxDateTimePicker;
+        private System.Windows.Forms.CheckedListBox uxCheckBox;
+        private System.Windows.Forms.Label uxRoster;
     }
 }
