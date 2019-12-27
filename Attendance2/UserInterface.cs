@@ -113,30 +113,46 @@ namespace Attendance
         /// <param name="e"></param>
         private void UxPresentButton_Click(object sender, EventArgs e)
         {
-            peoplePresent++;
-
-            uxNameTextBox.Text = allNames[counter].Name;
-
-            if (allNames[counter].Present == false)
+            try
             {
-                allNames[counter].Present = true;
+                peoplePresent++;
+
+                uxNameTextBox.Text = allNames[counter].Name;
+
+                if (allNames[counter].Present == false)
+                {
+                    allNames[counter].Present = true;
+                }
+
+                uxPeoplePresentCount.Text = peoplePresent.ToString();
+
+                attendanceStatus = " here.";
+                IncrementNames();
             }
-
-            uxPeoplePresentCount.Text = peoplePresent.ToString();
-
-            attendanceStatus = " here.";
-            IncrementNames();
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
 
         private void UxAbsentButton_Click(object sender, EventArgs e)
         {
-            peopleAbsent++;
-            uxNameTextBox.Text = allNames[counter].Name;
-            uxAbsentCount.Text = peopleAbsent.ToString();
-            allNames[counter].Present = false;
-            attendanceStatus = " absent.";
-            IncrementNames();
+            try
+            {
+                peopleAbsent++;
+                uxNameTextBox.Text = allNames[counter].Name;
+                uxAbsentCount.Text = peopleAbsent.ToString();
+                allNames[counter].Present = false;
+                attendanceStatus = " absent.";
+                IncrementNames();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         /// <summary>
@@ -164,11 +180,25 @@ namespace Attendance
                 {
                     foreach (var atn in allNames)
                     {
-                        sw.Write(atn.Value.Name);
-                        sw.WriteLine(atn.Value.Present ? " was present." : " was absent."); // ? is left side, : is right side.
+                        if(atn.Value.Present == true)
+                        {
+                            sw.Write(atn.Value.Name);
+                            sw.WriteLine(" was present.");
+                        }
+                        else if (atn.Value.Present == false && atn.Value.Unexcused == false)
+                        {
+                            sw.Write(atn.Value.Name);
+                            sw.WriteLine(" was absent.");
+                        }
+                        if(atn.Value.Unexcused == true)
+                        {
+                            sw.Write(atn.Value.Name);
+                            sw.WriteLine(" was absent (unexcused).");
+                        }
+                        //sw.WriteLine(atn.Value.Present ? " was present." :  " was absent."); // ? is left side, : is right side.
+                      
                     }
                     
-
                     MessageBox.Show("done!");
                 }
                 catch(Exception ex)
@@ -209,13 +239,20 @@ namespace Attendance
         /// <param name="e"></param>
         private void UxUnexcused_Click(object sender, EventArgs e)
         {
-            absentUnexcused++;
-            uxNameTextBox.Text = allNames[counter].Name;
-            uxAbsentCount.Text = peopleAbsent.ToString();
-            allNames[peoplePresent].Present = false;
-            allNames[peoplePresent].Unexcused = true;
-            attendanceStatus = " absent (unexcused).";
-            IncrementNames();
+            try
+            {
+                absentUnexcused++;
+                uxNameTextBox.Text = allNames[counter].Name;
+                uxAbsentCount.Text = peopleAbsent.ToString();
+                allNames[counter].Unexcused = true;
+                attendanceStatus = " absent (unexcused).";
+                IncrementNames();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }
