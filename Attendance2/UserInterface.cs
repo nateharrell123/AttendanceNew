@@ -33,7 +33,7 @@ namespace Attendance
         int peoplePresent = 0;
         int peopleAbsent = 0;
         string attendanceStatus;
-
+        int absentUnexcused = 0;
         
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Attendance
                     string[] fileContents = File.ReadAllLines(fileName);
                     for (int i = 0; i < fileContents.Length; i++)
                     {
-                        allNames.Add(i, new Attendee(fileContents[i], false));
+                        allNames.Add(i, new Attendee(fileContents[i], false, false));
                         uxRosterNames.Text = allNames[i].Name; // fix later
                     }
                 }
@@ -93,10 +93,9 @@ namespace Attendance
         /// </summary>
         public void DisableEverything()
         {
-            uxStartButton.Enabled = false;
             uxPresentButton.Enabled = false;
             uxAbsentButton.Enabled = false;
-            uxAbsentUnexcused.Enabled = false;
+            uxUnexcused.Enabled = false;
         }
 
         public void EnableEverything()
@@ -104,7 +103,7 @@ namespace Attendance
             uxStartButton.Enabled = true;
             uxPresentButton.Enabled = true;
             uxAbsentButton.Enabled = true;
-            uxAbsentUnexcused.Enabled = true;
+            uxUnexcused.Enabled = true;
         }
 
         /// <summary>
@@ -118,9 +117,9 @@ namespace Attendance
 
             uxNameTextBox.Text = allNames[counter].Name;
 
-            if (allNames[peoplePresent].Present == false)
+            if (allNames[counter].Present == false)
             {
-                allNames[peoplePresent].Present = true;
+                allNames[counter].Present = true;
             }
 
             uxPeoplePresentCount.Text = peoplePresent.ToString();
@@ -135,7 +134,7 @@ namespace Attendance
             peopleAbsent++;
             uxNameTextBox.Text = allNames[counter].Name;
             uxAbsentCount.Text = peopleAbsent.ToString();
-            allNames[peoplePresent].Present = false;
+            allNames[counter].Present = false;
             attendanceStatus = " absent.";
             IncrementNames();
         }
@@ -161,19 +160,23 @@ namespace Attendance
             using (StreamWriter sw = new StreamWriter(Path.Combine(docPath, "Attendance.txt")))
             {
                 sw.WriteLine("Attendance report for " + date + ":");
-                sw.WriteLine("People present: ");
-                while (allNames.Count > 0)
+                try
                 {
-                    for (int i = 0; i < allNames.Count; i++)
+                    foreach (var atn in allNames)
                     {
-                        sw.WriteLine(allNames[i]);
-                        allNames.Remove(i); // fix
+                        sw.Write(atn.Value.Name);
+                        sw.WriteLine(atn.Value.Present ? " was present." : " was absent."); // ? is left side, : is right side.
                     }
-                }
-                if (allNames.Count == 0)
-                {
+                    
+
                     MessageBox.Show("done!");
                 }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+               
+                
             }
         }
 
@@ -189,12 +192,30 @@ namespace Attendance
         {
             public string Name { get; set; }
             public bool Present { get; set; }
+            public bool Unexcused { get; set; }
 
-            public Attendee(string name, bool present)
+            public Attendee(string name, bool present, bool unexcused)
             {
                 this.Name = name;
                 this.Present = present;
+                this.Unexcused = unexcused;
             }
+        }
+
+        /// <summary>
+        /// Event handler for Unexcused absences.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UxUnexcused_Click(object sender, EventArgs e)
+        {
+            absentUnexcused++;
+            uxNameTextBox.Text = allNames[counter].Name;
+            uxAbsentCount.Text = peopleAbsent.ToString();
+            allNames[peoplePresent].Present = false;
+            allNames[peoplePresent].Unexcused = true;
+            attendanceStatus = " absent (unexcused).";
+            IncrementNames();
         }
     }
 }
