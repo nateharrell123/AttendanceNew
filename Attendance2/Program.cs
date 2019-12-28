@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Attendance2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace Attendance
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Attendance());
+            Application.Run(new CreateRoster());
+            Application.Run(new Attendance3());
         }
     }
 }

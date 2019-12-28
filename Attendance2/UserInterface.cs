@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Attendance2;
 
 namespace Attendance
 {
-    public partial class Attendance : Form 
+    public partial class Attendance3 : Form 
     {
-        public Attendance()
+        public Attendance3()
         {
             InitializeComponent();
             DisableEverything();
@@ -72,7 +73,7 @@ namespace Attendance
                     for (int i = 0; i < fileContents.Length; i++)
                     {
                         allNames.Add(i, new Attendee(fileContents[i], false, false));
-                        uxRosterNames.Text = allNames[i].Name; // fix later
+                        //uxRosterNames.Text = allNames[i].Name; // fix later
                     }
                 }
 
@@ -253,6 +254,13 @@ namespace Attendance
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private void UxDontHaveRosterButton_Click(object sender, EventArgs e)
+        {
+            CreateRoster createRoster = new CreateRoster();
+            CreateRoster.ActiveForm.Hide();
+            createRoster.Show();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Attendance
 {
-    partial class Attendance
+    partial class Attendance3
     {
         /// <summary>
         /// Required designer variable.
@@ -49,9 +49,8 @@
             this.uxAttendanceStatus = new System.Windows.Forms.Label();
             this.uxSaveResults = new System.Windows.Forms.Button();
             this.uxDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.uxRoster = new System.Windows.Forms.Label();
-            this.uxRosterNames = new System.Windows.Forms.TextBox();
             this.uxUnexcused = new System.Windows.Forms.Button();
+            this.uxDontHaveRosterButton = new System.Windows.Forms.Button();
             this.uxMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -234,23 +233,6 @@
             this.uxDateTimePicker.TabIndex = 13;
             this.uxDateTimePicker.ValueChanged += new System.EventHandler(this.UxDateTimePicker_ValueChanged);
             // 
-            // uxRoster
-            // 
-            this.uxRoster.AutoSize = true;
-            this.uxRoster.Location = new System.Drawing.Point(12, 202);
-            this.uxRoster.Name = "uxRoster";
-            this.uxRoster.Size = new System.Drawing.Size(41, 13);
-            this.uxRoster.TabIndex = 15;
-            this.uxRoster.Text = "Roster:";
-            // 
-            // uxRosterNames
-            // 
-            this.uxRosterNames.Location = new System.Drawing.Point(12, 226);
-            this.uxRosterNames.Multiline = true;
-            this.uxRosterNames.Name = "uxRosterNames";
-            this.uxRosterNames.Size = new System.Drawing.Size(79, 169);
-            this.uxRosterNames.TabIndex = 16;
-            // 
             // uxUnexcused
             // 
             this.uxUnexcused.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -262,14 +244,24 @@
             this.uxUnexcused.UseVisualStyleBackColor = true;
             this.uxUnexcused.Click += new System.EventHandler(this.UxUnexcused_Click);
             // 
-            // Attendance
+            // uxDontHaveRosterButton
+            // 
+            this.uxDontHaveRosterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxDontHaveRosterButton.Location = new System.Drawing.Point(33, 281);
+            this.uxDontHaveRosterButton.Name = "uxDontHaveRosterButton";
+            this.uxDontHaveRosterButton.Size = new System.Drawing.Size(141, 103);
+            this.uxDontHaveRosterButton.TabIndex = 18;
+            this.uxDontHaveRosterButton.Text = "I don\'t have a roster";
+            this.uxDontHaveRosterButton.UseVisualStyleBackColor = true;
+            this.uxDontHaveRosterButton.Click += new System.EventHandler(this.UxDontHaveRosterButton_Click);
+            // 
+            // Attendance3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.uxDontHaveRosterButton);
             this.Controls.Add(this.uxUnexcused);
-            this.Controls.Add(this.uxRosterNames);
-            this.Controls.Add(this.uxRoster);
             this.Controls.Add(this.uxDateTimePicker);
             this.Controls.Add(this.uxSaveResults);
             this.Controls.Add(this.uxAttendanceStatus);
@@ -288,7 +280,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.uxMenuStrip);
             this.MainMenuStrip = this.uxMenuStrip;
-            this.Name = "Attendance";
+            this.Name = "Attendance3";
             this.Text = "Attendance";
             this.uxMenuStrip.ResumeLayout(false);
             this.uxMenuStrip.PerformLayout();
@@ -319,8 +311,7 @@
         private System.Windows.Forms.Label uxAttendanceStatus;
         private System.Windows.Forms.Button uxSaveResults;
         private System.Windows.Forms.DateTimePicker uxDateTimePicker;
-        private System.Windows.Forms.Label uxRoster;
-        private System.Windows.Forms.TextBox uxRosterNames;
         private System.Windows.Forms.Button uxUnexcused;
+        private System.Windows.Forms.Button uxDontHaveRosterButton;
     }
 }
