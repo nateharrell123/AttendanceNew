@@ -1,5 +1,4 @@
-﻿using Attendance;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,11 +17,9 @@ namespace Attendance2
             InitializeComponent();
         }
 
-        private void UxYesButton_Click(object sender, EventArgs e)
+        private void CreateRoster_Load(object sender, EventArgs e)
         {
-            Attendance3 attendance = new Attendance3();
-            CreateRoster.ActiveForm.Hide();
-            attendance.Show();
+
         }
     }
 }

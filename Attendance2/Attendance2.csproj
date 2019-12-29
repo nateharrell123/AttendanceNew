@@ -52,6 +52,12 @@
     <Compile Include="CreateRoster.Designer.cs">
       <DependentUpon>CreateRoster.cs</DependentUpon>
     </Compile>
+    <Compile Include="Prompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prompt.Designer.cs">
+      <DependentUpon>Prompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CreateRoster.resx">
       <DependentUpon>CreateRoster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prompt.resx">
+      <DependentUpon>Prompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterface.resx">
       <DependentUpon>UserInterface.cs</DependentUpon>

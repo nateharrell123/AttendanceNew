@@ -17,7 +17,7 @@ namespace Attendance
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CreateRoster());
+            Application.Run(new Prompt());
             Application.Run(new Attendance3());
         }
     }

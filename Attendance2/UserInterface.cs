@@ -258,8 +258,8 @@ namespace Attendance
 
         private void UxDontHaveRosterButton_Click(object sender, EventArgs e)
         {
-            CreateRoster createRoster = new CreateRoster();
-            CreateRoster.ActiveForm.Hide();
+            Prompt createRoster = new Prompt();
+            Prompt.ActiveForm.Hide();
             createRoster.Show();
         }
     }
