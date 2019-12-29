@@ -14,21 +14,20 @@ namespace Attendance2
     {
         public CreateRoster()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         Stack<string> names = new Stack<string>();
 
-        int counter = 0;
         private void input_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
                 names.Push(uxNamesTextBox.Text);
                 uxFileContentsTextBox.Text = names.Peek();
-                counter++;
             }
         }
+
 
 
         private void UxRosterStartButton_Click(object sender, EventArgs e)
@@ -40,11 +39,19 @@ namespace Attendance2
 
         private void UxRemoveNameButton_Click(object sender, EventArgs e)
         {
-            if(names.Peek() != null)
+            try
             {
-                string removed = names.Pop();
-                uxRemovedText.Text = "Removed" + removed + " from the roster.";
+                if (names.Peek() != null)
+                {
+                    string removed = names.Pop();
+                    uxRemovedText.Text = "Removed " + removed + " from the roster.";
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There is no one in the roster to remove!");
+            }
+           
         }
     }
 }

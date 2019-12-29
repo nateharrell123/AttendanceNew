@@ -138,7 +138,7 @@
             this.uxNamesTextBox.Multiline = true;
             this.uxNamesTextBox.Name = "uxNamesTextBox";
             this.uxNamesTextBox.ReadOnly = true;
-            this.uxNamesTextBox.Size = new System.Drawing.Size(253, 32);
+            this.uxNamesTextBox.Size = new System.Drawing.Size(253, 106);
             this.uxNamesTextBox.TabIndex = 6;
             this.uxNamesTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.uxNamesTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.input_KeyDown);
@@ -156,7 +156,7 @@
             // 
             this.uxRemoveNameButton.Enabled = false;
             this.uxRemoveNameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxRemoveNameButton.Location = new System.Drawing.Point(277, 266);
+            this.uxRemoveNameButton.Location = new System.Drawing.Point(277, 340);
             this.uxRemoveNameButton.Name = "uxRemoveNameButton";
             this.uxRemoveNameButton.Size = new System.Drawing.Size(253, 53);
             this.uxRemoveNameButton.TabIndex = 4;
@@ -167,9 +167,9 @@
             // uxRemovedText
             // 
             this.uxRemovedText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxRemovedText.Location = new System.Drawing.Point(274, 322);
+            this.uxRemovedText.Location = new System.Drawing.Point(2, 203);
             this.uxRemovedText.Name = "uxRemovedText";
-            this.uxRemovedText.Size = new System.Drawing.Size(191, 55);
+            this.uxRemovedText.Size = new System.Drawing.Size(266, 131);
             this.uxRemovedText.TabIndex = 1;
             // 
             // CreateRoster
