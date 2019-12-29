@@ -24,8 +24,8 @@ namespace Attendance2
             if (e.KeyData == Keys.Enter)
             {
                 names.Push(uxNamesTextBox.Text);
-                uxFileContentsTextBox.Text = names.Peek();
             }
+            uxNamesTextBox.Clear();
         }
 
 
