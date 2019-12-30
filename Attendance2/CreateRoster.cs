@@ -19,15 +19,6 @@ namespace Attendance2
 
         Stack<string> names = new Stack<string>();
 
-        private void input_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                names.Push(uxNamesTextBox.Text);
-            }
-            uxNamesTextBox.Clear();
-        }
-
 
 
         private void UxRosterStartButton_Click(object sender, EventArgs e)
@@ -52,6 +43,16 @@ namespace Attendance2
                 MessageBox.Show("There is no one in the roster to remove!");
             }
            
+        }
+
+        private void input_KeyDown(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                names.Push(uxNamesTextBox.Text);
+                e.Handled = true;
+                uxNamesTextBox.Clear();
+            }
         }
     }
 }

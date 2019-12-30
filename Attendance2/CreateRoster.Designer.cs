@@ -78,9 +78,9 @@
             this.uxPictureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxPictureLabel.Location = new System.Drawing.Point(531, 25);
             this.uxPictureLabel.Name = "uxPictureLabel";
-            this.uxPictureLabel.Size = new System.Drawing.Size(216, 20);
+            this.uxPictureLabel.Size = new System.Drawing.Size(182, 20);
             this.uxPictureLabel.TabIndex = 1;
-            this.uxPictureLabel.Text = "Rosters need to look like this:";
+            this.uxPictureLabel.Text = "Rosters will look like this:";
             // 
             // uxStepOneLabel
             // 
@@ -89,7 +89,7 @@
             this.uxStepOneLabel.Name = "uxStepOneLabel";
             this.uxStepOneLabel.Size = new System.Drawing.Size(106, 73);
             this.uxStepOneLabel.TabIndex = 1;
-            this.uxStepOneLabel.Text = "Every name needs to be on its own line.";
+            this.uxStepOneLabel.Text = "Every name will be on its own line.";
             // 
             // uxStartButton
             // 
@@ -141,7 +141,7 @@
             this.uxNamesTextBox.Size = new System.Drawing.Size(253, 106);
             this.uxNamesTextBox.TabIndex = 6;
             this.uxNamesTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.uxNamesTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.input_KeyDown);
+            this.uxNamesTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.input_KeyDown);
             // 
             // uxEnterInstructionsLabel
             // 
