@@ -125,7 +125,7 @@ namespace Attendance
                 {
                     allNames[counter].Present = true;
                 }
-
+                ClearNames();
                 uxPeoplePresentCount.Text = peoplePresent.ToString();
 
                 attendanceStatus = " here.";
@@ -138,6 +138,15 @@ namespace Attendance
            
         }
 
+        public void ClearNames()
+        {
+            nameDisplay.Clear();
+
+            foreach (var name in allNames)
+            {
+                nameDisplay.Add(name.Value.Name);
+            }
+        }
 
         private void UxAbsentButton_Click(object sender, EventArgs e)
         {
@@ -149,7 +158,9 @@ namespace Attendance
                 allNames[counter].Present = false;
                 attendanceStatus = " absent.";
 
+                ClearNames();
 
+            
 
                 IncrementNames();
             }
@@ -171,13 +182,6 @@ namespace Attendance
                 MessageBox.Show("All names entered.");
                 DisableEverything();
                 uxSaveResults.Enabled = true;
-            }
-
-            nameDisplay.Clear();
-
-            foreach(var name in allNames)
-            {
-                nameDisplay.Add(name.Value.Name);
             }
 
             uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;
@@ -259,6 +263,8 @@ namespace Attendance
                 uxAbsentUnexcused.Text = absentUnexcused.ToString();
                 allNames[counter].Unexcused = true;
                 attendanceStatus = " absent (unexcused).";
+
+                ClearNames();
                 IncrementNames();
             }
             catch(Exception ex)
