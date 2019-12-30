@@ -120,5 +120,12 @@ namespace Attendance2
             }
            
         }
+
+        private void MainMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Prompt prompt = new Prompt();
+            ActiveForm.Hide();
+            prompt.Show();
+        }
     }
 }

@@ -47,6 +47,7 @@
             this.uxExportRoster = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.label4 = new System.Windows.Forms.Label();
+            this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.uxPictureBox)).BeginInit();
             this.uxMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -191,7 +192,8 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.uxExportRoster});
+            this.uxExportRoster,
+            this.mainMenuToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -199,12 +201,9 @@
             // uxExportRoster
             // 
             this.uxExportRoster.Name = "uxExportRoster";
-            this.uxExportRoster.Size = new System.Drawing.Size(143, 22);
+            this.uxExportRoster.Size = new System.Drawing.Size(180, 22);
             this.uxExportRoster.Text = "Export Roster";
             this.uxExportRoster.Click += new System.EventHandler(this.UxExportRoster_Click);
-            // 
-            // uxSaveFileDialog
-            // 
             // 
             // label4
             // 
@@ -215,6 +214,13 @@
             this.label4.Size = new System.Drawing.Size(435, 20);
             this.label4.TabIndex = 1;
             this.label4.Text = "Click \"Export Roster\" in the \"File\" menu when you\'re finished.";
+            // 
+            // mainMenuToolStripMenuItem
+            // 
+            this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mainMenuToolStripMenuItem.Text = "Main Menu";
+            this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.MainMenuToolStripMenuItem_Click);
             // 
             // CreateRoster
             // 
@@ -267,5 +273,6 @@
         private System.Windows.Forms.ToolStripMenuItem uxExportRoster;
         private System.Windows.Forms.SaveFileDialog uxSaveFileDialog;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
     }
 }

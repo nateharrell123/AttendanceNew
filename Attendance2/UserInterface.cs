@@ -30,25 +30,14 @@ namespace Attendance
         /// </summary>
         Dictionary<int, Attendee> allNames = new Dictionary<int, Attendee>();
 
+        List<string> nameDisplay = new List<string>();
+
         int counter = 0;
         int peoplePresent = 0;
         int peopleAbsent = 0;
         string attendanceStatus;
         int absentUnexcused = 0;
         
-
-        /// <summary>
-        /// Resets the date.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UxNewDate_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        
-
         /// <summary>
         /// Prompts the user to open a roster .txt file 
         /// </summary>
@@ -73,12 +62,14 @@ namespace Attendance
                     for (int i = 0; i < fileContents.Length; i++)
                     {
                         allNames.Add(i, new Attendee(fileContents[i], false, false));
-                        //uxRosterNames.Text = allNames[i].Name; // fix later
+                        nameDisplay.Add(fileContents[i]);
                     }
                 }
 
                 uxStartButton.Enabled = false;
                 uxNameTextBox.Text = allNames[0].Name;
+
+                UpdateDisplay();
             }
             catch
             {
@@ -87,7 +78,17 @@ namespace Attendance
            
         }
 
-        
+        public void UpdateDisplay()
+        {
+            string displayName = string.Empty;
+
+            foreach (string name in nameDisplay)
+            {
+                displayName += name + "\r\n";
+            }
+            uxRosterNamesTextBox.Text = displayName;
+
+        }
 
         /// <summary>
         /// Very self explanatory!
@@ -147,6 +148,9 @@ namespace Attendance
                 uxAbsentCount.Text = peopleAbsent.ToString();
                 allNames[counter].Present = false;
                 attendanceStatus = " absent.";
+
+
+
                 IncrementNames();
             }
             catch(Exception ex)
@@ -168,7 +172,16 @@ namespace Attendance
                 DisableEverything();
                 uxSaveResults.Enabled = true;
             }
+
+            nameDisplay.Clear();
+
+            foreach(var name in allNames)
+            {
+                nameDisplay.Add(name.Value.Name);
+            }
+
             uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;
+            UpdateDisplay();
         }
 
         private void UxSaveResults_Click(object sender, EventArgs e)
@@ -196,7 +209,6 @@ namespace Attendance
                             sw.Write(atn.Value.Name);
                             sw.WriteLine(" was absent (unexcused).");
                         }
-                        //sw.WriteLine(atn.Value.Present ? " was present." :  " was absent."); // ? is left side, : is right side.
                       
                     }
                     
@@ -244,7 +256,7 @@ namespace Attendance
             {
                 absentUnexcused++;
                 uxNameTextBox.Text = allNames[counter].Name;
-                uxAbsentCount.Text = peopleAbsent.ToString();
+                uxAbsentUnexcused.Text = absentUnexcused.ToString();
                 allNames[counter].Unexcused = true;
                 attendanceStatus = " absent (unexcused).";
                 IncrementNames();
@@ -262,5 +274,6 @@ namespace Attendance
             Prompt.ActiveForm.Hide();
             createRoster.Show();
         }
+
     }
 }

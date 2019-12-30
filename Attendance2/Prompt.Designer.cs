@@ -46,12 +46,12 @@
             // uxPromptLabel
             // 
             this.uxPromptLabel.AutoSize = true;
-            this.uxPromptLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPromptLabel.Location = new System.Drawing.Point(269, 24);
+            this.uxPromptLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPromptLabel.Location = new System.Drawing.Point(296, 46);
             this.uxPromptLabel.Name = "uxPromptLabel";
-            this.uxPromptLabel.Size = new System.Drawing.Size(187, 22);
+            this.uxPromptLabel.Size = new System.Drawing.Size(137, 20);
             this.uxPromptLabel.TabIndex = 1;
-            this.uxPromptLabel.Text = "Do you have a roster?";
+            this.uxPromptLabel.Text = "Attendance-inator";
             // 
             // uxYesButton
             // 
@@ -60,7 +60,7 @@
             this.uxYesButton.Name = "uxYesButton";
             this.uxYesButton.Size = new System.Drawing.Size(101, 49);
             this.uxYesButton.TabIndex = 2;
-            this.uxYesButton.Text = "Yes";
+            this.uxYesButton.Text = "Start";
             this.uxYesButton.UseVisualStyleBackColor = true;
             this.uxYesButton.Click += new System.EventHandler(this.UxYesButton_Click);
             // 
@@ -71,11 +71,11 @@
             this.uxNoButton.Name = "uxNoButton";
             this.uxNoButton.Size = new System.Drawing.Size(101, 49);
             this.uxNoButton.TabIndex = 2;
-            this.uxNoButton.Text = "No";
+            this.uxNoButton.Text = "I don\'t have a roster";
             this.uxNoButton.UseVisualStyleBackColor = true;
             this.uxNoButton.Click += new System.EventHandler(this.UxNoButton_Click);
             // 
-            // CreateRoster
+            // Prompt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,7 +84,7 @@
             this.Controls.Add(this.uxYesButton);
             this.Controls.Add(this.uxPromptLabel);
             this.Controls.Add(this.uxStartedLabel);
-            this.Name = "CreateRoster";
+            this.Name = "Prompt";
             this.Text = "CreateRoster";
             this.ResumeLayout(false);
             this.PerformLayout();
