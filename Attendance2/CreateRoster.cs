@@ -1,4 +1,5 @@
 ﻿// Author: Nate Harrell
+using Attendance;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,8 @@ namespace Attendance2
         Stack<string> names = new Stack<string>(); 
 
         List<string> nameDisplay = new List<string>();
+
+        Attendance3 attendance3 = new Attendance3();
 
         /// <summary>
         /// Starts the program. 
@@ -97,6 +100,11 @@ namespace Attendance2
             }
         }
 
+        /// <summary>
+        /// Exports the roster as a .txt file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UxExportRoster_Click(object sender, EventArgs e)
         {
             try
@@ -118,14 +126,36 @@ namespace Attendance2
             {
                 MessageBox.Show(ex.Message);
             }
-           
+            attendance3.Show();
         }
 
+        /// <summary>
+        /// Main menu navigation.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Prompt prompt = new Prompt();
             ActiveForm.Hide();
             prompt.Show();
+        }
+
+        private void DisableEverything()
+        {
+            uxRemoveNameButton.Enabled = false;
+            uxNamesTextBox.Enabled = false;
+            uxStartButton.Enabled = false;
+            MessageBox.Show("Roster finalized. Export it in the 'File' menu");
+        }
+        /// <summary>
+        /// So they know they're done
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UxFinalizeRoster_Click(object sender, EventArgs e)
+        {
+            DisableEverything();
         }
     }
 }

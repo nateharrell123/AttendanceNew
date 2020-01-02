@@ -44,10 +44,11 @@
             this.uxRemovedText = new System.Windows.Forms.Label();
             this.uxMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.uxExportRoster = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxExportRoster = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.label4 = new System.Windows.Forms.Label();
+            this.uxFinalizeRoster = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.uxPictureBox)).BeginInit();
             this.uxMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -198,19 +199,19 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // uxExportRoster
-            // 
-            this.uxExportRoster.Name = "uxExportRoster";
-            this.uxExportRoster.Size = new System.Drawing.Size(180, 22);
-            this.uxExportRoster.Text = "Export Roster";
-            this.uxExportRoster.Click += new System.EventHandler(this.UxExportRoster_Click);
-            // 
             // mainMenuToolStripMenuItem
             // 
             this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
-            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.mainMenuToolStripMenuItem.Text = "Main Menu";
             this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.MainMenuToolStripMenuItem_Click);
+            // 
+            // uxExportRoster
+            // 
+            this.uxExportRoster.Name = "uxExportRoster";
+            this.uxExportRoster.Size = new System.Drawing.Size(143, 22);
+            this.uxExportRoster.Text = "Export Roster";
+            this.uxExportRoster.Click += new System.EventHandler(this.UxExportRoster_Click);
             // 
             // label4
             // 
@@ -222,11 +223,23 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Click \"Export Roster\" in the \"File\" menu when you\'re finished.";
             // 
+            // uxFinalizeRoster
+            // 
+            this.uxFinalizeRoster.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxFinalizeRoster.Location = new System.Drawing.Point(280, 384);
+            this.uxFinalizeRoster.Name = "uxFinalizeRoster";
+            this.uxFinalizeRoster.Size = new System.Drawing.Size(253, 54);
+            this.uxFinalizeRoster.TabIndex = 8;
+            this.uxFinalizeRoster.Text = "Finalize Roster";
+            this.uxFinalizeRoster.UseVisualStyleBackColor = true;
+            this.uxFinalizeRoster.Click += new System.EventHandler(this.UxFinalizeRoster_Click);
+            // 
             // CreateRoster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.uxFinalizeRoster);
             this.Controls.Add(this.uxNamesTextBox);
             this.Controls.Add(this.uxFileContentsTextBox);
             this.Controls.Add(this.uxRemoveNameButton);
@@ -274,5 +287,6 @@
         private System.Windows.Forms.SaveFileDialog uxSaveFileDialog;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
+        private System.Windows.Forms.Button uxFinalizeRoster;
     }
 }

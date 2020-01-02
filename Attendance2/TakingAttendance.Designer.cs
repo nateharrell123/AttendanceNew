@@ -133,16 +133,17 @@
             // uxPPLabel
             // 
             this.uxPPLabel.AutoSize = true;
-            this.uxPPLabel.Location = new System.Drawing.Point(485, 145);
+            this.uxPPLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPPLabel.Location = new System.Drawing.Point(484, 145);
             this.uxPPLabel.Name = "uxPPLabel";
-            this.uxPPLabel.Size = new System.Drawing.Size(103, 13);
+            this.uxPPLabel.Size = new System.Drawing.Size(136, 17);
             this.uxPPLabel.TabIndex = 8;
             this.uxPPLabel.Text = "# of People present:";
             // 
             // uxPeoplePresentCount
             // 
             this.uxPeoplePresentCount.AutoSize = true;
-            this.uxPeoplePresentCount.Location = new System.Drawing.Point(605, 142);
+            this.uxPeoplePresentCount.Location = new System.Drawing.Point(629, 148);
             this.uxPeoplePresentCount.Name = "uxPeoplePresentCount";
             this.uxPeoplePresentCount.Size = new System.Drawing.Size(0, 13);
             this.uxPeoplePresentCount.TabIndex = 8;
@@ -160,16 +161,17 @@
             // uxPeopleAbsentLabel
             // 
             this.uxPeopleAbsentLabel.AutoSize = true;
-            this.uxPeopleAbsentLabel.Location = new System.Drawing.Point(484, 170);
+            this.uxPeopleAbsentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxPeopleAbsentLabel.Location = new System.Drawing.Point(483, 170);
             this.uxPeopleAbsentLabel.Name = "uxPeopleAbsentLabel";
-            this.uxPeopleAbsentLabel.Size = new System.Drawing.Size(100, 13);
+            this.uxPeopleAbsentLabel.Size = new System.Drawing.Size(131, 17);
             this.uxPeopleAbsentLabel.TabIndex = 8;
             this.uxPeopleAbsentLabel.Text = "# of People absent:";
             // 
             // uxAbsentCount
             // 
             this.uxAbsentCount.AutoSize = true;
-            this.uxAbsentCount.Location = new System.Drawing.Point(586, 168);
+            this.uxAbsentCount.Location = new System.Drawing.Point(620, 174);
             this.uxAbsentCount.Name = "uxAbsentCount";
             this.uxAbsentCount.Size = new System.Drawing.Size(0, 13);
             this.uxAbsentCount.TabIndex = 8;
@@ -245,16 +247,17 @@
             // uxAbsentttUnexcused
             // 
             this.uxAbsentttUnexcused.AutoSize = true;
-            this.uxAbsentttUnexcused.Location = new System.Drawing.Point(484, 196);
+            this.uxAbsentttUnexcused.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxAbsentttUnexcused.Location = new System.Drawing.Point(483, 194);
             this.uxAbsentttUnexcused.Name = "uxAbsentttUnexcused";
-            this.uxAbsentttUnexcused.Size = new System.Drawing.Size(158, 13);
+            this.uxAbsentttUnexcused.Size = new System.Drawing.Size(209, 17);
             this.uxAbsentttUnexcused.TabIndex = 8;
             this.uxAbsentttUnexcused.Text = "# of People absent(unexcused):";
             // 
             // uxAbsentUnexcused
             // 
             this.uxAbsentUnexcused.AutoSize = true;
-            this.uxAbsentUnexcused.Location = new System.Drawing.Point(648, 196);
+            this.uxAbsentUnexcused.Location = new System.Drawing.Point(698, 198);
             this.uxAbsentUnexcused.Name = "uxAbsentUnexcused";
             this.uxAbsentUnexcused.Size = new System.Drawing.Size(0, 13);
             this.uxAbsentUnexcused.TabIndex = 8;
@@ -281,14 +284,14 @@
             // mainMenuToolStripMenuItem
             // 
             this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
-            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.mainMenuToolStripMenuItem.Text = "Main Menu";
             this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.MainMenuToolStripMenuItem_Click);
             // 
             // exportRosterToolStripMenuItem
             // 
             this.exportRosterToolStripMenuItem.Name = "exportRosterToolStripMenuItem";
-            this.exportRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportRosterToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.exportRosterToolStripMenuItem.Text = "Export Roster";
             // 
             // Attendance3
