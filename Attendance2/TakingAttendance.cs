@@ -55,8 +55,9 @@ namespace Attendance
                     {
                         throw new Exception();
                     }
-                    
-                    uxRosterNameLabel.Text = fileName;
+
+                    string rosterDisplayName = fileName.Substring(fileName.LastIndexOf(@"\") + 1);
+                    uxRosterNameLabel.Text = rosterDisplayName;
 
                     string[] fileContents = File.ReadAllLines(fileName);
                     for (int i = 0; i < fileContents.Length; i++)
@@ -95,7 +96,6 @@ namespace Attendance
                 {
                     allNames[counter].Present = true;
                 }
-                ClearNames();
                 uxPeoplePresentCount.Text = peoplePresent.ToString();
 
                 attendanceStatus = " here.";
@@ -123,8 +123,6 @@ namespace Attendance
                 allNames[counter].Present = false;
                 attendanceStatus = " absent.";
 
-                ClearNames();
-
                 IncrementNames();
             }
             catch(Exception ex)
@@ -148,7 +146,6 @@ namespace Attendance
                 allNames[counter].Unexcused = true;
                 attendanceStatus = " absent (unexcused).";
 
-                ClearNames();
                 IncrementNames();
             }
             catch (Exception ex)
@@ -262,6 +259,8 @@ namespace Attendance
             }
 
             uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;
+
+            ClearNames();
             UpdateDisplay();
         }
         /// <summary>
@@ -269,7 +268,7 @@ namespace Attendance
         /// </summary>
         public void ClearNames()
         {
-            nameDisplay.Clear();
+            nameDisplay.Remove(nameDisplay[counter]);
 
             foreach (var name in allNames)
             {

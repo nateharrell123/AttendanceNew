@@ -58,11 +58,11 @@
     <Compile Include="Prompt.Designer.cs">
       <DependentUpon>Prompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserInterface.cs">
+    <Compile Include="TakingAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserInterface.Designer.cs">
-      <DependentUpon>UserInterface.cs</DependentUpon>
+    <Compile Include="TakingAttendance.Designer.cs">
+      <DependentUpon>TakingAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,8 +72,8 @@
     <EmbeddedResource Include="Prompt.resx">
       <DependentUpon>Prompt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserInterface.resx">
-      <DependentUpon>UserInterface.cs</DependentUpon>
+    <EmbeddedResource Include="TakingAttendance.resx">
+      <DependentUpon>TakingAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
