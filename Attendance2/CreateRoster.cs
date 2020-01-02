@@ -147,5 +147,7 @@ namespace Attendance2
         {
             DisableEverything();
         }
-    }
+
+
+    }   
 }

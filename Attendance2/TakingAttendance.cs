@@ -13,7 +13,7 @@ using Attendance2;
 
 namespace Attendance
 {
-    public partial class Attendance3 : Form 
+    public partial class Attendance3 : Form
     {
         public Attendance3()
         {
@@ -60,11 +60,11 @@ namespace Attendance
                 attendanceStatus = " here.";
                 IncrementNames();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-           
+
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Attendance
 
                 IncrementNames();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -140,7 +140,7 @@ namespace Attendance
             uxUnexcused.Enabled = true;
         }
 
-       
+
         /// <summary>
         /// Move counter forward, and change text of line being displayed.
         /// </summary>
@@ -150,7 +150,6 @@ namespace Attendance
             if (counter >= allNames.Count)
             {
                 DisableEverything();
-                uxSaveResults.Enabled = true;
             }
 
             uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;
@@ -174,7 +173,7 @@ namespace Attendance
                 nameDisplay.Remove(nameDisplay[0]);
                 everyName.Remove(nameDisplay[0]);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("All names entered.");
             }
@@ -191,7 +190,33 @@ namespace Attendance
             {
                 displayName += name + "\r\n";
             }
-            uxRosterNamesTextBox.Text = displayName;
+
+
+            //foreach (var atn in allNames)
+            //{
+            //    if (atn.Value.Present == true)
+            //    {
+            //        uxFilePreviewTextBox.Text = atn.Value.Name + " was present.";
+            //    }
+            //    else if (atn.Value.Present == false && atn.Value.Unexcused == false)
+            //    {
+            //        uxFilePreviewTextBox.Text = atn.Value.Name + " was absent.";
+            //    }
+            //    if (atn.Value.Unexcused == true)
+            //    {
+            //        uxFilePreviewTextBox.Text = atn.Value.Name + " was absent (unexcused)";
+            //    }
+            //}
+                uxRosterNamesTextBox.Text = displayName;
+
+            try
+            {
+                uxNameTextBox.Text = nameDisplay[0];
+            }
+            catch(Exception ex)
+            {
+                
+            }
         }
 
 
@@ -263,36 +288,41 @@ namespace Attendance
 
         private void UxSaveToolStrip_Click(object sender, EventArgs e)
         {
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            using (StreamWriter sw = new StreamWriter(Path.Combine(docPath, "Attendance.txt")))
+            if (uxSaveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                sw.WriteLine("Attendance report for " + date + ":");
-                try
+                string fileName = uxSaveFileDialog.FileName;
+                using (StreamWriter sw = new StreamWriter(fileName + ".txt"))
                 {
-                    foreach (var atn in allNames)
+                    sw.WriteLine("Attendance report for " + date + ":");
+                    try
                     {
-                        if (atn.Value.Present == true)
+                        foreach (var atn in allNames)
                         {
-                            sw.Write(atn.Value.Name);
-                            sw.WriteLine(" was present.");
+                            if (atn.Value.Present == true)
+                            {
+                                sw.Write(atn.Value.Name);
+                                sw.WriteLine(" was present.");
+                            }
+                            else if (atn.Value.Present == false && atn.Value.Unexcused == false)
+                            {
+                                sw.Write(atn.Value.Name);
+                                sw.WriteLine(" was absent.");
+                            }
+                            if (atn.Value.Unexcused == true)
+                            {
+                                sw.Write(atn.Value.Name);
+                                sw.WriteLine(" was absent (unexcused).");
+                            }
                         }
-                        else if (atn.Value.Present == false && atn.Value.Unexcused == false)
-                        {
-                            sw.Write(atn.Value.Name);
-                            sw.WriteLine(" was absent.");
-                        }
-                        if (atn.Value.Unexcused == true)
-                        {
-                            sw.Write(atn.Value.Name);
-                            sw.WriteLine(" was absent (unexcused).");
-                        }
+                        MessageBox.Show("Saved results!");
                     }
-                    MessageBox.Show("Saved results!");
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+
+
             }
         }
     }
