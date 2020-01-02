@@ -26,17 +26,7 @@ namespace Attendance2
 
         Attendance3 attendance3 = new Attendance3();
 
-        /// <summary>
-        /// Starts the program. 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UxRosterStartButton_Click(object sender, EventArgs e)
-        {
-            uxStartButton.Enabled = false;
-            uxRemoveNameButton.Enabled = true;
-            uxNamesTextBox.ReadOnly = false;
-        }
+
 
         /// <summary>
         /// Stuff to do when remove name button is clicked.
@@ -145,7 +135,7 @@ namespace Attendance2
         {
             uxRemoveNameButton.Enabled = false;
             uxNamesTextBox.Enabled = false;
-            uxStartButton.Enabled = false;
+            uxFinalizeRoster.Enabled = false;
             MessageBox.Show("Roster finalized. Export it in the 'File' menu");
         }
         /// <summary>

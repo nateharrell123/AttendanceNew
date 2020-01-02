@@ -19,7 +19,6 @@ namespace Attendance
         {
             InitializeComponent();
             DisableEverything();
-            uxStartButton.Enabled = true;
         }
 
         DateTime date = new DateTime();
@@ -38,48 +37,6 @@ namespace Attendance
         int peopleAbsent = 0;
         int absentUnexcused = 0;
         string attendanceStatus;
-
-        /// <summary>
-        /// Prompts the user to open a roster .txt file 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UxStartButton_Click(object sender, EventArgs e)
-        {
-            EnableEverything();
-            try
-            {
-                if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string fileName = uxOpenFileDialog.FileName;
-                    if (!fileName.EndsWith(".txt"))
-                    {
-                        throw new Exception();
-                    }
-
-                    string rosterDisplayName = fileName.Substring(fileName.LastIndexOf(@"\") + 1);
-                    uxRosterNameLabel.Text = rosterDisplayName;
-
-                    string[] fileContents = File.ReadAllLines(fileName);
-                    for (int i = 0; i < fileContents.Length; i++)
-                    {
-                        allNames.Add(i, new Attendee(fileContents[i], false, false));
-                        nameDisplay.Add(fileContents[i]);
-                        everyName.Add(fileContents[i]);
-                    }
-                }
-
-                uxStartButton.Enabled = false;
-                uxNameTextBox.Text = allNames[0].Name;
-
-                UpdateDisplay();
-            }
-            catch
-            {
-                MessageBox.Show("The roster file needs to end with '.txt'");
-            }
-           
-        }
 
         /// <summary>
         /// Goes through allNames, imported from roster, and displays their names one by one, adding them to the peoplePresent list.
@@ -156,57 +113,7 @@ namespace Attendance
             }
         }
 
-        /// <summary>
-        /// Exports the results of taking attendance.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UxSaveResults_Click(object sender, EventArgs e)
-        {
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            using (StreamWriter sw = new StreamWriter(Path.Combine(docPath, "Attendance.txt")))
-            {
-                sw.WriteLine("Attendance report for " + date + ":");
-                try
-                {
-                    foreach (var atn in allNames)
-                    {
-                        if(atn.Value.Present == true)
-                        {
-                            sw.Write(atn.Value.Name);
-                            sw.WriteLine(" was present.");
-                        }
-                        else if (atn.Value.Present == false && atn.Value.Unexcused == false)
-                        {
-                            sw.Write(atn.Value.Name);
-                            sw.WriteLine(" was absent.");
-                        }
-                        if(atn.Value.Unexcused == true)
-                        {
-                            sw.Write(atn.Value.Name);
-                            sw.WriteLine(" was absent (unexcused).");
-                        }
-                    }
-                    MessageBox.Show("Saved results!");
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
 
-        /// <summary>
-        /// Brings user back to main menu.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UxDontHaveRosterButton_Click(object sender, EventArgs e)
-        {
-            Prompt createRoster = new Prompt();
-            Prompt.ActiveForm.Hide();
-            createRoster.Show();
-        }
 
         private void UxDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
@@ -228,7 +135,6 @@ namespace Attendance
         /// </summary>
         public void EnableEverything()
         {
-            uxStartButton.Enabled = true;
             uxPresentButton.Enabled = true;
             uxAbsentExcusedButton.Enabled = true;
             uxUnexcused.Enabled = true;
@@ -316,6 +222,77 @@ namespace Attendance
                 this.Name = name;
                 this.Present = present;
                 this.Unexcused = unexcused;
+            }
+        }
+
+        private void ImportRosterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EnableEverything();
+            try
+            {
+                if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = uxOpenFileDialog.FileName;
+                    if (!fileName.EndsWith(".txt"))
+                    {
+                        throw new Exception();
+                    }
+
+                    string rosterDisplayName = fileName.Substring(fileName.LastIndexOf(@"\") + 1);
+                    uxRosterNameLabel.Text = rosterDisplayName;
+
+
+                    string[] fileContents = File.ReadAllLines(fileName);
+                    for (int i = 0; i < fileContents.Length; i++)
+                    {
+                        allNames.Add(i, new Attendee(fileContents[i], false, false));
+                        nameDisplay.Add(fileContents[i]);
+                        everyName.Add(fileContents[i]);
+                    }
+                }
+                uxNameTextBox.Text = allNames[0].Name;
+
+                UpdateDisplay();
+            }
+            catch
+            {
+                MessageBox.Show("The roster file needs to end with '.txt'");
+            }
+
+        }
+
+        private void UxSaveToolStrip_Click(object sender, EventArgs e)
+        {
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            using (StreamWriter sw = new StreamWriter(Path.Combine(docPath, "Attendance.txt")))
+            {
+                sw.WriteLine("Attendance report for " + date + ":");
+                try
+                {
+                    foreach (var atn in allNames)
+                    {
+                        if (atn.Value.Present == true)
+                        {
+                            sw.Write(atn.Value.Name);
+                            sw.WriteLine(" was present.");
+                        }
+                        else if (atn.Value.Present == false && atn.Value.Unexcused == false)
+                        {
+                            sw.Write(atn.Value.Name);
+                            sw.WriteLine(" was absent.");
+                        }
+                        if (atn.Value.Unexcused == true)
+                        {
+                            sw.Write(atn.Value.Name);
+                            sw.WriteLine(" was absent (unexcused).");
+                        }
+                    }
+                    MessageBox.Show("Saved results!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
