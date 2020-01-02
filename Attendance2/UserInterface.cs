@@ -26,7 +26,7 @@ namespace Attendance
 
 
         /// <summary>
-        /// int = placeholder. Attendee has two properties: name, and whether they were here or not.
+        /// int = placeholder. Attendee has three properties: name, whether they were here or not, & if they're excused.
         /// </summary>
         Dictionary<int, Attendee> allNames = new Dictionary<int, Attendee>();
 
@@ -78,36 +78,6 @@ namespace Attendance
            
         }
 
-        public void UpdateDisplay()
-        {
-            string displayName = string.Empty;
-
-            foreach (string name in nameDisplay)
-            {
-                displayName += name + "\r\n";
-            }
-            uxRosterNamesTextBox.Text = displayName;
-
-        }
-
-        /// <summary>
-        /// Very self explanatory!
-        /// </summary>
-        public void DisableEverything()
-        {
-            uxPresentButton.Enabled = false;
-            uxAbsentButton.Enabled = false;
-            uxUnexcused.Enabled = false;
-        }
-
-        public void EnableEverything()
-        {
-            uxStartButton.Enabled = true;
-            uxPresentButton.Enabled = true;
-            uxAbsentButton.Enabled = true;
-            uxUnexcused.Enabled = true;
-        }
-
         /// <summary>
         /// Goes through allNames, imported from roster, and displays their names one by one, adding them to the peoplePresent list.
         /// </summary>
@@ -138,16 +108,11 @@ namespace Attendance
            
         }
 
-        public void ClearNames()
-        {
-            nameDisplay.Clear();
-
-            foreach (var name in allNames)
-            {
-                nameDisplay.Add(name.Value.Name);
-            }
-        }
-
+        /// <summary>
+        /// Event handler for Absences (Excused).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UxAbsentButton_Click(object sender, EventArgs e)
         {
             try
@@ -160,34 +125,43 @@ namespace Attendance
 
                 ClearNames();
 
-            
-
                 IncrementNames();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
         }
 
         /// <summary>
-        /// Move counter forward, and change text of line being displayed.
+        /// Event handler for Unexcused absences.
         /// </summary>
-        private void IncrementNames()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UxUnexcused_Click(object sender, EventArgs e)
         {
-            counter++;
-            if (counter >= allNames.Count)
+            try
             {
-                MessageBox.Show("All names entered.");
-                DisableEverything();
-                uxSaveResults.Enabled = true;
-            }
+                absentUnexcused++;
+                uxNameTextBox.Text = allNames[counter].Name;
+                uxAbsentUnexcused.Text = absentUnexcused.ToString();
+                allNames[counter].Unexcused = true;
+                attendanceStatus = " absent (unexcused).";
 
-            uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;
-            UpdateDisplay();
+                ClearNames();
+                IncrementNames();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
+        /// <summary>
+        /// Exports the results of taking attendance.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UxSaveResults_Click(object sender, EventArgs e)
         {
             string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -213,23 +187,94 @@ namespace Attendance
                             sw.Write(atn.Value.Name);
                             sw.WriteLine(" was absent (unexcused).");
                         }
-                      
                     }
-                    
-                    MessageBox.Show("done!");
+                    MessageBox.Show("Saved results!");
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-               
-                
             }
+        }
+
+        /// <summary>
+        /// Brings user back to main menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UxDontHaveRosterButton_Click(object sender, EventArgs e)
+        {
+            Prompt createRoster = new Prompt();
+            Prompt.ActiveForm.Hide();
+            createRoster.Show();
         }
 
         private void UxDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             date = uxDateTimePicker.Value;
+        }
+
+        /// <summary>
+        /// Updates the display.
+        /// </summary>
+        public void UpdateDisplay()
+        {
+            string displayName = string.Empty;
+
+            foreach (string name in nameDisplay)
+            {
+                displayName += name + "\r\n";
+            }
+            uxRosterNamesTextBox.Text = displayName;
+        }
+        /// <summary>
+        /// Very self explanatory!
+        /// </summary>
+        public void DisableEverything()
+        {
+            uxPresentButton.Enabled = false;
+            uxAbsentExcusedButton.Enabled = false;
+            uxUnexcused.Enabled = false;
+        }
+
+        /// <summary>
+        /// Also, very self explanatory!
+        /// </summary>
+        public void EnableEverything()
+        {
+            uxStartButton.Enabled = true;
+            uxPresentButton.Enabled = true;
+            uxAbsentExcusedButton.Enabled = true;
+            uxUnexcused.Enabled = true;
+        }
+
+        /// <summary>
+        /// Move counter forward, and change text of line being displayed.
+        /// </summary>
+        private void IncrementNames()
+        {
+            counter++;
+            if (counter >= allNames.Count)
+            {
+                MessageBox.Show("All names entered.");
+                DisableEverything();
+                uxSaveResults.Enabled = true;
+            }
+
+            uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;
+            UpdateDisplay();
+        }
+        /// <summary>
+        /// Clears the nameDisplay list, and adds all the names back in.
+        /// </summary>
+        public void ClearNames()
+        {
+            nameDisplay.Clear();
+
+            foreach (var name in allNames)
+            {
+                nameDisplay.Add(name.Value.Name);
+            }
         }
 
         /// <summary>
@@ -250,36 +295,15 @@ namespace Attendance
         }
 
         /// <summary>
-        /// Event handler for Unexcused absences.
+        /// Closes this form, and opens the main menu form.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UxUnexcused_Click(object sender, EventArgs e)
+        private void MainMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                absentUnexcused++;
-                uxNameTextBox.Text = allNames[counter].Name;
-                uxAbsentUnexcused.Text = absentUnexcused.ToString();
-                allNames[counter].Unexcused = true;
-                attendanceStatus = " absent (unexcused).";
-
-                ClearNames();
-                IncrementNames();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            
+            Prompt prompt = new Prompt();
+            ActiveForm.Close();
+            prompt.Show();
         }
-
-        private void UxDontHaveRosterButton_Click(object sender, EventArgs e)
-        {
-            Prompt createRoster = new Prompt();
-            Prompt.ActiveForm.Hide();
-            createRoster.Show();
-        }
-
     }
 }

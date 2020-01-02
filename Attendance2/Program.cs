@@ -1,4 +1,5 @@
-﻿using Attendance2;
+﻿// Author: Nate Harrell
+using Attendance2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,8 @@ namespace Attendance
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Prompt());
-            Application.Run(new Attendance3());
-            Application.Run(new CreateRoster());
+            //Application.Run(new Attendance3());
+            //Application.Run(new CreateRoster());
         }
     }
 }

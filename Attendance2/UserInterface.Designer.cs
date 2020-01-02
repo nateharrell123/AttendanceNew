@@ -35,7 +35,7 @@
             this.uxStartButton = new System.Windows.Forms.Button();
             this.uxNameTextBox = new System.Windows.Forms.TextBox();
             this.uxPresentButton = new System.Windows.Forms.Button();
-            this.uxAbsentButton = new System.Windows.Forms.Button();
+            this.uxAbsentExcusedButton = new System.Windows.Forms.Button();
             this.uxSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.uxPPLabel = new System.Windows.Forms.Label();
             this.uxPeoplePresentCount = new System.Windows.Forms.Label();
@@ -51,6 +51,11 @@
             this.uxRosterNamesTextBox = new System.Windows.Forms.TextBox();
             this.uxAbsentttUnexcused = new System.Windows.Forms.Label();
             this.uxAbsentUnexcused = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -114,16 +119,16 @@
             this.uxPresentButton.UseVisualStyleBackColor = true;
             this.uxPresentButton.Click += new System.EventHandler(this.UxPresentButton_Click);
             // 
-            // uxAbsentButton
+            // uxAbsentExcusedButton
             // 
-            this.uxAbsentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAbsentButton.Location = new System.Drawing.Point(401, 276);
-            this.uxAbsentButton.Name = "uxAbsentButton";
-            this.uxAbsentButton.Size = new System.Drawing.Size(78, 57);
-            this.uxAbsentButton.TabIndex = 6;
-            this.uxAbsentButton.Text = "Absent";
-            this.uxAbsentButton.UseVisualStyleBackColor = true;
-            this.uxAbsentButton.Click += new System.EventHandler(this.UxAbsentButton_Click);
+            this.uxAbsentExcusedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxAbsentExcusedButton.Location = new System.Drawing.Point(393, 276);
+            this.uxAbsentExcusedButton.Name = "uxAbsentExcusedButton";
+            this.uxAbsentExcusedButton.Size = new System.Drawing.Size(86, 57);
+            this.uxAbsentExcusedButton.TabIndex = 6;
+            this.uxAbsentExcusedButton.Text = "Absent (Excused)";
+            this.uxAbsentExcusedButton.UseVisualStyleBackColor = true;
+            this.uxAbsentExcusedButton.Click += new System.EventHandler(this.UxAbsentButton_Click);
             // 
             // uxPPLabel
             // 
@@ -254,6 +259,38 @@
             this.uxAbsentUnexcused.Size = new System.Drawing.Size(0, 13);
             this.uxAbsentUnexcused.TabIndex = 8;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 20;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenuToolStripMenuItem,
+            this.exportRosterToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // mainMenuToolStripMenuItem
+            // 
+            this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mainMenuToolStripMenuItem.Text = "Main Menu";
+            this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.MainMenuToolStripMenuItem_Click);
+            // 
+            // exportRosterToolStripMenuItem
+            // 
+            this.exportRosterToolStripMenuItem.Name = "exportRosterToolStripMenuItem";
+            this.exportRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportRosterToolStripMenuItem.Text = "Export Roster";
+            // 
             // Attendance3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,14 +311,18 @@
             this.Controls.Add(this.uxPeopleAbsentLabel);
             this.Controls.Add(this.uxPPLabel);
             this.Controls.Add(this.uxNameTextBox);
-            this.Controls.Add(this.uxAbsentButton);
+            this.Controls.Add(this.uxAbsentExcusedButton);
             this.Controls.Add(this.uxPresentButton);
             this.Controls.Add(this.uxStartButton);
             this.Controls.Add(this.uxRosterNameLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Attendance3";
             this.Text = "Attendance";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,7 +336,7 @@
         private System.Windows.Forms.Button uxStartButton;
         private System.Windows.Forms.TextBox uxNameTextBox;
         private System.Windows.Forms.Button uxPresentButton;
-        private System.Windows.Forms.Button uxAbsentButton;
+        private System.Windows.Forms.Button uxAbsentExcusedButton;
         private System.Windows.Forms.SaveFileDialog uxSaveFileDialog;
         private System.Windows.Forms.Label uxPPLabel;
         private System.Windows.Forms.Label uxPeoplePresentCount;
@@ -311,5 +352,9 @@
         private System.Windows.Forms.TextBox uxRosterNamesTextBox;
         private System.Windows.Forms.Label uxAbsentttUnexcused;
         private System.Windows.Forms.Label uxAbsentUnexcused;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportRosterToolStripMenuItem;
     }
 }

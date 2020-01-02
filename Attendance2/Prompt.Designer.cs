@@ -38,7 +38,7 @@
             // 
             this.uxStartedLabel.AutoSize = true;
             this.uxStartedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxStartedLabel.Location = new System.Drawing.Point(296, 46);
+            this.uxStartedLabel.Location = new System.Drawing.Point(337, 28);
             this.uxStartedLabel.Name = "uxStartedLabel";
             this.uxStartedLabel.Size = new System.Drawing.Size(0, 20);
             this.uxStartedLabel.TabIndex = 0;
@@ -47,7 +47,7 @@
             // 
             this.uxPromptLabel.AutoSize = true;
             this.uxPromptLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPromptLabel.Location = new System.Drawing.Point(296, 46);
+            this.uxPromptLabel.Location = new System.Drawing.Point(337, 28);
             this.uxPromptLabel.Name = "uxPromptLabel";
             this.uxPromptLabel.Size = new System.Drawing.Size(137, 20);
             this.uxPromptLabel.TabIndex = 1;
@@ -56,7 +56,7 @@
             // uxYesButton
             // 
             this.uxYesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxYesButton.Location = new System.Drawing.Point(263, 78);
+            this.uxYesButton.Location = new System.Drawing.Point(304, 60);
             this.uxYesButton.Name = "uxYesButton";
             this.uxYesButton.Size = new System.Drawing.Size(101, 49);
             this.uxYesButton.TabIndex = 2;
@@ -67,7 +67,7 @@
             // uxNoButton
             // 
             this.uxNoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxNoButton.Location = new System.Drawing.Point(370, 78);
+            this.uxNoButton.Location = new System.Drawing.Point(411, 60);
             this.uxNoButton.Name = "uxNoButton";
             this.uxNoButton.Size = new System.Drawing.Size(101, 49);
             this.uxNoButton.TabIndex = 2;
