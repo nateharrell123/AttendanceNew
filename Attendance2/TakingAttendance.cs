@@ -31,13 +31,14 @@ namespace Attendance
         Dictionary<int, Attendee> allNames = new Dictionary<int, Attendee>();
 
         List<string> nameDisplay = new List<string>();
+        List<string> everyName = new List<string>();
 
         int counter = 0;
         int peoplePresent = 0;
         int peopleAbsent = 0;
-        string attendanceStatus;
         int absentUnexcused = 0;
-        
+        string attendanceStatus;
+
         /// <summary>
         /// Prompts the user to open a roster .txt file 
         /// </summary>
@@ -64,6 +65,7 @@ namespace Attendance
                     {
                         allNames.Add(i, new Attendee(fileContents[i], false, false));
                         nameDisplay.Add(fileContents[i]);
+                        everyName.Add(fileContents[i]);
                     }
                 }
 
@@ -195,7 +197,7 @@ namespace Attendance
         }
 
         /// <summary>
-        /// Brings user back to main menu
+        /// Brings user back to main menu.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -211,19 +213,6 @@ namespace Attendance
             date = uxDateTimePicker.Value;
         }
 
-        /// <summary>
-        /// Updates the display.
-        /// </summary>
-        public void UpdateDisplay()
-        {
-            string displayName = string.Empty;
-
-            foreach (string name in nameDisplay)
-            {
-                displayName += name + "\r\n";
-            }
-            uxRosterNamesTextBox.Text = displayName;
-        }
         /// <summary>
         /// Very self explanatory!
         /// </summary>
@@ -245,6 +234,7 @@ namespace Attendance
             uxUnexcused.Enabled = true;
         }
 
+       
         /// <summary>
         /// Move counter forward, and change text of line being displayed.
         /// </summary>
@@ -253,7 +243,6 @@ namespace Attendance
             counter++;
             if (counter >= allNames.Count)
             {
-                MessageBox.Show("All names entered.");
                 DisableEverything();
                 uxSaveResults.Enabled = true;
             }
@@ -268,12 +257,49 @@ namespace Attendance
         /// </summary>
         public void ClearNames()
         {
-            nameDisplay.Remove(nameDisplay[counter]);
+            nameDisplay.Clear();
 
-            foreach (var name in allNames)
+            foreach (string name in everyName)
             {
-                nameDisplay.Add(name.Value.Name);
+                nameDisplay.Add(name);
             }
+            try
+            {
+                nameDisplay.Remove(nameDisplay[0]);
+                everyName.Remove(nameDisplay[0]);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("All names entered.");
+            }
+        }
+
+        /// <summary>
+        /// Updates the display.
+        /// </summary>
+        public void UpdateDisplay()
+        {
+            string displayName = string.Empty;
+
+            foreach (string name in nameDisplay)
+            {
+                displayName += name + "\r\n";
+            }
+            uxRosterNamesTextBox.Text = displayName;
+        }
+
+
+
+        /// <summary>
+        /// Closes this form, and opens the main menu form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Prompt prompt = new Prompt();
+            ActiveForm.Close();
+            prompt.Show();
         }
 
         /// <summary>
@@ -291,18 +317,6 @@ namespace Attendance
                 this.Present = present;
                 this.Unexcused = unexcused;
             }
-        }
-
-        /// <summary>
-        /// Closes this form, and opens the main menu form.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MainMenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Prompt prompt = new Prompt();
-            ActiveForm.Close();
-            prompt.Show();
         }
     }
 }
