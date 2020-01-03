@@ -92,7 +92,8 @@
             // 
             // uxNameTextBox
             // 
-            this.uxNameTextBox.Location = new System.Drawing.Point(303, 56);
+            this.uxNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxNameTextBox.Location = new System.Drawing.Point(255, 53);
             this.uxNameTextBox.Multiline = true;
             this.uxNameTextBox.Name = "uxNameTextBox";
             this.uxNameTextBox.ReadOnly = true;
@@ -104,7 +105,7 @@
             this.uxPresentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxPresentButton.Location = new System.Drawing.Point(255, 130);
             this.uxPresentButton.Name = "uxPresentButton";
-            this.uxPresentButton.Size = new System.Drawing.Size(192, 35);
+            this.uxPresentButton.Size = new System.Drawing.Size(153, 35);
             this.uxPresentButton.TabIndex = 6;
             this.uxPresentButton.Text = "Present";
             this.uxPresentButton.UseVisualStyleBackColor = true;
@@ -115,7 +116,7 @@
             this.uxAbsentExcusedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxAbsentExcusedButton.Location = new System.Drawing.Point(255, 186);
             this.uxAbsentExcusedButton.Name = "uxAbsentExcusedButton";
-            this.uxAbsentExcusedButton.Size = new System.Drawing.Size(192, 34);
+            this.uxAbsentExcusedButton.Size = new System.Drawing.Size(153, 34);
             this.uxAbsentExcusedButton.TabIndex = 6;
             this.uxAbsentExcusedButton.Text = "Absent (Excused)";
             this.uxAbsentExcusedButton.UseVisualStyleBackColor = true;
@@ -125,7 +126,7 @@
             // 
             this.uxPPLabel.AutoSize = true;
             this.uxPPLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPPLabel.Location = new System.Drawing.Point(453, 139);
+            this.uxPPLabel.Location = new System.Drawing.Point(412, 139);
             this.uxPPLabel.Name = "uxPPLabel";
             this.uxPPLabel.Size = new System.Drawing.Size(61, 17);
             this.uxPPLabel.TabIndex = 8;
@@ -134,7 +135,7 @@
             // uxPeoplePresentCount
             // 
             this.uxPeoplePresentCount.AutoSize = true;
-            this.uxPeoplePresentCount.Location = new System.Drawing.Point(520, 141);
+            this.uxPeoplePresentCount.Location = new System.Drawing.Point(479, 141);
             this.uxPeoplePresentCount.Name = "uxPeoplePresentCount";
             this.uxPeoplePresentCount.Size = new System.Drawing.Size(0, 13);
             this.uxPeoplePresentCount.TabIndex = 8;
@@ -143,7 +144,7 @@
             // 
             this.uxPeopleAbsentLabel.AutoSize = true;
             this.uxPeopleAbsentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPeopleAbsentLabel.Location = new System.Drawing.Point(453, 195);
+            this.uxPeopleAbsentLabel.Location = new System.Drawing.Point(412, 195);
             this.uxPeopleAbsentLabel.Name = "uxPeopleAbsentLabel";
             this.uxPeopleAbsentLabel.Size = new System.Drawing.Size(123, 17);
             this.uxPeopleAbsentLabel.TabIndex = 8;
@@ -152,7 +153,7 @@
             // uxAbsentCount
             // 
             this.uxAbsentCount.AutoSize = true;
-            this.uxAbsentCount.Location = new System.Drawing.Point(590, 200);
+            this.uxAbsentCount.Location = new System.Drawing.Point(549, 200);
             this.uxAbsentCount.Name = "uxAbsentCount";
             this.uxAbsentCount.Size = new System.Drawing.Size(0, 13);
             this.uxAbsentCount.TabIndex = 8;
@@ -161,7 +162,7 @@
             // 
             this.uxNameLabel.AutoSize = true;
             this.uxNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxNameLabel.Location = new System.Drawing.Point(401, 33);
+            this.uxNameLabel.Location = new System.Drawing.Point(353, 30);
             this.uxNameLabel.Name = "uxNameLabel";
             this.uxNameLabel.Size = new System.Drawing.Size(55, 20);
             this.uxNameLabel.TabIndex = 10;
@@ -171,7 +172,7 @@
             // 
             this.uxAttendanceStatus.AutoSize = true;
             this.uxAttendanceStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAttendanceStatus.Location = new System.Drawing.Point(264, 303);
+            this.uxAttendanceStatus.Location = new System.Drawing.Point(264, 330);
             this.uxAttendanceStatus.Name = "uxAttendanceStatus";
             this.uxAttendanceStatus.Size = new System.Drawing.Size(0, 17);
             this.uxAttendanceStatus.TabIndex = 10;
@@ -189,7 +190,7 @@
             this.uxUnexcused.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxUnexcused.Location = new System.Drawing.Point(255, 240);
             this.uxUnexcused.Name = "uxUnexcused";
-            this.uxUnexcused.Size = new System.Drawing.Size(192, 34);
+            this.uxUnexcused.Size = new System.Drawing.Size(153, 34);
             this.uxUnexcused.TabIndex = 17;
             this.uxUnexcused.Text = "Absent (Unexcused)";
             this.uxUnexcused.UseVisualStyleBackColor = true;
@@ -209,7 +210,7 @@
             // 
             this.uxAbsentttUnexcused.AutoSize = true;
             this.uxAbsentttUnexcused.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAbsentttUnexcused.Location = new System.Drawing.Point(453, 249);
+            this.uxAbsentttUnexcused.Location = new System.Drawing.Point(412, 249);
             this.uxAbsentttUnexcused.Name = "uxAbsentttUnexcused";
             this.uxAbsentttUnexcused.Size = new System.Drawing.Size(140, 17);
             this.uxAbsentttUnexcused.TabIndex = 8;
@@ -218,7 +219,7 @@
             // uxAbsentUnexcused
             // 
             this.uxAbsentUnexcused.AutoSize = true;
-            this.uxAbsentUnexcused.Location = new System.Drawing.Point(599, 254);
+            this.uxAbsentUnexcused.Location = new System.Drawing.Point(558, 254);
             this.uxAbsentUnexcused.Name = "uxAbsentUnexcused";
             this.uxAbsentUnexcused.Size = new System.Drawing.Size(0, 13);
             this.uxAbsentUnexcused.TabIndex = 8;
@@ -229,7 +230,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(890, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(821, 24);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -246,21 +247,21 @@
             // mainMenuToolStripMenuItem
             // 
             this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
-            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.mainMenuToolStripMenuItem.Text = "Main Menu";
             this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.MainMenuToolStripMenuItem_Click_1);
             // 
             // importRosterToolStripMenuItem
             // 
             this.importRosterToolStripMenuItem.Name = "importRosterToolStripMenuItem";
-            this.importRosterToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.importRosterToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.importRosterToolStripMenuItem.Text = "Import Roster";
             this.importRosterToolStripMenuItem.Click += new System.EventHandler(this.ImportRosterToolStripMenuItem_Click);
             // 
             // uxSaveToolStrip
             // 
             this.uxSaveToolStrip.Name = "uxSaveToolStrip";
-            this.uxSaveToolStrip.Size = new System.Drawing.Size(180, 22);
+            this.uxSaveToolStrip.Size = new System.Drawing.Size(147, 22);
             this.uxSaveToolStrip.Text = "Export Results";
             this.uxSaveToolStrip.Click += new System.EventHandler(this.UxSaveToolStrip_Click);
             // 
@@ -268,7 +269,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(638, 131);
+            this.label1.Location = new System.Drawing.Point(575, 118);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 20);
             this.label1.TabIndex = 5;
@@ -277,7 +278,7 @@
             // uxFilePreviewTextBox
             // 
             this.uxFilePreviewTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxFilePreviewTextBox.Location = new System.Drawing.Point(640, 154);
+            this.uxFilePreviewTextBox.Location = new System.Drawing.Point(577, 141);
             this.uxFilePreviewTextBox.Multiline = true;
             this.uxFilePreviewTextBox.Name = "uxFilePreviewTextBox";
             this.uxFilePreviewTextBox.ReadOnly = true;
@@ -288,7 +289,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 375);
+            this.ClientSize = new System.Drawing.Size(821, 375);
             this.Controls.Add(this.uxFilePreviewTextBox);
             this.Controls.Add(this.uxRosterNamesTextBox);
             this.Controls.Add(this.uxUnexcused);

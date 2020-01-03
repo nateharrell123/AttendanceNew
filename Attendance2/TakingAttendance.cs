@@ -275,7 +275,7 @@ namespace Attendance
                     }
                     catch(Exception)
                     {
-                        MessageBox.Show("Error in reading file. Check the format of the file to make sure it is a valid form.");
+                        MessageBox.Show("Error in reading file. Check the format to make sure it is valid (each name on its own line.");
                     }
                     
                 }
@@ -336,5 +336,6 @@ namespace Attendance
             Prompt prompt = new Prompt();
             prompt.Show();
         }
+
     }
 }
