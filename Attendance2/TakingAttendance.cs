@@ -264,18 +264,26 @@ namespace Attendance
 
 
                     string[] fileContents = File.ReadAllLines(fileName);
-                    for (int i = 0; i < fileContents.Length; i++)
+                    try
                     {
-                        allNames.Add(i, new Attendee(fileContents[i], false, false));
-                        nameDisplay.Add(fileContents[i]);
-                        everyName.Add(fileContents[i]);
+                        for (int i = 0; i < fileContents.Length; i++)
+                        {
+                            allNames.Add(i, new Attendee(fileContents[i], false, false));
+                            nameDisplay.Add(fileContents[i]);
+                            everyName.Add(fileContents[i]);
+                        }
                     }
+                    catch(Exception)
+                    {
+                        MessageBox.Show("Error in reading file. Check the format of the file to make sure it is a valid form.");
+                    }
+                    
                 }
                 uxNameTextBox.Text = allNames[0].Name;
 
                 StartupDisplay();
             }
-            catch(ArgumentNullException )
+            catch(ArgumentNullException)
             {
                 MessageBox.Show("The roster file needs to end with '.txt'");
             }
@@ -320,6 +328,13 @@ namespace Attendance
 
 
             }
+        }
+
+        private void MainMenuToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ActiveForm.Hide();
+            Prompt prompt = new Prompt();
+            prompt.Show();
         }
     }
 }
