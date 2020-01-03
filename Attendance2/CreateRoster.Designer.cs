@@ -170,9 +170,9 @@
             // uxFinalizeRoster
             // 
             this.uxFinalizeRoster.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxFinalizeRoster.Location = new System.Drawing.Point(12, 394);
+            this.uxFinalizeRoster.Location = new System.Drawing.Point(12, 385);
             this.uxFinalizeRoster.Name = "uxFinalizeRoster";
-            this.uxFinalizeRoster.Size = new System.Drawing.Size(253, 44);
+            this.uxFinalizeRoster.Size = new System.Drawing.Size(253, 53);
             this.uxFinalizeRoster.TabIndex = 8;
             this.uxFinalizeRoster.Text = "Finalize Roster";
             this.uxFinalizeRoster.UseVisualStyleBackColor = true;

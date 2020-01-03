@@ -116,6 +116,7 @@ namespace Attendance2
             {
                 MessageBox.Show(ex.Message);
             }
+            ActiveForm.Hide();
             attendance3.Show();
         }
 

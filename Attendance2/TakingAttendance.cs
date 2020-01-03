@@ -57,7 +57,7 @@ namespace Attendance
                 }
                 uxPeoplePresentCount.Text = peoplePresent.ToString();
 
-                attendanceStatus = " here.";
+                attendanceStatus = " present.";
                 IncrementNames();
             }
             catch (Exception ex)
@@ -152,8 +152,6 @@ namespace Attendance
                 DisableEverything();
             }
 
-            uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;
-
             ClearNames();
             UpdateDisplay();
         }
@@ -175,8 +173,18 @@ namespace Attendance
             }
             catch (Exception)
             {
-                MessageBox.Show("All names entered.");
+                MessageBox.Show("All names entered. Export your results in the 'File' menu");
             }
+        }
+
+        public void StartupDisplay()
+        {
+            string displayNamee = string.Empty;
+            foreach (string name in nameDisplay)
+            {
+                displayNamee += name + "\r\n";
+            }
+            uxRosterNamesTextBox.Text = displayNamee;
         }
 
         /// <summary>
@@ -185,29 +193,17 @@ namespace Attendance
         public void UpdateDisplay()
         {
             string displayName = string.Empty;
-
             foreach (string name in nameDisplay)
             {
                 displayName += name + "\r\n";
             }
 
 
-            //foreach (var atn in allNames)
-            //{
-            //    if (atn.Value.Present == true)
-            //    {
-            //        uxFilePreviewTextBox.Text = atn.Value.Name + " was present.";
-            //    }
-            //    else if (atn.Value.Present == false && atn.Value.Unexcused == false)
-            //    {
-            //        uxFilePreviewTextBox.Text = atn.Value.Name + " was absent.";
-            //    }
-            //    if (atn.Value.Unexcused == true)
-            //    {
-            //        uxFilePreviewTextBox.Text = atn.Value.Name + " was absent (unexcused)";
-            //    }
-            //}
-                uxRosterNamesTextBox.Text = displayName;
+            uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;
+
+            uxFilePreviewTextBox.Text += allNames[counter - 1].Name + " was" + attendanceStatus + "\r\n";
+
+            uxRosterNamesTextBox.Text = displayName;
 
             try
             {
@@ -260,7 +256,7 @@ namespace Attendance
                     string fileName = uxOpenFileDialog.FileName;
                     if (!fileName.EndsWith(".txt"))
                     {
-                        throw new Exception();
+                        throw new ArgumentNullException();
                     }
 
                     string rosterDisplayName = fileName.Substring(fileName.LastIndexOf(@"\") + 1);
@@ -277,9 +273,9 @@ namespace Attendance
                 }
                 uxNameTextBox.Text = allNames[0].Name;
 
-                UpdateDisplay();
+                StartupDisplay();
             }
-            catch
+            catch(ArgumentNullException )
             {
                 MessageBox.Show("The roster file needs to end with '.txt'");
             }
