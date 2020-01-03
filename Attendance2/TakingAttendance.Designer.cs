@@ -93,7 +93,7 @@
             // uxNameTextBox
             // 
             this.uxNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxNameTextBox.Location = new System.Drawing.Point(255, 53);
+            this.uxNameTextBox.Location = new System.Drawing.Point(288, 54);
             this.uxNameTextBox.Multiline = true;
             this.uxNameTextBox.Name = "uxNameTextBox";
             this.uxNameTextBox.ReadOnly = true;
@@ -162,7 +162,7 @@
             // 
             this.uxNameLabel.AutoSize = true;
             this.uxNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxNameLabel.Location = new System.Drawing.Point(353, 30);
+            this.uxNameLabel.Location = new System.Drawing.Point(386, 31);
             this.uxNameLabel.Name = "uxNameLabel";
             this.uxNameLabel.Size = new System.Drawing.Size(55, 20);
             this.uxNameLabel.TabIndex = 10;

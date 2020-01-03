@@ -23,6 +23,8 @@ namespace Attendance
 
         DateTime date = new DateTime();
 
+        Prompt prompt = new Prompt();
+
 
         /// <summary>
         /// int = placeholder. Attendee has three properties: name, whether they were here or not, & if they're excused.
@@ -318,13 +320,16 @@ namespace Attendance
                                 sw.WriteLine(" was absent (unexcused).");
                             }
                         }
-                        MessageBox.Show("Saved results!");
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
                 }
+
+                MessageBox.Show("Saved results!");
+                ActiveForm.Hide();
+                prompt.Show();
 
 
             }
