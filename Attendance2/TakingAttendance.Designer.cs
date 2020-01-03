@@ -259,8 +259,8 @@
             // uxSaveToolStrip
             // 
             this.uxSaveToolStrip.Name = "uxSaveToolStrip";
-            this.uxSaveToolStrip.Size = new System.Drawing.Size(146, 22);
-            this.uxSaveToolStrip.Text = "Save As...";
+            this.uxSaveToolStrip.Size = new System.Drawing.Size(180, 22);
+            this.uxSaveToolStrip.Text = "Export Results";
             this.uxSaveToolStrip.Click += new System.EventHandler(this.UxSaveToolStrip_Click);
             // 
             // label1
