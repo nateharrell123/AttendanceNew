@@ -41,7 +41,6 @@
             this.uxPeopleAbsentLabel = new System.Windows.Forms.Label();
             this.uxAbsentCount = new System.Windows.Forms.Label();
             this.uxNameLabel = new System.Windows.Forms.Label();
-            this.uxAttendanceStatus = new System.Windows.Forms.Label();
             this.uxDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.uxUnexcused = new System.Windows.Forms.Button();
             this.uxRosterNamesTextBox = new System.Windows.Forms.TextBox();
@@ -54,6 +53,7 @@
             this.uxSaveToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.uxFilePreviewTextBox = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -155,7 +155,7 @@
             // uxAbsentCount
             // 
             this.uxAbsentCount.AutoSize = true;
-            this.uxAbsentCount.Location = new System.Drawing.Point(549, 200);
+            this.uxAbsentCount.Location = new System.Drawing.Point(540, 198);
             this.uxAbsentCount.Name = "uxAbsentCount";
             this.uxAbsentCount.Size = new System.Drawing.Size(0, 13);
             this.uxAbsentCount.TabIndex = 8;
@@ -169,15 +169,6 @@
             this.uxNameLabel.Size = new System.Drawing.Size(55, 20);
             this.uxNameLabel.TabIndex = 10;
             this.uxNameLabel.Text = "Name:";
-            // 
-            // uxAttendanceStatus
-            // 
-            this.uxAttendanceStatus.AutoSize = true;
-            this.uxAttendanceStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxAttendanceStatus.Location = new System.Drawing.Point(264, 330);
-            this.uxAttendanceStatus.Name = "uxAttendanceStatus";
-            this.uxAttendanceStatus.Size = new System.Drawing.Size(0, 17);
-            this.uxAttendanceStatus.TabIndex = 10;
             // 
             // uxDateTimePicker
             // 
@@ -222,7 +213,7 @@
             // uxAbsentUnexcused
             // 
             this.uxAbsentUnexcused.AutoSize = true;
-            this.uxAbsentUnexcused.Location = new System.Drawing.Point(558, 254);
+            this.uxAbsentUnexcused.Location = new System.Drawing.Point(556, 253);
             this.uxAbsentUnexcused.Name = "uxAbsentUnexcused";
             this.uxAbsentUnexcused.Size = new System.Drawing.Size(0, 13);
             this.uxAbsentUnexcused.TabIndex = 8;
@@ -288,16 +279,27 @@
             this.uxFilePreviewTextBox.Size = new System.Drawing.Size(235, 189);
             this.uxFilePreviewTextBox.TabIndex = 19;
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(257, 286);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(151, 34);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "Revise Results";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
             // Attendance3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 375);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.uxFilePreviewTextBox);
             this.Controls.Add(this.uxRosterNamesTextBox);
             this.Controls.Add(this.uxUnexcused);
             this.Controls.Add(this.uxDateTimePicker);
-            this.Controls.Add(this.uxAttendanceStatus);
             this.Controls.Add(this.uxNameLabel);
             this.Controls.Add(this.uxPeoplePresentCount);
             this.Controls.Add(this.uxAbsentUnexcused);
@@ -316,6 +318,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Attendance3";
             this.Text = "Attendance";
+            this.Load += new System.EventHandler(this.Attendance3_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -337,7 +340,6 @@
         private System.Windows.Forms.Label uxPeopleAbsentLabel;
         private System.Windows.Forms.Label uxAbsentCount;
         private System.Windows.Forms.Label uxNameLabel;
-        private System.Windows.Forms.Label uxAttendanceStatus;
         private System.Windows.Forms.DateTimePicker uxDateTimePicker;
         private System.Windows.Forms.Button uxUnexcused;
         private System.Windows.Forms.TextBox uxRosterNamesTextBox;
@@ -350,5 +352,6 @@
         private System.Windows.Forms.ToolStripMenuItem uxSaveToolStrip;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox uxFilePreviewTextBox;
+        private System.Windows.Forms.Button button2;
     }
 }

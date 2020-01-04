@@ -1,4 +1,4 @@
-﻿// Author: Nate Harrell (Chintan Patel helped a bit too :-) )
+﻿// Author: Nate Harrell 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -204,9 +204,6 @@ namespace Attendance
                 displayName += name + "\r\n";
             }
 
-
-            uxAttendanceStatus.Text = allNames[counter - 1].Name + " was" + attendanceStatus;
-
             uxFilePreviewTextBox.Text += allNames[counter - 1].Name + " was" + attendanceStatus + "\r\n";
 
             uxRosterNamesTextBox.Text = displayName;
@@ -217,7 +214,7 @@ namespace Attendance
             }
             catch(Exception ex)
             {
-                
+                // ???
             }
         }
 
@@ -279,7 +276,7 @@ namespace Attendance
                     }
                     catch(Exception)
                     {
-                        MessageBox.Show("Error in reading file. Check the format to make sure it is valid (each name on its own line).");
+                        MessageBox.Show("Error in reading file (did you already import a roster?");
                     }
                     
                 }
@@ -349,6 +346,16 @@ namespace Attendance
             ActiveForm.Hide();
             Prompt prompt = new Prompt();
             prompt.Show();
+        }
+
+        private void Attendance3_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("You can import your roster from the 'File' menu.");
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Implement me! I don't do anything aha!");
         }
     }
 }
