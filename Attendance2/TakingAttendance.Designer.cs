@@ -84,10 +84,10 @@
             // uxRosterNameLabel
             // 
             this.uxRosterNameLabel.AutoSize = true;
-            this.uxRosterNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxRosterNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxRosterNameLabel.Location = new System.Drawing.Point(134, 108);
             this.uxRosterNameLabel.Name = "uxRosterNameLabel";
-            this.uxRosterNameLabel.Size = new System.Drawing.Size(0, 17);
+            this.uxRosterNameLabel.Size = new System.Drawing.Size(0, 20);
             this.uxRosterNameLabel.TabIndex = 5;
             // 
             // uxNameTextBox
@@ -102,6 +102,7 @@
             // 
             // uxPresentButton
             // 
+            this.uxPresentButton.Enabled = false;
             this.uxPresentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxPresentButton.Location = new System.Drawing.Point(255, 130);
             this.uxPresentButton.Name = "uxPresentButton";
@@ -113,6 +114,7 @@
             // 
             // uxAbsentExcusedButton
             // 
+            this.uxAbsentExcusedButton.Enabled = false;
             this.uxAbsentExcusedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxAbsentExcusedButton.Location = new System.Drawing.Point(255, 186);
             this.uxAbsentExcusedButton.Name = "uxAbsentExcusedButton";
@@ -187,6 +189,7 @@
             // 
             // uxUnexcused
             // 
+            this.uxUnexcused.Enabled = false;
             this.uxUnexcused.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxUnexcused.Location = new System.Drawing.Point(255, 240);
             this.uxUnexcused.Name = "uxUnexcused";

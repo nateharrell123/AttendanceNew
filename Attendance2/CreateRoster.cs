@@ -111,13 +111,13 @@ namespace Attendance2
                     }
                     MessageBox.Show("Roster created!");
                 }
+                ActiveForm.Hide();
+                attendance3.Show();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            ActiveForm.Hide();
-            attendance3.Show();
         }
 
         /// <summary>

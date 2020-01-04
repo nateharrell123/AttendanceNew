@@ -18,7 +18,6 @@ namespace Attendance
         public Attendance3()
         {
             InitializeComponent();
-            DisableEverything();
         }
 
         DateTime date = new DateTime();
@@ -38,7 +37,10 @@ namespace Attendance
         int peoplePresent = 0;
         int peopleAbsent = 0;
         int absentUnexcused = 0;
+
         string attendanceStatus;
+
+        bool hasBeenImported = false;
 
         /// <summary>
         /// Goes through allNames, imported from roster, and displays their names one by one, adding them to the peoplePresent list.
@@ -173,10 +175,12 @@ namespace Attendance
                 nameDisplay.Remove(nameDisplay[0]);
                 everyName.Remove(nameDisplay[0]);
             }
-            catch (Exception)
+            catch(Exception)
             {
-                MessageBox.Show("All names entered. Export your results in the 'File' menu");
+                MessageBox.Show("All names have been entered."); // fix this
             }
+
+
         }
 
         public void StartupDisplay()
@@ -250,7 +254,6 @@ namespace Attendance
 
         private void ImportRosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EnableEverything();
             try
             {
                 if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
@@ -264,7 +267,6 @@ namespace Attendance
                     string rosterDisplayName = fileName.Substring(fileName.LastIndexOf(@"\") + 1);
                     uxRosterNameLabel.Text = rosterDisplayName;
 
-
                     string[] fileContents = File.ReadAllLines(fileName);
                     try
                     {
@@ -277,60 +279,67 @@ namespace Attendance
                     }
                     catch(Exception)
                     {
-                        MessageBox.Show("Error in reading file. Check the format to make sure it is valid (each name on its own line.");
+                        MessageBox.Show("Error in reading file. Check the format to make sure it is valid (each name on its own line).");
                     }
                     
                 }
                 uxNameTextBox.Text = allNames[0].Name;
 
+                hasBeenImported = true;
                 StartupDisplay();
+                EnableEverything();
             }
             catch(ArgumentNullException)
             {
                 MessageBox.Show("The roster file needs to end with '.txt'");
             }
-
         }
 
         private void UxSaveToolStrip_Click(object sender, EventArgs e)
         {
-            if (uxSaveFileDialog.ShowDialog() == DialogResult.OK)
+            if(!hasBeenImported)
             {
-                string fileName = uxSaveFileDialog.FileName;
-                using (StreamWriter sw = new StreamWriter(fileName + ".txt"))
+                MessageBox.Show("You need to import a roster before you can export anything.");
+            }
+            else if(hasBeenImported == true)
+            {
+                if (uxSaveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    sw.WriteLine("Attendance report for " + date + ":");
                     try
                     {
-                        foreach (var atn in allNames)
+                        string fileName = uxSaveFileDialog.FileName;
+                        using (StreamWriter sw = new StreamWriter(fileName + ".txt"))
                         {
-                            if (atn.Value.Present == true)
+                            sw.WriteLine("Attendance report for " + date + ":");
+                            foreach (var atn in allNames)
                             {
-                                sw.Write(atn.Value.Name);
-                                sw.WriteLine(" was present.");
-                            }
-                            else if (atn.Value.Present == false && atn.Value.Unexcused == false)
-                            {
-                                sw.Write(atn.Value.Name);
-                                sw.WriteLine(" was absent.");
-                            }
-                            if (atn.Value.Unexcused == true)
-                            {
-                                sw.Write(atn.Value.Name);
-                                sw.WriteLine(" was absent (unexcused).");
+                                if (atn.Value.Present == true)
+                                {
+                                    sw.Write(atn.Value.Name);
+                                    sw.WriteLine(" was present.");
+                                }
+                                else if (atn.Value.Present == false && atn.Value.Unexcused == false)
+                                {
+                                    sw.Write(atn.Value.Name);
+                                    sw.WriteLine(" was absent.");
+                                }
+                                if (atn.Value.Unexcused == true)
+                                {
+                                    sw.Write(atn.Value.Name);
+                                    sw.WriteLine(" was absent (unexcused).");
+                                }
                             }
                         }
+                        MessageBox.Show("Saved results!");
+                        ActiveForm.Hide();
+                        prompt.Show();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
+
                 }
-
-                MessageBox.Show("Saved results!");
-                ActiveForm.Hide();
-                prompt.Show();
-
 
             }
         }
@@ -341,6 +350,5 @@ namespace Attendance
             Prompt prompt = new Prompt();
             prompt.Show();
         }
-
     }
 }
