@@ -97,7 +97,7 @@ namespace Attendance2
                 }
                 uxFileContentsTextBox.Text = displayName;
                 uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 10);
-                uxFilePreviewText.Text = "File Preivew:";
+                uxFilePreviewText.Text = "File Preview:";
             }
         }
 
@@ -148,7 +148,7 @@ namespace Attendance2
                     MessageBox.Show("You need to finalize your roster before you can export.");
                     return;
                 }
-                if(HasBeenEdited()) // fix this
+                if(HasBeenEdited())
                 {
                     MessageBox.Show("You cannot export while editing a roster.");
                     return;
@@ -258,13 +258,15 @@ namespace Attendance2
         {
             if (e.KeyData == Keys.Tab)
             {
-                string[] lines = uxFileContentsTextBox.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                string[] lines = uxFileContentsTextBox.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None); // Stack OverFlow
                 names.Clear();
                 
                 for(int i = 0; i < lines.Length; i++)
                 {
                     names.Add(lines[i]);
                 }
+                names.Remove("\n");
+                uxRemovedText.Text = "";
                 DoneEditingRoster();
             }
         }

@@ -191,6 +191,11 @@ namespace Attendance
                 displayNamee += name + "\r\n";
             }
             uxRosterNamesTextBox.Text = displayNamee;
+            if (uxRosterNamesTextBox.Text == string.Empty)
+            {
+                MessageBox.Show("There was no one found in the .txt file.");
+                DisableEverything();
+            }
         }
 
         /// <summary>
@@ -249,11 +254,16 @@ namespace Attendance
             }
         }
 
+        ///
         private void ImportRosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
-            {
-                // uxOpenFileDialog.Filter = "*.txt|Roster";
+            {   
+                if(hasBeenImported)
+                {
+                    MessageBox.Show("A roster has already been imported.");
+                    return;
+                }
                 var dialogResult = uxOpenFileDialog.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
@@ -293,20 +303,41 @@ namespace Attendance
             }
         }
 
+        /// <summary>
+        /// Exporting Results
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UxSaveToolStrip_Click(object sender, EventArgs e)
         {
+
             if(!hasBeenImported)
             {
                 MessageBox.Show("You need to import a roster before you can export anything.");
             }
+            if (hasBeenImported && uxFilePreviewTextBox.Text == "")
+            {
+                MessageBox.Show("There are no results to export!");
+            }
+            if(uxRosterNamesTextBox.Text != "" && uxFilePreviewTextBox.Text != string.Empty)
+            {
+                MessageBox.Show("There are still names that haven't been entered yet!");
+                return;
+            }
+            if(uxFilePreviewTextBox.Text == "")
+            {
+                return;
+            }
             else if(hasBeenImported == true)
             {
+                uxSaveFileDialog.Filter = "*.txt|Roster";
+
                 if (uxSaveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
                         string fileName = uxSaveFileDialog.FileName;
-                        using (StreamWriter sw = new StreamWriter(fileName + ".txt"))
+                        using (StreamWriter sw = new StreamWriter(fileName))
                         {
                             sw.WriteLine("Attendance report for " + date + ":");
                             foreach (var atn in allNames)
@@ -328,9 +359,20 @@ namespace Attendance
                                 }
                             }
                         }
-                        MessageBox.Show("Saved results!");
-                        ActiveForm.Hide();
-                        prompt.Show();
+
+                        fileName = uxSaveFileDialog.FileName; // fix this!
+
+                        while(!fileName.EndsWith(".txt"))
+                        {
+                            MessageBox.Show("The filename needs to end with .txt");
+                            uxSaveFileDialog.ShowDialog();
+                        }
+
+                        if(fileName.EndsWith(".txt"))
+                        {
+                            MessageBox.Show("Saved results to " + uxSaveFileDialog.FileName);
+                        }
+
                     }
                     catch (Exception ex)
                     {

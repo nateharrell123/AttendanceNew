@@ -44,10 +44,10 @@
             this.uxExportRoster = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adjustRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.uxFinalizeRoster = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.clearRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.uxPictureBox)).BeginInit();
             this.uxMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +85,7 @@
             this.uxFileContentsTextBox.Multiline = true;
             this.uxFileContentsTextBox.Name = "uxFileContentsTextBox";
             this.uxFileContentsTextBox.ReadOnly = true;
-            this.uxFileContentsTextBox.Size = new System.Drawing.Size(136, 346);
+            this.uxFileContentsTextBox.Size = new System.Drawing.Size(164, 346);
             this.uxFileContentsTextBox.TabIndex = 5;
             this.uxFileContentsTextBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.UxFileContentsTextBox_PreviewKeyDown);
             // 
@@ -93,7 +93,7 @@
             // 
             this.uxFilePreviewText.AutoSize = true;
             this.uxFilePreviewText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxFilePreviewText.Location = new System.Drawing.Point(268, 73);
+            this.uxFilePreviewText.Location = new System.Drawing.Point(268, 72);
             this.uxFilePreviewText.Name = "uxFilePreviewText";
             this.uxFilePreviewText.Size = new System.Drawing.Size(87, 17);
             this.uxFilePreviewText.TabIndex = 1;
@@ -145,7 +145,7 @@
             this.editToolStripMenuItem});
             this.uxMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.uxMenuStrip.Name = "uxMenuStrip";
-            this.uxMenuStrip.Size = new System.Drawing.Size(447, 24);
+            this.uxMenuStrip.Size = new System.Drawing.Size(448, 24);
             this.uxMenuStrip.TabIndex = 7;
             this.uxMenuStrip.Text = "menuStrip1";
             // 
@@ -188,6 +188,13 @@
             this.adjustRosterToolStripMenuItem.Text = "Edit Roster";
             this.adjustRosterToolStripMenuItem.Click += new System.EventHandler(this.AdjustRosterToolStripMenuItem_Click);
             // 
+            // clearRosterToolStripMenuItem
+            // 
+            this.clearRosterToolStripMenuItem.Name = "clearRosterToolStripMenuItem";
+            this.clearRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearRosterToolStripMenuItem.Text = "Clear Roster";
+            this.clearRosterToolStripMenuItem.Click += new System.EventHandler(this.ClearRosterToolStripMenuItem_Click);
+            // 
             // uxFinalizeRoster
             // 
             this.uxFinalizeRoster.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -209,18 +216,11 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Rosters will look like this:";
             // 
-            // clearRosterToolStripMenuItem
-            // 
-            this.clearRosterToolStripMenuItem.Name = "clearRosterToolStripMenuItem";
-            this.clearRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.clearRosterToolStripMenuItem.Text = "Clear Roster";
-            this.clearRosterToolStripMenuItem.Click += new System.EventHandler(this.ClearRosterToolStripMenuItem_Click);
-            // 
             // CreateRoster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 450);
+            this.ClientSize = new System.Drawing.Size(448, 450);
             this.Controls.Add(this.uxFinalizeRoster);
             this.Controls.Add(this.uxNamesTextBox);
             this.Controls.Add(this.uxFileContentsTextBox);

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.uxDateLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.uxCurrentRosterLabel = new System.Windows.Forms.Label();
             this.uxOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.uxRosterNameLabel = new System.Windows.Forms.Label();
             this.uxNameTextBox = new System.Windows.Forms.TextBox();
@@ -67,25 +67,25 @@
             this.uxDateLabel.TabIndex = 3;
             this.uxDateLabel.Text = "Date:";
             // 
-            // label3
+            // uxCurrentRosterLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 108);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Roster in use:";
+            this.uxCurrentRosterLabel.AutoSize = true;
+            this.uxCurrentRosterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxCurrentRosterLabel.Location = new System.Drawing.Point(12, 108);
+            this.uxCurrentRosterLabel.Name = "uxCurrentRosterLabel";
+            this.uxCurrentRosterLabel.Size = new System.Drawing.Size(107, 20);
+            this.uxCurrentRosterLabel.TabIndex = 5;
+            this.uxCurrentRosterLabel.Text = "Roster in use:";
             // 
             // uxOpenFileDialog
             // 
-            this.uxOpenFileDialog.FileName = "openFileDialog1";
+            this.uxOpenFileDialog.FileName = " ";
             // 
             // uxRosterNameLabel
             // 
             this.uxRosterNameLabel.AutoSize = true;
             this.uxRosterNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxRosterNameLabel.Location = new System.Drawing.Point(134, 108);
+            this.uxRosterNameLabel.Location = new System.Drawing.Point(117, 108);
             this.uxRosterNameLabel.Name = "uxRosterNameLabel";
             this.uxRosterNameLabel.Size = new System.Drawing.Size(0, 20);
             this.uxRosterNameLabel.TabIndex = 5;
@@ -241,21 +241,21 @@
             // mainMenuToolStripMenuItem
             // 
             this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
-            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mainMenuToolStripMenuItem.Text = "Main Menu";
             this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.MainMenuToolStripMenuItem_Click_1);
             // 
             // importRosterToolStripMenuItem
             // 
             this.importRosterToolStripMenuItem.Name = "importRosterToolStripMenuItem";
-            this.importRosterToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.importRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importRosterToolStripMenuItem.Text = "Import Roster";
             this.importRosterToolStripMenuItem.Click += new System.EventHandler(this.ImportRosterToolStripMenuItem_Click);
             // 
             // uxSaveToolStrip
             // 
             this.uxSaveToolStrip.Name = "uxSaveToolStrip";
-            this.uxSaveToolStrip.Size = new System.Drawing.Size(147, 22);
+            this.uxSaveToolStrip.Size = new System.Drawing.Size(180, 22);
             this.uxSaveToolStrip.Text = "Export Results";
             this.uxSaveToolStrip.Click += new System.EventHandler(this.UxSaveToolStrip_Click);
             // 
@@ -312,7 +312,7 @@
             this.Controls.Add(this.uxPresentButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.uxRosterNameLabel);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.uxCurrentRosterLabel);
             this.Controls.Add(this.uxDateLabel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -328,7 +328,7 @@
 
         #endregion
         private System.Windows.Forms.Label uxDateLabel;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label uxCurrentRosterLabel;
         private System.Windows.Forms.OpenFileDialog uxOpenFileDialog;
         private System.Windows.Forms.Label uxRosterNameLabel;
         private System.Windows.Forms.TextBox uxNameTextBox;
