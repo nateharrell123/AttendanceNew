@@ -101,11 +101,10 @@ namespace Attendance2
                 string displayName = string.Empty;
                 foreach (string name in names)
                 {
-                    if(//do something)
+                    if(!string.IsNullOrEmpty(name))
                     {
-                        return;
+                        displayName += name + "\r\n";
                     }
-                    displayName += name + "\r\n";
                 }
                 uxFileContentsTextBox.Text = displayName;
                 uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 10);
@@ -255,12 +254,18 @@ namespace Attendance2
             uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 10);
         }
 
+        /// <summary>
+        /// Edit roster.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AdjustRosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(IsEmpty())
             {
                 return;
             }
+            uxFileContentsTextBox.Text.Remove(uxFileContentsTextBox.Text.LastIndexOf(Environment.NewLine));
             EditRoster();
         }
 
@@ -281,7 +286,6 @@ namespace Attendance2
                 {
                     names.Add(lines[i]);
                 }
-                uxFileContentsTextBox.Clear();
                 uxRemovedText.Text = "";
                 DoneEditingRoster();
             }
