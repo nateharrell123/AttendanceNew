@@ -60,6 +60,7 @@ namespace Attendance2
             catch (Exception)
             {
                 MessageBox.Show("There is no one in the roster to remove!");
+                uxRemovedText.Text = "";
             }
 
             UpdateDisplay();
@@ -74,6 +75,13 @@ namespace Attendance2
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                if(uxNamesTextBox.Text == "" || uxNamesTextBox.Text == "\r\n")
+                {
+                    MessageBox.Show("Please enter a name.");
+                    uxNamesTextBox.Clear();
+                    uxFileContentsTextBox.Clear();
+                    return;
+                }
                 names.Add(uxNamesTextBox.Text);
                 nameDisplay.Add(uxNamesTextBox.Text);
                 e.Handled = true;
@@ -93,6 +101,10 @@ namespace Attendance2
                 string displayName = string.Empty;
                 foreach (string name in names)
                 {
+                    if(//do something)
+                    {
+                        return;
+                    }
                     displayName += name + "\r\n";
                 }
                 uxFileContentsTextBox.Text = displayName;
@@ -253,10 +265,14 @@ namespace Attendance2
         }
 
 
-
+        /// <summary>
+        /// Tab Key pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UxFileContentsTextBox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            if (e.KeyData == Keys.Tab)
+            if (e.KeyData == Keys.Tab && uxFileContentsTextBox.ReadOnly == false)
             {
                 string[] lines = uxFileContentsTextBox.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None); // Stack OverFlow
                 names.Clear();
@@ -265,9 +281,13 @@ namespace Attendance2
                 {
                     names.Add(lines[i]);
                 }
-                names.Remove("\n");
+                uxFileContentsTextBox.Clear();
                 uxRemovedText.Text = "";
                 DoneEditingRoster();
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -276,6 +296,7 @@ namespace Attendance2
             if (names.Count > 0)
             {
                 uxFileContentsTextBox.Text = string.Empty;
+                uxRemovedText.Text = "";
                 names.Clear();
                 nameDisplay.Clear();
             }
@@ -284,5 +305,7 @@ namespace Attendance2
                 MessageBox.Show("There is no one in the roster to clear!");
             }
         }
+
+
     }   
 }

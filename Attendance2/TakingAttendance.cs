@@ -330,7 +330,7 @@ namespace Attendance
             }
             else if(hasBeenImported == true)
             {
-                uxSaveFileDialog.Filter = "*.txt|Roster";
+                uxSaveFileDialog.Filter = "Text Files (*.txt)|*.txt";
 
                 if (uxSaveFileDialog.ShowDialog() == DialogResult.OK)
                 {

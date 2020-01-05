@@ -145,7 +145,7 @@
             this.editToolStripMenuItem});
             this.uxMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.uxMenuStrip.Name = "uxMenuStrip";
-            this.uxMenuStrip.Size = new System.Drawing.Size(448, 24);
+            this.uxMenuStrip.Size = new System.Drawing.Size(487, 24);
             this.uxMenuStrip.TabIndex = 7;
             this.uxMenuStrip.Text = "menuStrip1";
             // 
@@ -184,14 +184,14 @@
             // adjustRosterToolStripMenuItem
             // 
             this.adjustRosterToolStripMenuItem.Name = "adjustRosterToolStripMenuItem";
-            this.adjustRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.adjustRosterToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.adjustRosterToolStripMenuItem.Text = "Edit Roster";
             this.adjustRosterToolStripMenuItem.Click += new System.EventHandler(this.AdjustRosterToolStripMenuItem_Click);
             // 
             // clearRosterToolStripMenuItem
             // 
             this.clearRosterToolStripMenuItem.Name = "clearRosterToolStripMenuItem";
-            this.clearRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearRosterToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.clearRosterToolStripMenuItem.Text = "Clear Roster";
             this.clearRosterToolStripMenuItem.Click += new System.EventHandler(this.ClearRosterToolStripMenuItem_Click);
             // 
@@ -220,7 +220,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 450);
+            this.ClientSize = new System.Drawing.Size(487, 450);
             this.Controls.Add(this.uxFinalizeRoster);
             this.Controls.Add(this.uxNamesTextBox);
             this.Controls.Add(this.uxFileContentsTextBox);
