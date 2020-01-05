@@ -69,7 +69,7 @@ namespace Attendance2
                 nameDisplay.Add(names.Peek());
                 e.Handled = true;
                 uxNamesTextBox.Clear();
-
+                
                 UpdateDisplay();
             }
         }
@@ -99,10 +99,16 @@ namespace Attendance2
         {
             try
             {
-                if (uxSaveFileDialog.ShowDialog() == DialogResult.OK)
+                if (uxFileContentsTextBox.Equals(string.Empty))
+                {
+                    MessageBox.Show("You haven't added anyone to the roster yet!");
+                }
+                uxSaveFileDialog.Filter = "*.txt|";
+                var showDialog = uxSaveFileDialog.ShowDialog();
+                if (showDialog == DialogResult.OK)
                 {
                     string fileName = uxSaveFileDialog.FileName;
-                    using (StreamWriter sw = new StreamWriter(fileName + ".txt"))
+                    using (StreamWriter sw = new StreamWriter(fileName))
                     {
                         foreach (string name in names)
                         {
@@ -110,9 +116,13 @@ namespace Attendance2
                         }
                     }
                     MessageBox.Show("Roster created!");
+                    ActiveForm.Hide();
+                    attendance3.Show();
                 }
-                ActiveForm.Hide();
-                attendance3.Show();
+                else if(showDialog == DialogResult.Cancel)
+                {
+                    return;
+                }
             }
             catch(Exception ex)
             {
@@ -148,7 +158,5 @@ namespace Attendance2
         {
             DisableEverything();
         }
-
-
     }   
 }

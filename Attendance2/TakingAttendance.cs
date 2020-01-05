@@ -253,42 +253,43 @@ namespace Attendance
         {
             try
             {
-                if (uxOpenFileDialog.ShowDialog() == DialogResult.OK)
+                // uxOpenFileDialog.Filter = "*.txt|Roster";
+                var dialogResult = uxOpenFileDialog.ShowDialog();
+                if (dialogResult == DialogResult.OK)
                 {
                     string fileName = uxOpenFileDialog.FileName;
                     if (!fileName.EndsWith(".txt"))
                     {
                         throw new ArgumentNullException();
                     }
-
+                    
                     string rosterDisplayName = fileName.Substring(fileName.LastIndexOf(@"\") + 1);
                     uxRosterNameLabel.Text = rosterDisplayName;
 
                     string[] fileContents = File.ReadAllLines(fileName);
-                    try
+                    for (int i = 0; i < fileContents.Length; i++)
                     {
-                        for (int i = 0; i < fileContents.Length; i++)
-                        {
-                            allNames.Add(i, new Attendee(fileContents[i], false, false));
-                            nameDisplay.Add(fileContents[i]);
-                            everyName.Add(fileContents[i]);
-                        }
+                        allNames.Add(i, new Attendee(fileContents[i], false, false));
+                        nameDisplay.Add(fileContents[i]);
+                        everyName.Add(fileContents[i]);
                     }
-                    catch(Exception)
-                    {
-                        MessageBox.Show("Error in reading file (did you already import a roster?");
-                    }
-                    
+                    hasBeenImported = true;
+                    StartupDisplay();
+                    EnableEverything();
                 }
-                uxNameTextBox.Text = allNames[0].Name;
-
-                hasBeenImported = true;
-                StartupDisplay();
-                EnableEverything();
+                else if(dialogResult == DialogResult.Cancel)
+                {
+                    return;
+                }
+                
             }
             catch(ArgumentNullException)
             {
                 MessageBox.Show("The roster file needs to end with '.txt'");
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Error reading roster. (Did you already import a roster?)");
             }
         }
 
@@ -350,12 +351,11 @@ namespace Attendance
 
         private void Attendance3_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("You can import your roster from the 'File' menu.");
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Implement me! I don't do anything aha!");
+            MessageBox.Show("finish this");
         }
     }
 }

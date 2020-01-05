@@ -207,6 +207,7 @@
             this.Controls.Add(this.uxMenuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.uxMenuStrip;
+            this.MaximizeBox = false;
             this.Name = "CreateRoster";
             this.Text = "CreateRoster";
             ((System.ComponentModel.ISupportInitialize)(this.uxPictureBox)).EndInit();

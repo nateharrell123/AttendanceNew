@@ -85,6 +85,7 @@
             this.Controls.Add(this.uxPromptLabel);
             this.Controls.Add(this.uxStartedLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "Prompt";
             this.Text = "CreateRoster";
             this.ResumeLayout(false);
