@@ -33,7 +33,7 @@
             this.uxPictureBox = new System.Windows.Forms.PictureBox();
             this.uxPictureLabel = new System.Windows.Forms.Label();
             this.uxFileContentsTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.uxFilePreviewText = new System.Windows.Forms.Label();
             this.uxNamesTextBox = new System.Windows.Forms.TextBox();
             this.uxEnterInstructionsLabel = new System.Windows.Forms.Label();
             this.uxRemoveNameButton = new System.Windows.Forms.Button();
@@ -45,6 +45,8 @@
             this.uxSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.uxFinalizeRoster = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adjustRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.uxPictureBox)).BeginInit();
             this.uxMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -78,22 +80,23 @@
             // 
             // uxFileContentsTextBox
             // 
-            this.uxFileContentsTextBox.Location = new System.Drawing.Point(281, 92);
+            this.uxFileContentsTextBox.Location = new System.Drawing.Point(271, 92);
             this.uxFileContentsTextBox.Multiline = true;
             this.uxFileContentsTextBox.Name = "uxFileContentsTextBox";
             this.uxFileContentsTextBox.ReadOnly = true;
             this.uxFileContentsTextBox.Size = new System.Drawing.Size(136, 346);
             this.uxFileContentsTextBox.TabIndex = 5;
+            this.uxFileContentsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UxFileContentsTextBox_KeyPress);
             // 
-            // label2
+            // uxFilePreviewText
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(277, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "File Preview:";
+            this.uxFilePreviewText.AutoSize = true;
+            this.uxFilePreviewText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxFilePreviewText.Location = new System.Drawing.Point(267, 69);
+            this.uxFilePreviewText.Name = "uxFilePreviewText";
+            this.uxFilePreviewText.Size = new System.Drawing.Size(96, 20);
+            this.uxFilePreviewText.TabIndex = 1;
+            this.uxFilePreviewText.Text = "File Preview:";
             // 
             // uxNamesTextBox
             // 
@@ -137,10 +140,11 @@
             // uxMenuStrip
             // 
             this.uxMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
             this.uxMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.uxMenuStrip.Name = "uxMenuStrip";
-            this.uxMenuStrip.Size = new System.Drawing.Size(439, 24);
+            this.uxMenuStrip.Size = new System.Drawing.Size(447, 24);
             this.uxMenuStrip.TabIndex = 7;
             this.uxMenuStrip.Text = "menuStrip1";
             // 
@@ -156,14 +160,14 @@
             // mainMenuToolStripMenuItem
             // 
             this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
-            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mainMenuToolStripMenuItem.Text = "Main Menu";
             this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.MainMenuToolStripMenuItem_Click);
             // 
             // uxExportRoster
             // 
             this.uxExportRoster.Name = "uxExportRoster";
-            this.uxExportRoster.Size = new System.Drawing.Size(143, 22);
+            this.uxExportRoster.Size = new System.Drawing.Size(180, 22);
             this.uxExportRoster.Text = "Export Roster";
             this.uxExportRoster.Click += new System.EventHandler(this.UxExportRoster_Click);
             // 
@@ -188,17 +192,32 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Rosters will look like this:";
             // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.adjustRosterToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // adjustRosterToolStripMenuItem
+            // 
+            this.adjustRosterToolStripMenuItem.Name = "adjustRosterToolStripMenuItem";
+            this.adjustRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.adjustRosterToolStripMenuItem.Text = "Edit Roster";
+            this.adjustRosterToolStripMenuItem.Click += new System.EventHandler(this.AdjustRosterToolStripMenuItem_Click);
+            // 
             // CreateRoster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 450);
+            this.ClientSize = new System.Drawing.Size(447, 450);
             this.Controls.Add(this.uxFinalizeRoster);
             this.Controls.Add(this.uxNamesTextBox);
             this.Controls.Add(this.uxFileContentsTextBox);
             this.Controls.Add(this.uxRemoveNameButton);
             this.Controls.Add(this.uxPictureBox);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.uxFilePreviewText);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.uxPictureLabel);
             this.Controls.Add(this.uxRemovedText);
@@ -224,7 +243,7 @@
         private System.Windows.Forms.PictureBox uxPictureBox;
         private System.Windows.Forms.Label uxPictureLabel;
         private System.Windows.Forms.TextBox uxFileContentsTextBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label uxFilePreviewText;
         private System.Windows.Forms.TextBox uxNamesTextBox;
         private System.Windows.Forms.Label uxEnterInstructionsLabel;
         private System.Windows.Forms.Button uxRemoveNameButton;
@@ -236,5 +255,7 @@
         private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
         private System.Windows.Forms.Button uxFinalizeRoster;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adjustRosterToolStripMenuItem;
     }
 }

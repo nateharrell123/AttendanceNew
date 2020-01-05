@@ -91,6 +91,18 @@ namespace Attendance2
         }
 
         /// <summary>
+        /// Makes sure there's something in the roster.
+        /// </summary>
+        public bool IsEmpty()
+        {
+            if (uxFileContentsTextBox.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("You haven't added anyone to the roster yet!");
+                return true;
+            }
+            else return false;
+        }
+        /// <summary>
         /// Exports the roster as a .txt file.
         /// </summary>
         /// <param name="sender"></param>
@@ -99,9 +111,9 @@ namespace Attendance2
         {
             try
             {
-                if (uxFileContentsTextBox.Equals(string.Empty))
+                if(IsEmpty())
                 {
-                    MessageBox.Show("You haven't added anyone to the roster yet!");
+                    return;
                 }
                 uxSaveFileDialog.Filter = "*.txt|";
                 var showDialog = uxSaveFileDialog.ShowDialog();
@@ -157,6 +169,37 @@ namespace Attendance2
         private void UxFinalizeRoster_Click(object sender, EventArgs e)
         {
             DisableEverything();
+        }
+
+        private void EditRoster()
+        {
+            uxFileContentsTextBox.ReadOnly = false;
+            uxRemoveNameButton.Enabled = false;
+            uxFinalizeRoster.Enabled = false;
+            uxNamesTextBox.ReadOnly = true;
+            uxFilePreviewText.Text = "Press enter to submit your changes.";
+            uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 8);
+        }
+
+        private void AdjustRosterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(IsEmpty())
+            {
+                return;
+            }
+            EditRoster();
+
+
+        }
+
+        private void UxFileContentsTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                string[] textBoxNames = 
+            }
+
         }
     }   
 }
