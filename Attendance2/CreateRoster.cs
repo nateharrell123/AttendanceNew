@@ -20,7 +20,7 @@ namespace Attendance2
             InitializeComponent();
         }
 
-        Stack<string> names = new Stack<string>(); 
+        List<string> names = new List<string>(); 
 
         List<string> nameDisplay = new List<string>();
 
@@ -40,13 +40,17 @@ namespace Attendance2
         {
             try
             {
-                if (names.Peek() != null)
+                if (names.Count != 0)
                 {
-                    string removed = names.Pop();
+                    string removed = names[names.Count - 1];
                     nameDisplay.Clear();
                     foreach(string name in names)
                     {
                         nameDisplay.Add(name);
+                    }
+                    if(names.Count != 0)
+                    {
+                        names.Remove(names[names.Count - 1]);
                     }
                     uxRemovedText.Text = "Removed " + removed + " from the roster.";
                 }
@@ -68,8 +72,8 @@ namespace Attendance2
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                names.Push(uxNamesTextBox.Text);
-                nameDisplay.Add(names.Peek());
+                names.Add(uxNamesTextBox.Text);
+                nameDisplay.Add(uxNamesTextBox.Text);
                 e.Handled = true;
                 uxNamesTextBox.Clear();
                 
@@ -243,12 +247,22 @@ namespace Attendance2
         {
             if (e.KeyData == Keys.Tab)
             {
-                string textBoxText = uxFileContentsTextBox.Text;
+                string[] lines = uxFileContentsTextBox.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
                 names.Clear();
-                names.Push(textBoxText);
-                uxFileContentsTextBox.Text = textBoxText;
+                
+                for(int i = 0; i < lines.Length; i++)
+                {
+                    names.Add(lines[i]);
+                }
                 DoneEditingRoster();
             }
+        }
+
+        private void ClearRosterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            uxFileContentsTextBox.Text = string.Empty;
+            names.Clear();
+            nameDisplay.Clear();
         }
     }   
 }
