@@ -86,7 +86,7 @@
             this.uxFileContentsTextBox.ReadOnly = true;
             this.uxFileContentsTextBox.Size = new System.Drawing.Size(136, 346);
             this.uxFileContentsTextBox.TabIndex = 5;
-            this.uxFileContentsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UxFileContentsTextBox_KeyPress);
+            this.uxFileContentsTextBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.UxFileContentsTextBox_PreviewKeyDown);
             // 
             // uxFilePreviewText
             // 

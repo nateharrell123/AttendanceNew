@@ -26,6 +26,9 @@ namespace Attendance2
 
         Attendance3 attendance3 = new Attendance3();
 
+        bool rosterEdited = false;
+
+        bool isFinalized = false;
 
 
         /// <summary>
@@ -87,6 +90,8 @@ namespace Attendance2
                     displayName += name + "\r\n";
                 }
                 uxFileContentsTextBox.Text = displayName;
+                uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 12);
+                uxFilePreviewText.Text = "File Preivew:";
             }
         }
 
@@ -100,6 +105,26 @@ namespace Attendance2
                 MessageBox.Show("You haven't added anyone to the roster yet!");
                 return true;
             }
+           
+            else return false;
+        }
+
+        private bool HasBeenEdited()
+        {
+            if (rosterEdited)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool HasBeenFinalized()
+        {
+            if (isFinalized == false)
+            {
+                isFinalized = true;
+                return true;
+            }
             else return false;
         }
         /// <summary>
@@ -111,6 +136,15 @@ namespace Attendance2
         {
             try
             {
+                if(HasBeenFinalized())
+                {
+                    MessageBox.Show("You need to finalize your roster before you can export.");
+                }
+                if(HasBeenEdited())
+                {
+                    MessageBox.Show("You cannot export while editing a roster.");
+                    return;
+                }
                 if(IsEmpty())
                 {
                     return;
@@ -173,11 +207,24 @@ namespace Attendance2
 
         private void EditRoster()
         {
+            rosterEdited = false;
             uxFileContentsTextBox.ReadOnly = false;
             uxRemoveNameButton.Enabled = false;
             uxFinalizeRoster.Enabled = false;
             uxNamesTextBox.ReadOnly = true;
-            uxFilePreviewText.Text = "Press enter to submit your changes.";
+            uxFilePreviewText.Text = "Press 'TAB' to submit your changes.";
+            uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 8);
+            uxRemovedText.Text = "";
+        }
+
+        private void DoneEditingRoster()
+        {
+            rosterEdited = true;
+            uxFileContentsTextBox.ReadOnly = true;
+            uxRemoveNameButton.Enabled = true;
+            uxFinalizeRoster.Enabled = true;
+            uxNamesTextBox.ReadOnly = false;
+            uxFilePreviewText.Text = "Successfully edited roster.";
             uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 8);
         }
 
@@ -188,18 +235,20 @@ namespace Attendance2
                 return;
             }
             EditRoster();
-
-
         }
 
-        private void UxFileContentsTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-                string[] textBoxNames = 
-            }
 
+
+        private void UxFileContentsTextBox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyData == Keys.Tab)
+            {
+                string textBoxText = uxFileContentsTextBox.Text;
+                names.Clear();
+                names.Push(textBoxText);
+                uxFileContentsTextBox.Text = textBoxText;
+                DoneEditingRoster();
+            }
         }
     }   
 }
