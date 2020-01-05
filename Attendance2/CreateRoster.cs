@@ -40,7 +40,7 @@ namespace Attendance2
         {
             try
             {
-                if (names.Count != 0)
+                if (names.Count > 0)
                 {
                     string removed = names[names.Count - 1];
                     nameDisplay.Clear();
@@ -48,11 +48,13 @@ namespace Attendance2
                     {
                         nameDisplay.Add(name);
                     }
-                    if(names.Count != 0)
-                    {
-                        names.Remove(names[names.Count - 1]);
-                    }
+                    names.Remove(names[names.Count - 1]);
+                    
                     uxRemovedText.Text = "Removed " + removed + " from the roster.";
+                }
+                else if(names.Count == 0)
+                {
+                    throw new Exception();
                 }
             }
             catch (Exception)
@@ -94,7 +96,7 @@ namespace Attendance2
                     displayName += name + "\r\n";
                 }
                 uxFileContentsTextBox.Text = displayName;
-                uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 12);
+                uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 10);
                 uxFilePreviewText.Text = "File Preivew:";
             }
         }
@@ -104,7 +106,7 @@ namespace Attendance2
         /// </summary>
         public bool IsEmpty()
         {
-            if (uxFileContentsTextBox.Text.Equals(string.Empty))
+            if (uxFileContentsTextBox.Text.Equals(string.Empty) && names.Count == 0)
             {
                 MessageBox.Show("You haven't added anyone to the roster yet!");
                 return true;
@@ -117,19 +119,20 @@ namespace Attendance2
         {
             if (rosterEdited)
             {
-                return false;
+                rosterEdited = false;
+                return rosterEdited;
             }
             return true;
         }
 
         private bool HasBeenFinalized()
         {
-            if (isFinalized == false)
+            if (isFinalized)
             {
-                isFinalized = true;
-                return true;
+                isFinalized = false;
+                return isFinalized;
             }
-            else return false;
+            else return true;
         }
         /// <summary>
         /// Exports the roster as a .txt file.
@@ -143,13 +146,14 @@ namespace Attendance2
                 if(HasBeenFinalized())
                 {
                     MessageBox.Show("You need to finalize your roster before you can export.");
+                    return;
                 }
-                if(HasBeenEdited())
+                if(HasBeenEdited()) // fix this
                 {
                     MessageBox.Show("You cannot export while editing a roster.");
                     return;
                 }
-                if(IsEmpty())
+                if(names.Count == 0)
                 {
                     return;
                 }
@@ -206,7 +210,14 @@ namespace Attendance2
         /// <param name="e"></param>
         private void UxFinalizeRoster_Click(object sender, EventArgs e)
         {
-            DisableEverything();
+            if(names.Count > 0)
+            {
+                DisableEverything();
+            }
+            else if (names.Count == 0)
+            {
+                MessageBox.Show("There is no one in the roster to finalize!");
+            }
         }
 
         private void EditRoster()
@@ -217,7 +228,7 @@ namespace Attendance2
             uxFinalizeRoster.Enabled = false;
             uxNamesTextBox.ReadOnly = true;
             uxFilePreviewText.Text = "Press 'TAB' to submit your changes.";
-            uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 8);
+            uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 10);
             uxRemovedText.Text = "";
         }
 
@@ -229,7 +240,7 @@ namespace Attendance2
             uxFinalizeRoster.Enabled = true;
             uxNamesTextBox.ReadOnly = false;
             uxFilePreviewText.Text = "Successfully edited roster.";
-            uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 8);
+            uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 10);
         }
 
         private void AdjustRosterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -260,9 +271,16 @@ namespace Attendance2
 
         private void ClearRosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            uxFileContentsTextBox.Text = string.Empty;
-            names.Clear();
-            nameDisplay.Clear();
+            if (names.Count > 0)
+            {
+                uxFileContentsTextBox.Text = string.Empty;
+                names.Clear();
+                nameDisplay.Clear();
+            }
+            else if (names.Count == 0)
+            {
+                MessageBox.Show("There is no one in the roster to clear!");
+            }
         }
     }   
 }
