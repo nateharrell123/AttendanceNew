@@ -91,7 +91,7 @@ namespace Attendance
                 try
                 {
                     peopleAbsent++;
-                    uxNameTextBox.Text = allNames[count].Name;
+                    uxNameTextBox.Text = allNames[counter].Name;
                     uxAbsentCount.Text = peopleAbsent.ToString();
                     allNames[counter].Present = false;
                     attendanceStatus = " absent.";
@@ -100,7 +100,7 @@ namespace Attendance
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("error in absent button");
+                    MessageBox.Show(ex.Message);
                 }
             }
             else
@@ -132,7 +132,7 @@ namespace Attendance
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("error in unexcused button.");
+                    MessageBox.Show(ex.Message);
                 }
             }
             else
@@ -249,9 +249,9 @@ namespace Attendance
 
             uxRosterNamesTextBox.Text = displayName;
 
-            if(nameDisplay.Count > 0)
+            if(allNames.Count > 0)
             {
-                uxNameTextBox.Text = nameDisplay[counter];
+                uxNameTextBox.Text = allNames[counter - 1].Name;
             }
             else
             {
