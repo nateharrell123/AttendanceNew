@@ -30,8 +30,8 @@ namespace Attendance
         /// </summary>
         Dictionary<int, Attendee> allNames = new Dictionary<int, Attendee>();
 
-        List<string> nameDisplay = new List<string>();
-        List<string> everyName = new List<string>();
+        Queue<string> nameDisplay = new Queue<string>();
+        Queue<string> everyName = new Queue<string>();
 
         int counter = 0;
         int peoplePresent = 0;
@@ -52,25 +52,20 @@ namespace Attendance
             int count = nameDisplay.Count - 1;
             if(nameDisplay.Count > 0)
             {
-                try
+
+                peoplePresent++;
+
+                uxNameTextBox.Text = allNames[count].Name;
+
+                if (allNames[count].Present == false)
                 {
-                    peoplePresent++;
-
-                    uxNameTextBox.Text = allNames[count].Name;
-
-                    if (allNames[count].Present == false)
-                    {
-                        allNames[count].Present = true;
-                    }
-                    uxPeoplePresentCount.Text = peoplePresent.ToString();
-
-                    attendanceStatus = " present.";
-                    IncrementNames();
+                    allNames[count].Present = true;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error in Present button");
-                }
+                uxPeoplePresentCount.Text = peoplePresent.ToString();
+
+                attendanceStatus = " present.";
+                IncrementNames();
+       
             }
             else
             {
@@ -88,20 +83,13 @@ namespace Attendance
             int count = nameDisplay.Count - 1;
             if (nameDisplay.Count > 0)
             {
-                try
-                {
-                    peopleAbsent++;
-                    uxNameTextBox.Text = allNames[counter].Name;
-                    uxAbsentCount.Text = peopleAbsent.ToString();
-                    allNames[counter].Present = false;
-                    attendanceStatus = " absent.";
+                peopleAbsent++;
+                uxNameTextBox.Text = allNames[counter].Name;
+                uxAbsentCount.Text = peopleAbsent.ToString();
+                allNames[counter].Present = false;
+                attendanceStatus = " absent.";
 
-                    IncrementNames();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                IncrementNames();
             }
             else
             {
@@ -119,8 +107,7 @@ namespace Attendance
             int count = nameDisplay.Count - 1;
             if(nameDisplay.Count > 0)
             {
-                try
-                {
+
                     absentUnexcused++;
                     
                     uxNameTextBox.Text = allNames[count].Name;
@@ -129,11 +116,7 @@ namespace Attendance
                     attendanceStatus = " absent (unexcused).";
 
                     IncrementNames();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+
             }
             else
             {
@@ -195,20 +178,16 @@ namespace Attendance
 
             foreach (string name in everyName)
             {
-                nameDisplay.Add(name);
+                nameDisplay.Enqueue(name);
             }
 
-            
-            if(!nameDisplay[0].Equals(string.Empty))
+
+            if (!nameDisplay.Peek().Equals(string.Empty))
             {
-                nameDisplay.Remove(nameDisplay[0]);
-                everyName.Remove(nameDisplay[0]);
+                nameDisplay.Dequeue();
+                everyName.Dequeue();
             }
-            else
-            {
-                MessageBox.Show("All names have been entered.");
-                DisableEverything();
-            }
+
         }
 
         public void StartupDisplay()
@@ -226,7 +205,7 @@ namespace Attendance
             }
             if(everyName.Count > 0)
             {
-                uxNameTextBox.Text = everyName[counter];
+                uxNameTextBox.Text = everyName.Peek();
             }
             else
             {
@@ -249,13 +228,13 @@ namespace Attendance
 
             uxRosterNamesTextBox.Text = displayName;
 
-            if(allNames.Count > 0)
+            try
             {
-                uxNameTextBox.Text = allNames[counter - 1].Name;
+                uxNameTextBox.Text = nameDisplay.Peek();
             }
-            else
+            catch(InvalidOperationException)
             {
-                return;
+                uxNameTextBox.Text = "";
             }
         }
 
@@ -316,8 +295,8 @@ namespace Attendance
                     for (int i = 0; i < fileContents.Length; i++)
                     {
                         allNames.Add(i, new Attendee(fileContents[i], false, false));
-                        nameDisplay.Add(fileContents[i]);
-                        everyName.Add(fileContents[i]);
+                        nameDisplay.Enqueue(fileContents[i]);
+                        everyName.Enqueue(fileContents[i]);
                     }
                     hasBeenImported = true;
                     StartupDisplay();
