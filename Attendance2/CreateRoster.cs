@@ -267,7 +267,8 @@ namespace Attendance2
             {
                 return;
             }
-            uxFileContentsTextBox.Text.Remove(uxFileContentsTextBox.Text.LastIndexOf(Environment.NewLine));
+
+
             if(isFinalized == false)
             {
                 EditRoster();
