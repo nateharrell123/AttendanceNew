@@ -201,8 +201,8 @@ namespace Attendance
             
             if(!nameDisplay[0].Equals(string.Empty))
             {
-                nameDisplay.Remove(nameDisplay[nameDisplay.Count - 1]);
-                everyName.Remove(nameDisplay[nameDisplay.Count - 1]);
+                nameDisplay.Remove(nameDisplay[0]);
+                everyName.Remove(nameDisplay[0]);
             }
             else
             {
@@ -226,7 +226,7 @@ namespace Attendance
             }
             if(everyName.Count > 0)
             {
-                uxNameTextBox.Text = everyName[everyName.Count - 1];
+                uxNameTextBox.Text = everyName[counter];
             }
             else
             {
@@ -251,7 +251,7 @@ namespace Attendance
 
             if(nameDisplay.Count > 0)
             {
-                uxNameTextBox.Text = nameDisplay[nameDisplay.Count - 1];
+                uxNameTextBox.Text = nameDisplay[counter];
             }
             else
             {
