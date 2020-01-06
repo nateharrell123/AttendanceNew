@@ -75,7 +75,7 @@ namespace Attendance2
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if(uxNamesTextBox.Text == "" || uxNamesTextBox.Text == "\r\n")
+                if(uxNamesTextBox.Text == "")
                 {
                     MessageBox.Show("Please enter a name.");
                     uxNamesTextBox.Clear();
@@ -168,7 +168,9 @@ namespace Attendance2
                 {
                     return;
                 }
-                uxSaveFileDialog.Filter = "*.txt|";
+                uxSaveFileDialog.Filter = "Text Files (*.txt)|*.txt";
+                uxSaveFileDialog.DefaultExt = ".txt";
+                uxSaveFileDialog.AddExtension = true;
                 var showDialog = uxSaveFileDialog.ShowDialog();
                 if (showDialog == DialogResult.OK)
                 {
@@ -181,8 +183,7 @@ namespace Attendance2
                         }
                     }
                     MessageBox.Show("Roster created!");
-                    ActiveForm.Hide();
-                    attendance3.Show();
+
                 }
                 else if(showDialog == DialogResult.Cancel)
                 {
@@ -221,6 +222,7 @@ namespace Attendance2
         /// <param name="e"></param>
         private void UxFinalizeRoster_Click(object sender, EventArgs e)
         {
+            isFinalized = true;
             if(names.Count > 0)
             {
                 DisableEverything();
@@ -261,12 +263,15 @@ namespace Attendance2
         /// <param name="e"></param>
         private void AdjustRosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(IsEmpty())
+            if(IsEmpty() && isFinalized == false)
             {
                 return;
             }
             uxFileContentsTextBox.Text.Remove(uxFileContentsTextBox.Text.LastIndexOf(Environment.NewLine));
-            EditRoster();
+            if(isFinalized == false)
+            {
+                EditRoster();
+            }
         }
 
 
@@ -297,7 +302,7 @@ namespace Attendance2
 
         private void ClearRosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (names.Count > 0)
+            if (names.Count > 0 && isFinalized == false)
             {
                 uxFileContentsTextBox.Text = string.Empty;
                 uxRemovedText.Text = "";
