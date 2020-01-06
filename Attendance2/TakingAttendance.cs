@@ -20,7 +20,7 @@ namespace Attendance
             InitializeComponent();
         }
 
-        DateTime date = new DateTime();
+        string date;
 
         Prompt prompt = new Prompt();
 
@@ -49,26 +49,33 @@ namespace Attendance
         /// <param name="e"></param>
         private void UxPresentButton_Click(object sender, EventArgs e)
         {
-            try
+            int count = nameDisplay.Count - 1;
+            if(nameDisplay.Count > 0)
             {
-                peoplePresent++;
-
-                uxNameTextBox.Text = allNames[counter].Name;
-
-                if (allNames[counter].Present == false)
+                try
                 {
-                    allNames[counter].Present = true;
+                    peoplePresent++;
+
+                    uxNameTextBox.Text = allNames[count].Name;
+
+                    if (allNames[count].Present == false)
+                    {
+                        allNames[count].Present = true;
+                    }
+                    uxPeoplePresentCount.Text = peoplePresent.ToString();
+
+                    attendanceStatus = " present.";
+                    IncrementNames();
                 }
-                uxPeoplePresentCount.Text = peoplePresent.ToString();
-
-                attendanceStatus = " present.";
-                IncrementNames();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error in Present button");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                return;
             }
-
         }
 
         /// <summary>
@@ -78,19 +85,27 @@ namespace Attendance
         /// <param name="e"></param>
         private void UxAbsentButton_Click(object sender, EventArgs e)
         {
-            try
+            int count = nameDisplay.Count - 1;
+            if (nameDisplay.Count > 0)
             {
-                peopleAbsent++;
-                uxNameTextBox.Text = allNames[counter].Name;
-                uxAbsentCount.Text = peopleAbsent.ToString();
-                allNames[counter].Present = false;
-                attendanceStatus = " absent.";
+                try
+                {
+                    peopleAbsent++;
+                    uxNameTextBox.Text = allNames[count].Name;
+                    uxAbsentCount.Text = peopleAbsent.ToString();
+                    allNames[counter].Present = false;
+                    attendanceStatus = " absent.";
 
-                IncrementNames();
+                    IncrementNames();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("error in absent button");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                return;
             }
         }
 
@@ -101,27 +116,37 @@ namespace Attendance
         /// <param name="e"></param>
         private void UxUnexcused_Click(object sender, EventArgs e)
         {
-            try
+            int count = nameDisplay.Count - 1;
+            if(nameDisplay.Count > 0)
             {
-                absentUnexcused++;
-                uxNameTextBox.Text = allNames[counter].Name;
-                uxAbsentUnexcused.Text = absentUnexcused.ToString();
-                allNames[counter].Unexcused = true;
-                attendanceStatus = " absent (unexcused).";
+                try
+                {
+                    absentUnexcused++;
+                    
+                    uxNameTextBox.Text = allNames[count].Name;
+                    uxAbsentUnexcused.Text = absentUnexcused.ToString();
+                    allNames[count].Unexcused = true;
+                    attendanceStatus = " absent (unexcused).";
 
-                IncrementNames();
+                    IncrementNames();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("error in unexcused button.");
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                return;
             }
+           
         }
 
 
 
         private void UxDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            date = uxDateTimePicker.Value;
+            date = uxDateTimePicker.Value.ToShortDateString();
         }
 
         /// <summary>
@@ -151,9 +176,10 @@ namespace Attendance
         private void IncrementNames()
         {
             counter++;
-            if (counter >= allNames.Count)
+            if (counter > allNames.Count)
             {
                 DisableEverything();
+                return;
             }
 
             ClearNames();
@@ -166,21 +192,23 @@ namespace Attendance
         {
             nameDisplay.Clear();
 
+
             foreach (string name in everyName)
             {
                 nameDisplay.Add(name);
             }
-            try
-            {
-                nameDisplay.Remove(nameDisplay[0]);
-                everyName.Remove(nameDisplay[0]);
-            }
-            catch(Exception)
-            {
-                MessageBox.Show("All names have been entered."); // fix this
-            }
 
-
+            
+            if(!nameDisplay[0].Equals(string.Empty))
+            {
+                nameDisplay.Remove(nameDisplay[nameDisplay.Count - 1]);
+                everyName.Remove(nameDisplay[nameDisplay.Count - 1]);
+            }
+            else
+            {
+                MessageBox.Show("All names have been entered.");
+                DisableEverything();
+            }
         }
 
         public void StartupDisplay()
@@ -195,6 +223,14 @@ namespace Attendance
             {
                 MessageBox.Show("There was no one found in the .txt file.");
                 DisableEverything();
+            }
+            if(everyName.Count > 0)
+            {
+                uxNameTextBox.Text = everyName[everyName.Count - 1];
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -213,13 +249,13 @@ namespace Attendance
 
             uxRosterNamesTextBox.Text = displayName;
 
-            try
+            if(nameDisplay.Count > 0)
             {
-                uxNameTextBox.Text = nameDisplay[0];
+                uxNameTextBox.Text = nameDisplay[nameDisplay.Count - 1];
             }
-            catch(Exception ex)
+            else
             {
-                // ???
+                return;
             }
         }
 
@@ -360,7 +396,7 @@ namespace Attendance
                             }
                         }
 
-                        fileName = uxSaveFileDialog.FileName; // fix this!
+                        fileName = uxSaveFileDialog.FileName; 
 
                         while(!fileName.EndsWith(".txt"))
                         {
