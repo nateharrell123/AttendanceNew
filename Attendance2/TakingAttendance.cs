@@ -20,8 +20,7 @@ namespace Attendance
             InitializeComponent();
         }
 
-        string date;
-
+        string date = DateTime.Now.ToShortDateString();
         Prompt prompt = new Prompt();
 
 
@@ -41,6 +40,19 @@ namespace Attendance
         string attendanceStatus;
 
         bool hasBeenImported = false;
+
+        public DateTime DateCreated
+        {
+            get
+            {
+                return this.dateCreated.HasValue
+                   ? this.dateCreated.Value
+                   : DateTime.Now;
+            }
+
+            set { this.dateCreated = value; }
+        }
+        private DateTime? dateCreated = null;
 
         /// <summary>
         /// Goes through allNames, imported from roster, and displays their names one by one, adding them to the peoplePresent list.
@@ -129,7 +141,7 @@ namespace Attendance
 
         private void UxDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            date = uxDateTimePicker.Value.ToShortDateString();
+            date = DateTime.Now.ToShortDateString();
         }
 
         /// <summary>
@@ -234,7 +246,7 @@ namespace Attendance
             }
             catch(InvalidOperationException)
             {
-                uxNameTextBox.Text = "";
+                MessageBox.Show("Attendance taken for " + date + ". Export your results in the 'File' menu.");
             }
         }
 
