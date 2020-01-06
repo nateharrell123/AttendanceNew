@@ -182,7 +182,7 @@ namespace Attendance2
                             sw.WriteLine(name);
                         }
                     }
-                    MessageBox.Show("Roster created!");
+                    MessageBox.Show("Saved to " + uxSaveFileDialog.FileName);
 
                 }
                 else if(showDialog == DialogResult.Cancel)
