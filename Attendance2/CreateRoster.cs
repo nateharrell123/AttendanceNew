@@ -154,16 +154,16 @@ namespace Attendance2
         {
             try
             {
-                if(HasBeenFinalized())
-                {
-                    MessageBox.Show("You need to finalize your roster before you can export.");
-                    return;
-                }
-                if(HasBeenEdited())
-                {
-                    MessageBox.Show("You cannot export while editing a roster.");
-                    return;
-                }
+                //if(!HasBeenFinalized())
+                //{
+                //    MessageBox.Show("You need to finalize your roster before you can export.");
+                //    return;
+                //}
+                //if(HasBeenEdited())
+                //{
+                //    MessageBox.Show("You cannot export while editing a roster.");
+                //    return;
+                //}
                 if(names.Count == 0)
                 {
                     return;
