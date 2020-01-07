@@ -82,14 +82,20 @@ namespace Attendance2
                     uxNamesTextBox.Clear();
                     return;
                 }
+                else if (promptText.Contains("\r\n"))
+                {
+                    MessageBox.Show("Please enter a name.");
+                    uxNamesTextBox.Clear();
+                    return;
+                }
                 else
                 {
-                    names.Add(promptText.TrimStart('\r','\n'));
+                    names.Add(promptText.Trim());
                     nameDisplay.Add(uxNamesTextBox.Text);
                     e.Handled = true;
                     uxNamesTextBox.Clear();
+                    UpdateDisplay();
                 }
-                UpdateDisplay();
             }
 
         }
