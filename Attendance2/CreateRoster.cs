@@ -75,14 +75,8 @@ namespace Attendance2
        {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if(uxNamesTextBox.Text.Equals(""))
-                {
-                    MessageBox.Show("Please enter a name.");
-                    e.Handled = false;
-                    uxNamesTextBox.Clear();
-                    return;
-                }
-                else if(uxNamesTextBox.Text.Equals("\r\n"))
+                string promptText = uxNamesTextBox.Text;
+                if (promptText.Equals(""))
                 {
                     MessageBox.Show("Please enter a name.");
                     uxNamesTextBox.Clear();
@@ -90,17 +84,14 @@ namespace Attendance2
                 }
                 else
                 {
-                    names.Add(uxNamesTextBox.Text);
+                    names.Add(promptText.TrimStart('\r','\n'));
                     nameDisplay.Add(uxNamesTextBox.Text);
                     e.Handled = true;
                     uxNamesTextBox.Clear();
                 }
                 UpdateDisplay();
             }
-            else
-            {
-                return;
-            }
+
         }
 
         /// <summary>
