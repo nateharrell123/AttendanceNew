@@ -75,18 +75,26 @@ namespace Attendance2
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if(uxNamesTextBox.Text == "")
+                if(uxNamesTextBox.Text.Equals(""))
+                {
+                    MessageBox.Show("Please enter a name.");
+                    e.Handled = false;
+                    uxNamesTextBox.Clear();
+                    return;
+                }
+                else if(uxNamesTextBox.Text.Equals("\r\n"))
                 {
                     MessageBox.Show("Please enter a name.");
                     uxNamesTextBox.Clear();
-                    uxFileContentsTextBox.Clear();
                     return;
                 }
-                names.Add(uxNamesTextBox.Text);
-                nameDisplay.Add(uxNamesTextBox.Text);
-                e.Handled = true;
-                uxNamesTextBox.Clear();
-                
+                else
+                {
+                    names.Add(uxNamesTextBox.Text);
+                    nameDisplay.Add(uxNamesTextBox.Text);
+                    e.Handled = true;
+                    uxNamesTextBox.Clear();
+                }
                 UpdateDisplay();
             }
         }
@@ -210,9 +218,6 @@ namespace Attendance2
 
         private void DisableEverything()
         {
-            uxRemoveNameButton.Enabled = false;
-            uxNamesTextBox.Enabled = false;
-            uxFinalizeRoster.Enabled = false;
             MessageBox.Show("Roster finalized. Export it in the 'File' menu");
         }
         /// <summary>
@@ -237,8 +242,6 @@ namespace Attendance2
         {
             rosterEdited = false;
             uxFileContentsTextBox.ReadOnly = false;
-            uxRemoveNameButton.Enabled = false;
-            uxFinalizeRoster.Enabled = false;
             uxNamesTextBox.ReadOnly = true;
             uxFilePreviewText.Text = "Press 'TAB' to submit your changes.";
             uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 10);
@@ -249,8 +252,6 @@ namespace Attendance2
         {
             rosterEdited = true;
             uxFileContentsTextBox.ReadOnly = true;
-            uxRemoveNameButton.Enabled = true;
-            uxFinalizeRoster.Enabled = true;
             uxNamesTextBox.ReadOnly = false;
             uxFilePreviewText.Text = "Successfully edited roster.";
             uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 10);
