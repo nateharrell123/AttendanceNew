@@ -72,7 +72,7 @@ namespace Attendance2
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void input_KeyDown(object sender, KeyPressEventArgs e)
-        {
+       {
             if (e.KeyChar == (char)Keys.Enter)
             {
                 if(uxNamesTextBox.Text.Equals(""))
@@ -96,6 +96,10 @@ namespace Attendance2
                     uxNamesTextBox.Clear();
                 }
                 UpdateDisplay();
+            }
+            else
+            {
+                return;
             }
         }
 
