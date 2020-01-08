@@ -218,8 +218,8 @@ namespace Attendance2
         {
             uxFileContentsTextBox.ReadOnly = false;
             uxNamesTextBox.ReadOnly = true;
+            uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 8);
             uxFilePreviewText.Text = "Press 'TAB' to submit your changes.";
-            uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 10);
             uxRemovedText.Text = "";
         }
 
