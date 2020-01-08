@@ -36,6 +36,10 @@ namespace Attendance2
         /// <param name="e"></param>
         private void UxRemoveNameButton_Click(object sender, EventArgs e)
         {
+            if (isFinalized)
+            {
+                return;
+            }
             try
             {
                
@@ -72,6 +76,10 @@ namespace Attendance2
         /// <param name="e"></param>
         private void input_KeyDown(object sender, KeyPressEventArgs e)
         {
+            if (isFinalized)
+            {
+                return;
+            }
             if (e.KeyChar == (char)Keys.Enter)
             {
                 string promptText = uxNamesTextBox.Text;
@@ -140,7 +148,6 @@ namespace Attendance2
         {
             try
             {
-
                 if(names.Count == 0)
                 {
                     return;
@@ -235,7 +242,10 @@ namespace Attendance2
             {
                 return;
             }
-
+            else if(isFinalized)
+            {
+                return;
+            }
 
             else
             {
@@ -272,6 +282,10 @@ namespace Attendance2
 
         private void ClearRosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (isFinalized)
+            {
+                return;
+            }
             if (names.Count > 0)
             {
                 uxFileContentsTextBox.Text = string.Empty;
