@@ -76,13 +76,7 @@ namespace Attendance2
             if (e.KeyChar == (char)Keys.Enter)
             {
                 string promptText = uxNamesTextBox.Text;
-                if (promptText.Equals(""))
-                {
-                    MessageBox.Show("Please enter a name.");
-                    uxNamesTextBox.Clear();
-                    return;
-                }
-                else if (promptText.Contains("\r\n"))
+                if (promptText.Equals("") || promptText.Equals("\r\n"))
                 {
                     MessageBox.Show("Please enter a name.");
                     uxNamesTextBox.Clear();
