@@ -52,9 +52,12 @@
             this.importRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSaveToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.uxFilePreviewLabel = new System.Windows.Forms.Label();
-            this.uxFilePreviewTextBox = new System.Windows.Forms.TextBox();
-            this.uxReviseResults = new System.Windows.Forms.Button();
+            this.uxDataGridView = new System.Windows.Forms.DataGridView();
+            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uxUnexcusedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uxDataGridViewPresent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uxDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // uxDateLabel
@@ -94,7 +97,7 @@
             // 
             this.uxNameTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxNameTextBox.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxNameTextBox.Location = new System.Drawing.Point(339, 62);
+            this.uxNameTextBox.Location = new System.Drawing.Point(345, 62);
             this.uxNameTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxNameTextBox.Multiline = true;
             this.uxNameTextBox.Name = "uxNameTextBox";
@@ -106,7 +109,7 @@
             // 
             this.uxPresentButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxPresentButton.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxPresentButton.Location = new System.Drawing.Point(301, 126);
+            this.uxPresentButton.Location = new System.Drawing.Point(301, 129);
             this.uxPresentButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxPresentButton.Name = "uxPresentButton";
             this.uxPresentButton.Size = new System.Drawing.Size(178, 47);
@@ -170,7 +173,7 @@
             // 
             this.uxNameLabel.AutoSize = true;
             this.uxNameLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxNameLabel.Location = new System.Drawing.Point(464, 39);
+            this.uxNameLabel.Location = new System.Drawing.Point(470, 39);
             this.uxNameLabel.Name = "uxNameLabel";
             this.uxNameLabel.Size = new System.Drawing.Size(56, 19);
             this.uxNameLabel.TabIndex = 10;
@@ -237,7 +240,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(972, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -285,38 +288,42 @@
             this.uxFilePreviewLabel.TabIndex = 5;
             this.uxFilePreviewLabel.Text = "File Preview:";
             // 
-            // uxFilePreviewTextBox
+            // uxDataGridView
             // 
-            this.uxFilePreviewTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.uxFilePreviewTextBox.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxFilePreviewTextBox.Location = new System.Drawing.Point(695, 129);
-            this.uxFilePreviewTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.uxFilePreviewTextBox.Multiline = true;
-            this.uxFilePreviewTextBox.Name = "uxFilePreviewTextBox";
-            this.uxFilePreviewTextBox.ReadOnly = true;
-            this.uxFilePreviewTextBox.Size = new System.Drawing.Size(259, 260);
-            this.uxFilePreviewTextBox.TabIndex = 19;
+            this.uxDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.uxDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.uxDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.columnName,
+            this.uxUnexcusedColumn,
+            this.uxDataGridViewPresent});
+            this.uxDataGridView.GridColor = System.Drawing.SystemColors.AppWorkspace;
+            this.uxDataGridView.Location = new System.Drawing.Point(637, 129);
+            this.uxDataGridView.Name = "uxDataGridView";
+            this.uxDataGridView.Size = new System.Drawing.Size(331, 248);
+            this.uxDataGridView.TabIndex = 21;
             // 
-            // uxReviseResults
+            // columnName
             // 
-            this.uxReviseResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.uxReviseResults.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxReviseResults.Location = new System.Drawing.Point(301, 331);
-            this.uxReviseResults.Name = "uxReviseResults";
-            this.uxReviseResults.Size = new System.Drawing.Size(178, 46);
-            this.uxReviseResults.TabIndex = 22;
-            this.uxReviseResults.Text = "Revise Results";
-            this.uxReviseResults.UseVisualStyleBackColor = false;
-            this.uxReviseResults.Click += new System.EventHandler(this.UxReviseResults_Click);
+            this.columnName.HeaderText = "Name";
+            this.columnName.Name = "columnName";
+            // 
+            // uxUnexcusedColumn
+            // 
+            this.uxUnexcusedColumn.HeaderText = "Unexcused";
+            this.uxUnexcusedColumn.Name = "uxUnexcusedColumn";
+            // 
+            // uxDataGridViewPresent
+            // 
+            this.uxDataGridViewPresent.HeaderText = "Present";
+            this.uxDataGridViewPresent.Name = "uxDataGridViewPresent";
             // 
             // Attendance3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(972, 443);
-            this.Controls.Add(this.uxReviseResults);
-            this.Controls.Add(this.uxFilePreviewTextBox);
+            this.ClientSize = new System.Drawing.Size(984, 443);
+            this.Controls.Add(this.uxDataGridView);
             this.Controls.Add(this.uxRosterNamesTextBox);
             this.Controls.Add(this.uxUnexcused);
             this.Controls.Add(this.uxDateTimePicker);
@@ -344,6 +351,7 @@
             this.Text = "Attendance";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uxDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,7 +382,9 @@
         private System.Windows.Forms.ToolStripMenuItem importRosterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uxSaveToolStrip;
         private System.Windows.Forms.Label uxFilePreviewLabel;
-        private System.Windows.Forms.TextBox uxFilePreviewTextBox;
-        private System.Windows.Forms.Button uxReviseResults;
+        private System.Windows.Forms.DataGridView uxDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uxUnexcusedColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uxDataGridViewPresent;
     }
 }

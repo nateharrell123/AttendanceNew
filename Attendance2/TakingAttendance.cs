@@ -22,12 +22,13 @@ namespace Attendance
 
         string date = DateTime.Now.ToShortDateString();
         Prompt prompt = new Prompt();
+        
 
 
         /// <summary>
         /// int = placeholder. Attendee has three properties: name, whether they were here or not, & if they're excused.
         /// </summary>
-        public static Dictionary<int, Attendee> allNames = new Dictionary<int, Attendee>();
+        public Dictionary<int, Attendee> allNames = new Dictionary<int, Attendee>();
 
         Queue<string> nameDisplay = new Queue<string>();
         Queue<string> everyName = new Queue<string>();
@@ -119,16 +120,14 @@ namespace Attendance
             int count = nameDisplay.Count - 1;
             if(nameDisplay.Count > 0)
             {
-
-                    absentUnexcused++;
+                absentUnexcused++;
                     
-                    uxNameTextBox.Text = allNames[count].Name;
-                    uxAbsentUnexcused.Text = absentUnexcused.ToString();
-                    allNames[count].Unexcused = true;
-                    attendanceStatus = " absent (unexcused).";
+                uxNameTextBox.Text = allNames[count].Name;
+                uxAbsentUnexcused.Text = absentUnexcused.ToString();
+                allNames[count].Unexcused = true;
+                attendanceStatus = " absent (unexcused).";
 
-                    IncrementNames();
-
+                IncrementNames();
             }
             else
             {
@@ -236,7 +235,7 @@ namespace Attendance
                 displayName += name + "\r\n";
             }
 
-            uxFilePreviewTextBox.Text += allNames[counter - 1].Name + " was" + attendanceStatus + "\r\n";
+            uxDataGridView.Text += allNames[counter - 1].Name + " was" + attendanceStatus + "\r\n";
 
             uxRosterNamesTextBox.Text = displayName;
 
@@ -309,6 +308,7 @@ namespace Attendance
                         allNames.Add(i, new Attendee(fileContents[i], false, false));
                         nameDisplay.Enqueue(fileContents[i]);
                         everyName.Enqueue(fileContents[i]);
+                        
                     }
                     hasBeenImported = true;
                     StartupDisplay();
@@ -360,16 +360,16 @@ namespace Attendance
             {
                 MessageBox.Show("You need to import a roster before you can export anything.");
             }
-            if (hasBeenImported && uxFilePreviewTextBox.Text == "")
+            if (hasBeenImported && uxDataGridView.Text == "")
             {
                 MessageBox.Show("There are no results to export!");
             }
-            if (uxRosterNamesTextBox.Text != "" && uxFilePreviewTextBox.Text != string.Empty)
+            if (uxRosterNamesTextBox.Text != "" && uxDataGridView.Text != string.Empty)
             {
                 MessageBox.Show("There are still names that haven't been entered yet!");
                 return;
             }
-            if (uxFilePreviewTextBox.Text == "")
+            if (uxDataGridView.Text == "")
             {
                 return;
             }
