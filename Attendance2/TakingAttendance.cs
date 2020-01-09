@@ -27,7 +27,7 @@ namespace Attendance
         /// <summary>
         /// int = placeholder. Attendee has three properties: name, whether they were here or not, & if they're excused.
         /// </summary>
-        Dictionary<int, Attendee> allNames = new Dictionary<int, Attendee>();
+        public static Dictionary<int, Attendee> allNames = new Dictionary<int, Attendee>();
 
         Queue<string> nameDisplay = new Queue<string>();
         Queue<string> everyName = new Queue<string>();
@@ -268,7 +268,7 @@ namespace Attendance
         /// <summary>
         /// Attributes of an Attendee. They have names, and whether they were present or not.
         /// </summary>
-        private class Attendee
+        public class Attendee
         {
             public string Name { get; set; }
             public bool Present { get; set; }

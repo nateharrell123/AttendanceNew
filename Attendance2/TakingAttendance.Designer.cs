@@ -51,7 +51,6 @@
             this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSaveToolStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxFilePreviewLabel = new System.Windows.Forms.Label();
             this.uxFilePreviewTextBox = new System.Windows.Forms.TextBox();
             this.uxReviseResults = new System.Windows.Forms.Button();
@@ -234,8 +233,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -277,12 +275,6 @@
             this.uxSaveToolStrip.Text = "Export Results";
             this.uxSaveToolStrip.Click += new System.EventHandler(this.UxSaveToolStrip_Click);
             // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
             // uxFilePreviewLabel
             // 
             this.uxFilePreviewLabel.AutoSize = true;
@@ -313,7 +305,7 @@
             this.uxReviseResults.Name = "uxReviseResults";
             this.uxReviseResults.Size = new System.Drawing.Size(178, 46);
             this.uxReviseResults.TabIndex = 22;
-            this.uxReviseResults.Text = "Remove Name";
+            this.uxReviseResults.Text = "Revise Results";
             this.uxReviseResults.UseVisualStyleBackColor = false;
             this.uxReviseResults.Click += new System.EventHandler(this.UxReviseResults_Click);
             // 
@@ -383,7 +375,6 @@
         private System.Windows.Forms.ToolStripMenuItem uxSaveToolStrip;
         private System.Windows.Forms.Label uxFilePreviewLabel;
         private System.Windows.Forms.TextBox uxFilePreviewTextBox;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.Button uxReviseResults;
     }
 }

@@ -93,6 +93,12 @@
     <Compile Include="Prompt.Designer.cs">
       <DependentUpon>Prompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReviseResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReviseResults.Designer.cs">
+      <DependentUpon>ReviseResults.cs</DependentUpon>
+    </Compile>
     <Compile Include="TakingAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Prompt.resx">
       <DependentUpon>Prompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReviseResults.resx">
+      <DependentUpon>ReviseResults.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TakingAttendance.resx">
       <DependentUpon>TakingAttendance.cs</DependentUpon>
