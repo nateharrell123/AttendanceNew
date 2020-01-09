@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateRoster));
             this.label1 = new System.Windows.Forms.Label();
-            this.uxPictureBox = new System.Windows.Forms.PictureBox();
             this.uxPictureLabel = new System.Windows.Forms.Label();
             this.uxFileContentsTextBox = new System.Windows.Forms.TextBox();
             this.uxFilePreviewText = new System.Windows.Forms.Label();
@@ -47,8 +46,9 @@
             this.clearRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.uxFinalizeRoster = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.uxPictureBox)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.uxMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -58,15 +58,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
-            // 
-            // uxPictureBox
-            // 
-            this.uxPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("uxPictureBox.Image")));
-            this.uxPictureBox.Location = new System.Drawing.Point(12, 57);
-            this.uxPictureBox.Name = "uxPictureBox";
-            this.uxPictureBox.Size = new System.Drawing.Size(142, 108);
-            this.uxPictureBox.TabIndex = 2;
-            this.uxPictureBox.TabStop = false;
             // 
             // uxPictureLabel
             // 
@@ -213,17 +204,27 @@
             this.uxFinalizeRoster.UseVisualStyleBackColor = false;
             this.uxFinalizeRoster.Click += new System.EventHandler(this.UxFinalizeRoster_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 57);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(132, 114);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // CreateRoster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(470, 419);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.uxFinalizeRoster);
             this.Controls.Add(this.uxNamesTextBox);
             this.Controls.Add(this.uxFileContentsTextBox);
             this.Controls.Add(this.uxRemoveNameButton);
-            this.Controls.Add(this.uxPictureBox);
             this.Controls.Add(this.uxFilePreviewText);
             this.Controls.Add(this.uxPictureLabel);
             this.Controls.Add(this.uxRemovedText);
@@ -236,9 +237,9 @@
             this.Name = "CreateRoster";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateRoster";
-            ((System.ComponentModel.ISupportInitialize)(this.uxPictureBox)).EndInit();
             this.uxMenuStrip.ResumeLayout(false);
             this.uxMenuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,7 +248,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox uxPictureBox;
         private System.Windows.Forms.Label uxPictureLabel;
         private System.Windows.Forms.TextBox uxFileContentsTextBox;
         private System.Windows.Forms.Label uxFilePreviewText;
@@ -264,5 +264,6 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adjustRosterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearRosterToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
