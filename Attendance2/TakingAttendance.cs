@@ -282,7 +282,6 @@ namespace Attendance
             }
         }
 
-        ///
         private void ImportRosterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -419,48 +418,49 @@ namespace Attendance
             prompt.Show();
         }
 
-        private void Attendance3_Load(object sender, EventArgs e)
-        {
-        }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("finish this");
         }
 
-        private void UndoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UndoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if(counter > 0)
+            if(!allNames.ContainsKey(counter))
             {
-                uxFilePreviewLabel.Text = allNames[counter - 1].Name + " was removed.";
-                counter--;
+                return;
+            }
+
+            if (counter > 0)
+            {
+                string attendee = allNames[counter - 1].Name;
+                bool isPresent = allNames[counter - 1].Present;
+                bool isUnexcused = allNames[counter - 1].Unexcused;
+                uxFilePreviewLabel.Text = attendee + " was removed.";
+
+                if (isPresent == true)
+                {
+                    allNames[counter - 1].Present = false;
+                    counter--;
+                    peoplePresent--;
+                    peopleAbsent++;
+                }
+                if (isUnexcused == false && isPresent == false)
+                {
+                    allNames[counter - 1].Unexcused = true;
+                    counter--;
+                    peoplePresent++;
+                }
+                if (isUnexcused == true)
+                {
+                    allNames[counter - 1].Unexcused = true;
+                    counter--;
+                }
             }
             else
             {
                 return;
             }
         }
-
-
-            //    else if (isPresent == true)
-            //    {
-            //        allNames[counter].Present = false;
-            //        counter--;
-            //    }
-            //    else if (isUnexcused == false)
-            //    {
-            //        allNames[counter].Unexcused = true;
-            //        counter--;
-            //    }
-            //    else if (isUnexcused == true)
-            //    {
-            //        allNames[counter].Unexcused = true;
-            //        counter--;
-            //    }
-            //}
-            //else
-            //{
-            //    return;
-            //}
-        }
     }
+}

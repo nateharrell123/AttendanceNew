@@ -51,9 +51,11 @@
             this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSaveToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.undoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.uxFilePreviewLabel = new System.Windows.Forms.Label();
             this.uxFilePreviewTextBox = new System.Windows.Forms.TextBox();
-            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxFinalizeResults = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,10 +108,10 @@
             // 
             this.uxPresentButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxPresentButton.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxPresentButton.Location = new System.Drawing.Point(301, 129);
+            this.uxPresentButton.Location = new System.Drawing.Point(301, 126);
             this.uxPresentButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxPresentButton.Name = "uxPresentButton";
-            this.uxPresentButton.Size = new System.Drawing.Size(178, 57);
+            this.uxPresentButton.Size = new System.Drawing.Size(178, 47);
             this.uxPresentButton.TabIndex = 6;
             this.uxPresentButton.Text = "Present";
             this.uxPresentButton.UseVisualStyleBackColor = false;
@@ -119,10 +121,10 @@
             // 
             this.uxAbsentExcusedButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxAbsentExcusedButton.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxAbsentExcusedButton.Location = new System.Drawing.Point(301, 226);
+            this.uxAbsentExcusedButton.Location = new System.Drawing.Point(301, 195);
             this.uxAbsentExcusedButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxAbsentExcusedButton.Name = "uxAbsentExcusedButton";
-            this.uxAbsentExcusedButton.Size = new System.Drawing.Size(178, 53);
+            this.uxAbsentExcusedButton.Size = new System.Drawing.Size(178, 46);
             this.uxAbsentExcusedButton.TabIndex = 6;
             this.uxAbsentExcusedButton.Text = "Absent (Excused)";
             this.uxAbsentExcusedButton.UseVisualStyleBackColor = false;
@@ -132,7 +134,7 @@
             // 
             this.uxPPLabel.AutoSize = true;
             this.uxPPLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxPPLabel.Location = new System.Drawing.Point(485, 155);
+            this.uxPPLabel.Location = new System.Drawing.Point(485, 146);
             this.uxPPLabel.Name = "uxPPLabel";
             this.uxPPLabel.Size = new System.Drawing.Size(67, 19);
             this.uxPPLabel.TabIndex = 8;
@@ -142,7 +144,7 @@
             // 
             this.uxPeoplePresentCount.AutoSize = true;
             this.uxPeoplePresentCount.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.uxPeoplePresentCount.Location = new System.Drawing.Point(557, 157);
+            this.uxPeoplePresentCount.Location = new System.Drawing.Point(557, 148);
             this.uxPeoplePresentCount.Name = "uxPeoplePresentCount";
             this.uxPeoplePresentCount.Size = new System.Drawing.Size(0, 17);
             this.uxPeoplePresentCount.TabIndex = 8;
@@ -151,7 +153,7 @@
             // 
             this.uxPeopleAbsentLabel.AutoSize = true;
             this.uxPeopleAbsentLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxPeopleAbsentLabel.Location = new System.Drawing.Point(485, 243);
+            this.uxPeopleAbsentLabel.Location = new System.Drawing.Point(485, 213);
             this.uxPeopleAbsentLabel.Name = "uxPeopleAbsentLabel";
             this.uxPeopleAbsentLabel.Size = new System.Drawing.Size(138, 19);
             this.uxPeopleAbsentLabel.TabIndex = 8;
@@ -161,7 +163,7 @@
             // 
             this.uxAbsentCount.AutoSize = true;
             this.uxAbsentCount.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.uxAbsentCount.Location = new System.Drawing.Point(631, 245);
+            this.uxAbsentCount.Location = new System.Drawing.Point(631, 215);
             this.uxAbsentCount.Name = "uxAbsentCount";
             this.uxAbsentCount.Size = new System.Drawing.Size(0, 17);
             this.uxAbsentCount.TabIndex = 8;
@@ -182,7 +184,7 @@
             this.uxDateTimePicker.Location = new System.Drawing.Point(71, 385);
             this.uxDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxDateTimePicker.Name = "uxDateTimePicker";
-            this.uxDateTimePicker.Size = new System.Drawing.Size(219, 20);
+            this.uxDateTimePicker.Size = new System.Drawing.Size(218, 20);
             this.uxDateTimePicker.TabIndex = 13;
             this.uxDateTimePicker.ValueChanged += new System.EventHandler(this.UxDateTimePicker_ValueChanged);
             // 
@@ -190,10 +192,10 @@
             // 
             this.uxUnexcused.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxUnexcused.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxUnexcused.Location = new System.Drawing.Point(301, 315);
+            this.uxUnexcused.Location = new System.Drawing.Point(301, 263);
             this.uxUnexcused.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxUnexcused.Name = "uxUnexcused";
-            this.uxUnexcused.Size = new System.Drawing.Size(178, 51);
+            this.uxUnexcused.Size = new System.Drawing.Size(178, 46);
             this.uxUnexcused.TabIndex = 17;
             this.uxUnexcused.Text = "Absent (Unexcused)";
             this.uxUnexcused.UseVisualStyleBackColor = false;
@@ -215,7 +217,7 @@
             // 
             this.uxAbsentttUnexcused.AutoSize = true;
             this.uxAbsentttUnexcused.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxAbsentttUnexcused.Location = new System.Drawing.Point(485, 330);
+            this.uxAbsentttUnexcused.Location = new System.Drawing.Point(485, 277);
             this.uxAbsentttUnexcused.Name = "uxAbsentttUnexcused";
             this.uxAbsentttUnexcused.Size = new System.Drawing.Size(157, 19);
             this.uxAbsentttUnexcused.TabIndex = 8;
@@ -225,7 +227,7 @@
             // 
             this.uxAbsentUnexcused.AutoSize = true;
             this.uxAbsentUnexcused.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.uxAbsentUnexcused.Location = new System.Drawing.Point(646, 334);
+            this.uxAbsentUnexcused.Location = new System.Drawing.Point(646, 281);
             this.uxAbsentUnexcused.Name = "uxAbsentUnexcused";
             this.uxAbsentUnexcused.Size = new System.Drawing.Size(0, 17);
             this.uxAbsentUnexcused.TabIndex = 8;
@@ -233,7 +235,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -246,8 +249,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainMenuToolStripMenuItem,
             this.importRosterToolStripMenuItem,
-            this.uxSaveToolStrip,
-            this.undoToolStripMenuItem});
+            this.uxSaveToolStrip});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -276,6 +278,22 @@
             this.uxSaveToolStrip.Text = "Export Results";
             this.uxSaveToolStrip.Click += new System.EventHandler(this.UxSaveToolStrip_Click);
             // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.undoToolStripMenuItem1});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // undoToolStripMenuItem1
+            // 
+            this.undoToolStripMenuItem1.Name = "undoToolStripMenuItem1";
+            this.undoToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.undoToolStripMenuItem1.Text = "Undo";
+            this.undoToolStripMenuItem1.Click += new System.EventHandler(this.UndoToolStripMenuItem1_Click);
+            // 
             // uxFilePreviewLabel
             // 
             this.uxFilePreviewLabel.AutoSize = true;
@@ -298,13 +316,16 @@
             this.uxFilePreviewTextBox.Size = new System.Drawing.Size(259, 260);
             this.uxFilePreviewTextBox.TabIndex = 19;
             // 
-            // undoToolStripMenuItem
+            // uxFinalizeResults
             // 
-            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.undoToolStripMenuItem.Text = "Undo";
-            this.undoToolStripMenuItem.Click += new System.EventHandler(this.UndoToolStripMenuItem_Click);
+            this.uxFinalizeResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.uxFinalizeResults.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.uxFinalizeResults.Location = new System.Drawing.Point(301, 331);
+            this.uxFinalizeResults.Name = "uxFinalizeResults";
+            this.uxFinalizeResults.Size = new System.Drawing.Size(178, 46);
+            this.uxFinalizeResults.TabIndex = 22;
+            this.uxFinalizeResults.Text = "Finalize Results";
+            this.uxFinalizeResults.UseVisualStyleBackColor = false;
             // 
             // Attendance3
             // 
@@ -312,6 +333,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(972, 443);
+            this.Controls.Add(this.uxFinalizeResults);
             this.Controls.Add(this.uxFilePreviewTextBox);
             this.Controls.Add(this.uxRosterNamesTextBox);
             this.Controls.Add(this.uxUnexcused);
@@ -332,11 +354,12 @@
             this.Controls.Add(this.uxDateLabel);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "Attendance3";
             this.Text = "Attendance";
-            this.Load += new System.EventHandler(this.Attendance3_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -370,6 +393,8 @@
         private System.Windows.Forms.ToolStripMenuItem uxSaveToolStrip;
         private System.Windows.Forms.Label uxFilePreviewLabel;
         private System.Windows.Forms.TextBox uxFilePreviewTextBox;
-        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem1;
+        private System.Windows.Forms.Button uxFinalizeResults;
     }
 }
