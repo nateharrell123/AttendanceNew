@@ -41,7 +41,7 @@ namespace Attendance
 
         bool hasBeenImported = false;
 
-        public DateTime DateCreated
+        public DateTime DateCreated // Stack Overflow
         {
             get
             {
@@ -337,8 +337,26 @@ namespace Attendance
         /// <param name="e"></param>
         private void UxSaveToolStrip_Click(object sender, EventArgs e)
         {
+            ExportRoster();  
+        }
 
-            if(!hasBeenImported)
+       
+
+        private void MainMenuToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ActiveForm.Hide();
+            Prompt prompt = new Prompt();
+            prompt.Show();
+        }
+
+        private void UxReviseResults_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ExportRoster()
+        {
+            if (!hasBeenImported)
             {
                 MessageBox.Show("You need to import a roster before you can export anything.");
             }
@@ -346,16 +364,16 @@ namespace Attendance
             {
                 MessageBox.Show("There are no results to export!");
             }
-            if(uxRosterNamesTextBox.Text != "" && uxFilePreviewTextBox.Text != string.Empty)
+            if (uxRosterNamesTextBox.Text != "" && uxFilePreviewTextBox.Text != string.Empty)
             {
                 MessageBox.Show("There are still names that haven't been entered yet!");
                 return;
             }
-            if(uxFilePreviewTextBox.Text == "")
+            if (uxFilePreviewTextBox.Text == "")
             {
                 return;
             }
-            else if(hasBeenImported == true)
+            else if (hasBeenImported == true)
             {
                 uxSaveFileDialog.Filter = "Text Files (*.txt)|*.txt";
 
@@ -387,15 +405,15 @@ namespace Attendance
                             }
                         }
 
-                        fileName = uxSaveFileDialog.FileName; 
+                        fileName = uxSaveFileDialog.FileName;
 
-                        while(!fileName.EndsWith(".txt"))
+                        while (!fileName.EndsWith(".txt"))
                         {
                             MessageBox.Show("The filename needs to end with .txt");
                             uxSaveFileDialog.ShowDialog();
                         }
 
-                        if(fileName.EndsWith(".txt"))
+                        if (fileName.EndsWith(".txt"))
                         {
                             MessageBox.Show("Saved results to " + uxSaveFileDialog.FileName);
                         }
@@ -411,56 +429,46 @@ namespace Attendance
             }
         }
 
-        private void MainMenuToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ActiveForm.Hide();
-            Prompt prompt = new Prompt();
-            prompt.Show();
-        }
 
+        // Graveyard code:
 
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("finish this");
-        }
+        //private void UndoToolStripMenuItem1_Click(object sender, EventArgs e)
+        //{
+        //    if(!allNames.ContainsKey(counter))
+        //    {
+        //        return;
+        //    }
 
-        private void UndoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if(!allNames.ContainsKey(counter))
-            {
-                return;
-            }
+        //    if (counter > 0)
+        //    {
+        //        string attendee = allNames[counter - 1].Name;
+        //        bool isPresent = allNames[counter - 1].Present;
+        //        bool isUnexcused = allNames[counter - 1].Unexcused;
+        //        uxFilePreviewLabel.Text = attendee + " was removed.";
 
-            if (counter > 0)
-            {
-                string attendee = allNames[counter - 1].Name;
-                bool isPresent = allNames[counter - 1].Present;
-                bool isUnexcused = allNames[counter - 1].Unexcused;
-                uxFilePreviewLabel.Text = attendee + " was removed.";
-
-                if (isPresent == true)
-                {
-                    allNames[counter - 1].Present = false;
-                    counter--;
-                    peoplePresent--;
-                    peopleAbsent++;
-                }
-                if (isUnexcused == false && isPresent == false)
-                {
-                    allNames[counter - 1].Unexcused = true;
-                    counter--;
-                    peoplePresent++;
-                }
-                if (isUnexcused == true)
-                {
-                    allNames[counter - 1].Unexcused = true;
-                    counter--;
-                }
-            }
-            else
-            {
-                return;
-            }
-        }
+        //        if (isPresent == true)
+        //        {
+        //            allNames[counter - 1].Present = false;
+        //            counter--;
+        //            peoplePresent--;
+        //            peopleAbsent++;
+        //        }
+        //        if (isUnexcused == false && isPresent == false)
+        //        {
+        //            allNames[counter - 1].Unexcused = true;
+        //            counter--;
+        //            peoplePresent++;
+        //        }
+        //        if (isUnexcused == true)
+        //        {
+        //            allNames[counter - 1].Unexcused = true;
+        //            counter--;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return;
+        //    }
+        //}
     }
 }

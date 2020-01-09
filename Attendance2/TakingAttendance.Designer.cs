@@ -52,10 +52,9 @@
             this.importRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSaveToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.undoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.uxFilePreviewLabel = new System.Windows.Forms.Label();
             this.uxFilePreviewTextBox = new System.Windows.Forms.TextBox();
-            this.uxFinalizeResults = new System.Windows.Forms.Button();
+            this.uxReviseResults = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -280,19 +279,9 @@
             // 
             // editToolStripMenuItem
             // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.undoToolStripMenuItem1});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // undoToolStripMenuItem1
-            // 
-            this.undoToolStripMenuItem1.Name = "undoToolStripMenuItem1";
-            this.undoToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.undoToolStripMenuItem1.Text = "Undo";
-            this.undoToolStripMenuItem1.Click += new System.EventHandler(this.UndoToolStripMenuItem1_Click);
             // 
             // uxFilePreviewLabel
             // 
@@ -316,16 +305,17 @@
             this.uxFilePreviewTextBox.Size = new System.Drawing.Size(259, 260);
             this.uxFilePreviewTextBox.TabIndex = 19;
             // 
-            // uxFinalizeResults
+            // uxReviseResults
             // 
-            this.uxFinalizeResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.uxFinalizeResults.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxFinalizeResults.Location = new System.Drawing.Point(301, 331);
-            this.uxFinalizeResults.Name = "uxFinalizeResults";
-            this.uxFinalizeResults.Size = new System.Drawing.Size(178, 46);
-            this.uxFinalizeResults.TabIndex = 22;
-            this.uxFinalizeResults.Text = "Finalize Results";
-            this.uxFinalizeResults.UseVisualStyleBackColor = false;
+            this.uxReviseResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.uxReviseResults.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.uxReviseResults.Location = new System.Drawing.Point(301, 331);
+            this.uxReviseResults.Name = "uxReviseResults";
+            this.uxReviseResults.Size = new System.Drawing.Size(178, 46);
+            this.uxReviseResults.TabIndex = 22;
+            this.uxReviseResults.Text = "Remove Name";
+            this.uxReviseResults.UseVisualStyleBackColor = false;
+            this.uxReviseResults.Click += new System.EventHandler(this.UxReviseResults_Click);
             // 
             // Attendance3
             // 
@@ -333,7 +323,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(972, 443);
-            this.Controls.Add(this.uxFinalizeResults);
+            this.Controls.Add(this.uxReviseResults);
             this.Controls.Add(this.uxFilePreviewTextBox);
             this.Controls.Add(this.uxRosterNamesTextBox);
             this.Controls.Add(this.uxUnexcused);
@@ -394,7 +384,6 @@
         private System.Windows.Forms.Label uxFilePreviewLabel;
         private System.Windows.Forms.TextBox uxFilePreviewTextBox;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem1;
-        private System.Windows.Forms.Button uxFinalizeResults;
+        private System.Windows.Forms.Button uxReviseResults;
     }
 }
