@@ -428,44 +428,39 @@ namespace Attendance
             MessageBox.Show("finish this");
         }
 
-
         private void UndoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string label = uxFilePreviewLabel.Text;
-            bool isPresent = allNames[counter].Present;
-            bool isUnexcused = allNames[counter].Unexcused;
-            if (counter > 0)
+            if(counter > 0)
             {
-                if (nameDisplay.Count > 0)
-                {
-                    label = nameDisplay.Dequeue() + " was removed.";
-
-                    if (isPresent == false)
-                    {
-                        allNames[counter].Present = true;
-                        counter--;
-                    }
-                    else if (isPresent == true)
-                    {
-                        allNames[counter].Present = false;
-                        counter--;
-                    }
-                    else if (isUnexcused == false)
-                    {
-                        allNames[counter].Unexcused = true;
-                        counter--;
-                    }
-                    else if (isUnexcused == true)
-                    {
-                        allNames[counter].Unexcused = true;
-                        counter--;
-                    }
-                }
+                uxFilePreviewLabel.Text = allNames[counter - 1].Name + " was removed.";
+                counter--;
             }
             else
             {
                 return;
             }
         }
+
+
+            //    else if (isPresent == true)
+            //    {
+            //        allNames[counter].Present = false;
+            //        counter--;
+            //    }
+            //    else if (isUnexcused == false)
+            //    {
+            //        allNames[counter].Unexcused = true;
+            //        counter--;
+            //    }
+            //    else if (isUnexcused == true)
+            //    {
+            //        allNames[counter].Unexcused = true;
+            //        counter--;
+            //    }
+            //}
+            //else
+            //{
+            //    return;
+            //}
+        }
     }
-}

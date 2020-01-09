@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.uxPictureLabel = new System.Windows.Forms.Label();
             this.uxFileContentsTextBox = new System.Windows.Forms.TextBox();
-            this.uxFilePreviewText = new System.Windows.Forms.Label();
+            this.uxFilePreviewLabel = new System.Windows.Forms.Label();
             this.uxNamesTextBox = new System.Windows.Forms.TextBox();
             this.uxEnterInstructionsLabel = new System.Windows.Forms.Label();
             this.uxRemoveNameButton = new System.Windows.Forms.Button();
@@ -81,15 +81,15 @@
             this.uxFileContentsTextBox.TabIndex = 5;
             this.uxFileContentsTextBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.UxFileContentsTextBox_PreviewKeyDown);
             // 
-            // uxFilePreviewText
+            // uxFilePreviewLabel
             // 
-            this.uxFilePreviewText.AutoSize = true;
-            this.uxFilePreviewText.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxFilePreviewText.Location = new System.Drawing.Point(267, 35);
-            this.uxFilePreviewText.Name = "uxFilePreviewText";
-            this.uxFilePreviewText.Size = new System.Drawing.Size(99, 19);
-            this.uxFilePreviewText.TabIndex = 1;
-            this.uxFilePreviewText.Text = "File Preview:";
+            this.uxFilePreviewLabel.AutoSize = true;
+            this.uxFilePreviewLabel.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.uxFilePreviewLabel.Location = new System.Drawing.Point(267, 35);
+            this.uxFilePreviewLabel.Name = "uxFilePreviewLabel";
+            this.uxFilePreviewLabel.Size = new System.Drawing.Size(99, 19);
+            this.uxFilePreviewLabel.TabIndex = 1;
+            this.uxFilePreviewLabel.Text = "File Preview:";
             // 
             // uxNamesTextBox
             // 
@@ -180,7 +180,7 @@
             // 
             this.adjustRosterToolStripMenuItem.Name = "adjustRosterToolStripMenuItem";
             this.adjustRosterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.adjustRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.adjustRosterToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.adjustRosterToolStripMenuItem.Text = "Edit Roster";
             this.adjustRosterToolStripMenuItem.Click += new System.EventHandler(this.AdjustRosterToolStripMenuItem_Click);
             // 
@@ -188,7 +188,7 @@
             // 
             this.clearRosterToolStripMenuItem.Name = "clearRosterToolStripMenuItem";
             this.clearRosterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.clearRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearRosterToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.clearRosterToolStripMenuItem.Text = "Clear Roster";
             this.clearRosterToolStripMenuItem.Click += new System.EventHandler(this.ClearRosterToolStripMenuItem_Click);
             // 
@@ -225,7 +225,7 @@
             this.Controls.Add(this.uxNamesTextBox);
             this.Controls.Add(this.uxFileContentsTextBox);
             this.Controls.Add(this.uxRemoveNameButton);
-            this.Controls.Add(this.uxFilePreviewText);
+            this.Controls.Add(this.uxFilePreviewLabel);
             this.Controls.Add(this.uxPictureLabel);
             this.Controls.Add(this.uxRemovedText);
             this.Controls.Add(this.uxEnterInstructionsLabel);
@@ -250,7 +250,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label uxPictureLabel;
         private System.Windows.Forms.TextBox uxFileContentsTextBox;
-        private System.Windows.Forms.Label uxFilePreviewText;
         private System.Windows.Forms.TextBox uxNamesTextBox;
         private System.Windows.Forms.Label uxEnterInstructionsLabel;
         private System.Windows.Forms.Button uxRemoveNameButton;
@@ -265,5 +264,6 @@
         private System.Windows.Forms.ToolStripMenuItem adjustRosterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearRosterToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.Label uxFilePreviewLabel;
     }
 }

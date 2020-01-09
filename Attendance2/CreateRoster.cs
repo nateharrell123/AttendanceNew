@@ -117,8 +117,8 @@ namespace Attendance2
 
                 }
                 uxFileContentsTextBox.Text = displayName;
-                uxFilePreviewText.Font = new Font("Tahoma", 12);
-                uxFilePreviewText.Text = "File Preview:";
+                uxFilePreviewLabel.Font = new Font("Tahoma", 12);
+                uxFilePreviewLabel.Text = "File Preview:";
             }
         }
 
@@ -238,8 +238,8 @@ namespace Attendance2
         {
             uxFileContentsTextBox.ReadOnly = false;
             uxNamesTextBox.ReadOnly = true;
-            uxFilePreviewText.Font = new Font("Tahoma", 9);
-            uxFilePreviewText.Text = "Press 'TAB' to submit your changes.";
+            uxFilePreviewLabel.Font = new Font("Tahoma", 9);
+            uxFilePreviewLabel.Text = "Press 'TAB' to submit your changes.";
             uxRemovedText.Text = "";
         }
 
@@ -247,8 +247,8 @@ namespace Attendance2
         {
             uxFileContentsTextBox.ReadOnly = true;
             uxNamesTextBox.ReadOnly = false;
-            uxFilePreviewText.Text = "Successfully edited roster.";
-            uxFilePreviewText.Font = new Font("Tahoma", 12);
+            uxFilePreviewLabel.Text = "Successfully edited roster.";
+            uxFilePreviewLabel.Font = new Font("Tahoma", 12);
         }
 
         /// <summary>
