@@ -102,7 +102,6 @@
             // 
             // uxPresentButton
             // 
-            this.uxPresentButton.Enabled = false;
             this.uxPresentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxPresentButton.Location = new System.Drawing.Point(255, 130);
             this.uxPresentButton.Name = "uxPresentButton";
@@ -114,7 +113,6 @@
             // 
             // uxAbsentExcusedButton
             // 
-            this.uxAbsentExcusedButton.Enabled = false;
             this.uxAbsentExcusedButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxAbsentExcusedButton.Location = new System.Drawing.Point(255, 186);
             this.uxAbsentExcusedButton.Name = "uxAbsentExcusedButton";
@@ -180,7 +178,6 @@
             // 
             // uxUnexcused
             // 
-            this.uxUnexcused.Enabled = false;
             this.uxUnexcused.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uxUnexcused.Location = new System.Drawing.Point(255, 240);
             this.uxUnexcused.Name = "uxUnexcused";
