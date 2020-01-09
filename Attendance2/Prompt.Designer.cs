@@ -90,7 +90,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "Prompt";
-            this.Text = "CreateRoster";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Main Menu";
             this.ResumeLayout(false);
             this.PerformLayout();
 

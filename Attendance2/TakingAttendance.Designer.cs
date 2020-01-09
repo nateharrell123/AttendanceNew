@@ -92,6 +92,7 @@
             // 
             // uxNameTextBox
             // 
+            this.uxNameTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxNameTextBox.Font = new System.Drawing.Font("Tahoma", 12F);
             this.uxNameTextBox.Location = new System.Drawing.Point(283, 66);
             this.uxNameTextBox.Multiline = true;
@@ -195,6 +196,7 @@
             // 
             // uxRosterNamesTextBox
             // 
+            this.uxRosterNamesTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxRosterNamesTextBox.Font = new System.Drawing.Font("Tahoma", 12F);
             this.uxRosterNamesTextBox.Location = new System.Drawing.Point(14, 118);
             this.uxRosterNamesTextBox.Multiline = true;

@@ -214,8 +214,17 @@ namespace Attendance2
         /// <param name="e"></param>
         private void UxFinalizeRoster_Click(object sender, EventArgs e)
         {
-            isFinalized = true;
-            if(names.Count > 0)
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to finalize your roster?", "Finalize Roster", MessageBoxButtons.YesNo); // stack overflow
+            if (dialogResult == DialogResult.Yes && names.Count > 0)
+            {
+                isFinalized = true;
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+            if (names.Count > 0)
             {
                 DisableEverything();
             }
