@@ -117,7 +117,7 @@ namespace Attendance2
 
                 }
                 uxFileContentsTextBox.Text = displayName;
-                uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 10);
+                uxFilePreviewText.Font = new Font("Tahoma", 12);
                 uxFilePreviewText.Text = "File Preview:";
             }
         }
@@ -168,6 +168,17 @@ namespace Attendance2
                     }
                     MessageBox.Show("Saved to " + uxSaveFileDialog.FileName);
 
+                    DialogResult dialogResult = MessageBox.Show("Would you like to use this roster now?", "Testing", MessageBoxButtons.YesNo); // stack overflow
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        ActiveForm.Hide();
+                        Attendance3 newForm = new Attendance3();
+                        newForm.Show();
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        return;
+                    }
                 }
                 else if(showDialog == DialogResult.Cancel)
                 {
@@ -218,7 +229,7 @@ namespace Attendance2
         {
             uxFileContentsTextBox.ReadOnly = false;
             uxNamesTextBox.ReadOnly = true;
-            uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 8);
+            uxFilePreviewText.Font = new Font("Tahoma", 9);
             uxFilePreviewText.Text = "Press 'TAB' to submit your changes.";
             uxRemovedText.Text = "";
         }
@@ -228,7 +239,7 @@ namespace Attendance2
             uxFileContentsTextBox.ReadOnly = true;
             uxNamesTextBox.ReadOnly = false;
             uxFilePreviewText.Text = "Successfully edited roster.";
-            uxFilePreviewText.Font = new Font("Microsoft Sans Serif", 10);
+            uxFilePreviewText.Font = new Font("Tahoma", 12);
         }
 
         /// <summary>

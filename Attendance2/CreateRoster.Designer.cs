@@ -47,7 +47,6 @@
             this.clearRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.uxFinalizeRoster = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.uxPictureBox)).BeginInit();
             this.uxMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -72,15 +71,17 @@
             // uxPictureLabel
             // 
             this.uxPictureLabel.AutoSize = true;
-            this.uxPictureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPictureLabel.Location = new System.Drawing.Point(8, 41);
+            this.uxPictureLabel.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.uxPictureLabel.Location = new System.Drawing.Point(8, 70);
             this.uxPictureLabel.Name = "uxPictureLabel";
-            this.uxPictureLabel.Size = new System.Drawing.Size(65, 17);
+            this.uxPictureLabel.Size = new System.Drawing.Size(75, 19);
             this.uxPictureLabel.TabIndex = 1;
             this.uxPictureLabel.Text = "Example:";
             // 
             // uxFileContentsTextBox
             // 
+            this.uxFileContentsTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.uxFileContentsTextBox.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uxFileContentsTextBox.Location = new System.Drawing.Point(271, 92);
             this.uxFileContentsTextBox.Multiline = true;
             this.uxFileContentsTextBox.Name = "uxFileContentsTextBox";
@@ -92,10 +93,10 @@
             // uxFilePreviewText
             // 
             this.uxFilePreviewText.AutoSize = true;
-            this.uxFilePreviewText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxFilePreviewText.Location = new System.Drawing.Point(268, 72);
+            this.uxFilePreviewText.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.uxFilePreviewText.Location = new System.Drawing.Point(267, 70);
             this.uxFilePreviewText.Name = "uxFilePreviewText";
-            this.uxFilePreviewText.Size = new System.Drawing.Size(87, 17);
+            this.uxFilePreviewText.Size = new System.Drawing.Size(99, 19);
             this.uxFilePreviewText.TabIndex = 1;
             this.uxFilePreviewText.Text = "File Preview:";
             // 
@@ -112,22 +113,23 @@
             // 
             // uxEnterInstructionsLabel
             // 
-            this.uxEnterInstructionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxEnterInstructionsLabel.Location = new System.Drawing.Point(9, 209);
+            this.uxEnterInstructionsLabel.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.uxEnterInstructionsLabel.Location = new System.Drawing.Point(8, 209);
             this.uxEnterInstructionsLabel.Name = "uxEnterInstructionsLabel";
-            this.uxEnterInstructionsLabel.Size = new System.Drawing.Size(191, 55);
+            this.uxEnterInstructionsLabel.Size = new System.Drawing.Size(226, 55);
             this.uxEnterInstructionsLabel.TabIndex = 1;
             this.uxEnterInstructionsLabel.Text = "Press Enter to add a name:";
             // 
             // uxRemoveNameButton
             // 
-            this.uxRemoveNameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxRemoveNameButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.uxRemoveNameButton.Font = new System.Drawing.Font("Tahoma", 12F);
             this.uxRemoveNameButton.Location = new System.Drawing.Point(12, 267);
             this.uxRemoveNameButton.Name = "uxRemoveNameButton";
             this.uxRemoveNameButton.Size = new System.Drawing.Size(253, 53);
             this.uxRemoveNameButton.TabIndex = 4;
             this.uxRemoveNameButton.Text = "Remove Name";
-            this.uxRemoveNameButton.UseVisualStyleBackColor = true;
+            this.uxRemoveNameButton.UseVisualStyleBackColor = false;
             this.uxRemoveNameButton.Click += new System.EventHandler(this.UxRemoveNameButton_Click);
             // 
             // uxRemovedText
@@ -161,14 +163,16 @@
             // mainMenuToolStripMenuItem
             // 
             this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
-            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.mainMenuToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.mainMenuToolStripMenuItem.Text = "Main Menu";
             this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.MainMenuToolStripMenuItem_Click);
             // 
             // uxExportRoster
             // 
             this.uxExportRoster.Name = "uxExportRoster";
-            this.uxExportRoster.Size = new System.Drawing.Size(143, 22);
+            this.uxExportRoster.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.uxExportRoster.Size = new System.Drawing.Size(183, 22);
             this.uxExportRoster.Text = "Export Roster";
             this.uxExportRoster.Click += new System.EventHandler(this.UxExportRoster_Click);
             // 
@@ -184,42 +188,36 @@
             // adjustRosterToolStripMenuItem
             // 
             this.adjustRosterToolStripMenuItem.Name = "adjustRosterToolStripMenuItem";
-            this.adjustRosterToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.adjustRosterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.adjustRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.adjustRosterToolStripMenuItem.Text = "Edit Roster";
             this.adjustRosterToolStripMenuItem.Click += new System.EventHandler(this.AdjustRosterToolStripMenuItem_Click);
             // 
             // clearRosterToolStripMenuItem
             // 
             this.clearRosterToolStripMenuItem.Name = "clearRosterToolStripMenuItem";
-            this.clearRosterToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.clearRosterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.clearRosterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clearRosterToolStripMenuItem.Text = "Clear Roster";
             this.clearRosterToolStripMenuItem.Click += new System.EventHandler(this.ClearRosterToolStripMenuItem_Click);
             // 
             // uxFinalizeRoster
             // 
-            this.uxFinalizeRoster.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxFinalizeRoster.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.uxFinalizeRoster.Font = new System.Drawing.Font("Tahoma", 12F);
             this.uxFinalizeRoster.Location = new System.Drawing.Point(12, 385);
             this.uxFinalizeRoster.Name = "uxFinalizeRoster";
             this.uxFinalizeRoster.Size = new System.Drawing.Size(253, 53);
             this.uxFinalizeRoster.TabIndex = 8;
             this.uxFinalizeRoster.Text = "Finalize Roster";
-            this.uxFinalizeRoster.UseVisualStyleBackColor = true;
+            this.uxFinalizeRoster.UseVisualStyleBackColor = false;
             this.uxFinalizeRoster.Click += new System.EventHandler(this.UxFinalizeRoster_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(164, 17);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Rosters will look like this:";
             // 
             // CreateRoster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(487, 450);
             this.Controls.Add(this.uxFinalizeRoster);
             this.Controls.Add(this.uxNamesTextBox);
@@ -227,7 +225,6 @@
             this.Controls.Add(this.uxRemoveNameButton);
             this.Controls.Add(this.uxPictureBox);
             this.Controls.Add(this.uxFilePreviewText);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.uxPictureLabel);
             this.Controls.Add(this.uxRemovedText);
             this.Controls.Add(this.uxEnterInstructionsLabel);
@@ -263,7 +260,6 @@
         private System.Windows.Forms.SaveFileDialog uxSaveFileDialog;
         private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
         private System.Windows.Forms.Button uxFinalizeRoster;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adjustRosterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearRosterToolStripMenuItem;
