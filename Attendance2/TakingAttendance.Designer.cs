@@ -53,7 +53,6 @@
             this.uxSaveToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.uxFilePreviewTextBox = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +60,7 @@
             // 
             this.uxDateLabel.AutoSize = true;
             this.uxDateLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxDateLabel.Location = new System.Drawing.Point(13, 326);
+            this.uxDateLabel.Location = new System.Drawing.Point(15, 385);
             this.uxDateLabel.Name = "uxDateLabel";
             this.uxDateLabel.Size = new System.Drawing.Size(47, 19);
             this.uxDateLabel.TabIndex = 3;
@@ -71,7 +70,7 @@
             // 
             this.uxCurrentRosterLabel.AutoSize = true;
             this.uxCurrentRosterLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxCurrentRosterLabel.Location = new System.Drawing.Point(12, 80);
+            this.uxCurrentRosterLabel.Location = new System.Drawing.Point(15, 106);
             this.uxCurrentRosterLabel.Name = "uxCurrentRosterLabel";
             this.uxCurrentRosterLabel.Size = new System.Drawing.Size(107, 19);
             this.uxCurrentRosterLabel.TabIndex = 5;
@@ -85,7 +84,7 @@
             // 
             this.uxRosterNameLabel.AutoSize = true;
             this.uxRosterNameLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxRosterNameLabel.Location = new System.Drawing.Point(117, 80);
+            this.uxRosterNameLabel.Location = new System.Drawing.Point(137, 106);
             this.uxRosterNameLabel.Name = "uxRosterNameLabel";
             this.uxRosterNameLabel.Size = new System.Drawing.Size(0, 19);
             this.uxRosterNameLabel.TabIndex = 5;
@@ -94,20 +93,22 @@
             // 
             this.uxNameTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxNameTextBox.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxNameTextBox.Location = new System.Drawing.Point(283, 66);
+            this.uxNameTextBox.Location = new System.Drawing.Point(339, 62);
+            this.uxNameTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxNameTextBox.Multiline = true;
             this.uxNameTextBox.Name = "uxNameTextBox";
             this.uxNameTextBox.ReadOnly = true;
-            this.uxNameTextBox.Size = new System.Drawing.Size(264, 35);
+            this.uxNameTextBox.Size = new System.Drawing.Size(307, 42);
             this.uxNameTextBox.TabIndex = 7;
             // 
             // uxPresentButton
             // 
             this.uxPresentButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxPresentButton.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxPresentButton.Location = new System.Drawing.Point(257, 118);
+            this.uxPresentButton.Location = new System.Drawing.Point(301, 129);
+            this.uxPresentButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxPresentButton.Name = "uxPresentButton";
-            this.uxPresentButton.Size = new System.Drawing.Size(153, 52);
+            this.uxPresentButton.Size = new System.Drawing.Size(178, 57);
             this.uxPresentButton.TabIndex = 6;
             this.uxPresentButton.Text = "Present";
             this.uxPresentButton.UseVisualStyleBackColor = false;
@@ -117,9 +118,10 @@
             // 
             this.uxAbsentExcusedButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxAbsentExcusedButton.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxAbsentExcusedButton.Location = new System.Drawing.Point(257, 177);
+            this.uxAbsentExcusedButton.Location = new System.Drawing.Point(301, 226);
+            this.uxAbsentExcusedButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxAbsentExcusedButton.Name = "uxAbsentExcusedButton";
-            this.uxAbsentExcusedButton.Size = new System.Drawing.Size(153, 53);
+            this.uxAbsentExcusedButton.Size = new System.Drawing.Size(178, 53);
             this.uxAbsentExcusedButton.TabIndex = 6;
             this.uxAbsentExcusedButton.Text = "Absent (Excused)";
             this.uxAbsentExcusedButton.UseVisualStyleBackColor = false;
@@ -129,7 +131,7 @@
             // 
             this.uxPPLabel.AutoSize = true;
             this.uxPPLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxPPLabel.Location = new System.Drawing.Point(412, 139);
+            this.uxPPLabel.Location = new System.Drawing.Point(485, 155);
             this.uxPPLabel.Name = "uxPPLabel";
             this.uxPPLabel.Size = new System.Drawing.Size(67, 19);
             this.uxPPLabel.TabIndex = 8;
@@ -138,17 +140,17 @@
             // uxPeoplePresentCount
             // 
             this.uxPeoplePresentCount.AutoSize = true;
-            this.uxPeoplePresentCount.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxPeoplePresentCount.Location = new System.Drawing.Point(479, 141);
+            this.uxPeoplePresentCount.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.uxPeoplePresentCount.Location = new System.Drawing.Point(557, 157);
             this.uxPeoplePresentCount.Name = "uxPeoplePresentCount";
-            this.uxPeoplePresentCount.Size = new System.Drawing.Size(0, 19);
+            this.uxPeoplePresentCount.Size = new System.Drawing.Size(0, 17);
             this.uxPeoplePresentCount.TabIndex = 8;
             // 
             // uxPeopleAbsentLabel
             // 
             this.uxPeopleAbsentLabel.AutoSize = true;
             this.uxPeopleAbsentLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxPeopleAbsentLabel.Location = new System.Drawing.Point(412, 195);
+            this.uxPeopleAbsentLabel.Location = new System.Drawing.Point(485, 243);
             this.uxPeopleAbsentLabel.Name = "uxPeopleAbsentLabel";
             this.uxPeopleAbsentLabel.Size = new System.Drawing.Size(138, 19);
             this.uxPeopleAbsentLabel.TabIndex = 8;
@@ -157,17 +159,17 @@
             // uxAbsentCount
             // 
             this.uxAbsentCount.AutoSize = true;
-            this.uxAbsentCount.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxAbsentCount.Location = new System.Drawing.Point(540, 198);
+            this.uxAbsentCount.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.uxAbsentCount.Location = new System.Drawing.Point(631, 245);
             this.uxAbsentCount.Name = "uxAbsentCount";
-            this.uxAbsentCount.Size = new System.Drawing.Size(0, 19);
+            this.uxAbsentCount.Size = new System.Drawing.Size(0, 17);
             this.uxAbsentCount.TabIndex = 8;
             // 
             // uxNameLabel
             // 
             this.uxNameLabel.AutoSize = true;
             this.uxNameLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxNameLabel.Location = new System.Drawing.Point(381, 43);
+            this.uxNameLabel.Location = new System.Drawing.Point(464, 39);
             this.uxNameLabel.Name = "uxNameLabel";
             this.uxNameLabel.Size = new System.Drawing.Size(56, 19);
             this.uxNameLabel.TabIndex = 10;
@@ -176,9 +178,10 @@
             // uxDateTimePicker
             // 
             this.uxDateTimePicker.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.uxDateTimePicker.Location = new System.Drawing.Point(61, 326);
+            this.uxDateTimePicker.Location = new System.Drawing.Point(71, 385);
+            this.uxDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxDateTimePicker.Name = "uxDateTimePicker";
-            this.uxDateTimePicker.Size = new System.Drawing.Size(188, 20);
+            this.uxDateTimePicker.Size = new System.Drawing.Size(219, 20);
             this.uxDateTimePicker.TabIndex = 13;
             this.uxDateTimePicker.ValueChanged += new System.EventHandler(this.UxDateTimePicker_ValueChanged);
             // 
@@ -186,9 +189,10 @@
             // 
             this.uxUnexcused.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxUnexcused.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxUnexcused.Location = new System.Drawing.Point(257, 236);
+            this.uxUnexcused.Location = new System.Drawing.Point(301, 315);
+            this.uxUnexcused.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxUnexcused.Name = "uxUnexcused";
-            this.uxUnexcused.Size = new System.Drawing.Size(153, 53);
+            this.uxUnexcused.Size = new System.Drawing.Size(178, 51);
             this.uxUnexcused.TabIndex = 17;
             this.uxUnexcused.Text = "Absent (Unexcused)";
             this.uxUnexcused.UseVisualStyleBackColor = false;
@@ -198,18 +202,19 @@
             // 
             this.uxRosterNamesTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxRosterNamesTextBox.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxRosterNamesTextBox.Location = new System.Drawing.Point(14, 118);
+            this.uxRosterNamesTextBox.Location = new System.Drawing.Point(16, 129);
+            this.uxRosterNamesTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxRosterNamesTextBox.Multiline = true;
             this.uxRosterNamesTextBox.Name = "uxRosterNamesTextBox";
             this.uxRosterNamesTextBox.ReadOnly = true;
-            this.uxRosterNamesTextBox.Size = new System.Drawing.Size(235, 202);
+            this.uxRosterNamesTextBox.Size = new System.Drawing.Size(273, 248);
             this.uxRosterNamesTextBox.TabIndex = 19;
             // 
             // uxAbsentttUnexcused
             // 
             this.uxAbsentttUnexcused.AutoSize = true;
             this.uxAbsentttUnexcused.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxAbsentttUnexcused.Location = new System.Drawing.Point(412, 249);
+            this.uxAbsentttUnexcused.Location = new System.Drawing.Point(485, 330);
             this.uxAbsentttUnexcused.Name = "uxAbsentttUnexcused";
             this.uxAbsentttUnexcused.Size = new System.Drawing.Size(157, 19);
             this.uxAbsentttUnexcused.TabIndex = 8;
@@ -218,10 +223,10 @@
             // uxAbsentUnexcused
             // 
             this.uxAbsentUnexcused.AutoSize = true;
-            this.uxAbsentUnexcused.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxAbsentUnexcused.Location = new System.Drawing.Point(556, 253);
+            this.uxAbsentUnexcused.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.uxAbsentUnexcused.Location = new System.Drawing.Point(646, 334);
             this.uxAbsentUnexcused.Name = "uxAbsentUnexcused";
-            this.uxAbsentUnexcused.Size = new System.Drawing.Size(0, 19);
+            this.uxAbsentUnexcused.Size = new System.Drawing.Size(0, 17);
             this.uxAbsentUnexcused.TabIndex = 8;
             // 
             // menuStrip1
@@ -230,7 +235,8 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(821, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(972, 24);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -272,7 +278,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.label1.Location = new System.Drawing.Point(575, 81);
+            this.label1.Location = new System.Drawing.Point(691, 106);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 19);
             this.label1.TabIndex = 5;
@@ -280,33 +286,22 @@
             // 
             // uxFilePreviewTextBox
             // 
+            this.uxFilePreviewTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxFilePreviewTextBox.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxFilePreviewTextBox.Location = new System.Drawing.Point(577, 118);
+            this.uxFilePreviewTextBox.Location = new System.Drawing.Point(695, 129);
+            this.uxFilePreviewTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxFilePreviewTextBox.Multiline = true;
             this.uxFilePreviewTextBox.Name = "uxFilePreviewTextBox";
             this.uxFilePreviewTextBox.ReadOnly = true;
-            this.uxFilePreviewTextBox.Size = new System.Drawing.Size(235, 212);
+            this.uxFilePreviewTextBox.Size = new System.Drawing.Size(259, 260);
             this.uxFilePreviewTextBox.TabIndex = 19;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.button2.Location = new System.Drawing.Point(341, 311);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 34);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "Revise Results";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // Attendance3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(821, 375);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(972, 443);
             this.Controls.Add(this.uxFilePreviewTextBox);
             this.Controls.Add(this.uxRosterNamesTextBox);
             this.Controls.Add(this.uxUnexcused);
@@ -326,7 +321,9 @@
             this.Controls.Add(this.uxCurrentRosterLabel);
             this.Controls.Add(this.uxDateLabel);
             this.Controls.Add(this.menuStrip1);
+            this.Font = new System.Drawing.Font("Tahoma", 10F);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Attendance3";
             this.Text = "Attendance";
             this.Load += new System.EventHandler(this.Attendance3_Load);
@@ -363,6 +360,5 @@
         private System.Windows.Forms.ToolStripMenuItem uxSaveToolStrip;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox uxFilePreviewTextBox;
-        private System.Windows.Forms.Button button2;
     }
 }

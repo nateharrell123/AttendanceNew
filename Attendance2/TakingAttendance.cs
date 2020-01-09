@@ -244,8 +244,9 @@ namespace Attendance
             {
                 uxNameTextBox.Text = nameDisplay.Peek();
             }
-            catch(InvalidOperationException)
+            catch(InvalidOperationException) // fix this
             {
+                uxNameTextBox.Text = "";
                 MessageBox.Show("Attendance taken for " + date + ". Export your results in the 'File' menu.");
             }
         }
