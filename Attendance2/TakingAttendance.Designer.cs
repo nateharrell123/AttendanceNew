@@ -53,9 +53,10 @@
             this.uxSaveToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.uxFilePreviewLabel = new System.Windows.Forms.Label();
             this.uxDataGridView = new System.Windows.Forms.DataGridView();
-            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uxColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxUnexcusedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uxDataGridViewPresent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uxColumnPresent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uxReviseResults = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uxDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +98,7 @@
             // 
             this.uxNameTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxNameTextBox.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxNameTextBox.Location = new System.Drawing.Point(345, 62);
+            this.uxNameTextBox.Location = new System.Drawing.Point(301, 60);
             this.uxNameTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.uxNameTextBox.Multiline = true;
             this.uxNameTextBox.Name = "uxNameTextBox";
@@ -173,7 +174,7 @@
             // 
             this.uxNameLabel.AutoSize = true;
             this.uxNameLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxNameLabel.Location = new System.Drawing.Point(470, 39);
+            this.uxNameLabel.Location = new System.Drawing.Point(426, 37);
             this.uxNameLabel.Name = "uxNameLabel";
             this.uxNameLabel.Size = new System.Drawing.Size(56, 19);
             this.uxNameLabel.TabIndex = 10;
@@ -240,7 +241,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1026, 24);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -282,7 +283,7 @@
             // 
             this.uxFilePreviewLabel.AutoSize = true;
             this.uxFilePreviewLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxFilePreviewLabel.Location = new System.Drawing.Point(691, 106);
+            this.uxFilePreviewLabel.Location = new System.Drawing.Point(665, 106);
             this.uxFilePreviewLabel.Name = "uxFilePreviewLabel";
             this.uxFilePreviewLabel.Size = new System.Drawing.Size(99, 19);
             this.uxFilePreviewLabel.TabIndex = 5;
@@ -293,36 +294,50 @@
             this.uxDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.uxDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.uxDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnName,
+            this.uxColumnName,
             this.uxUnexcusedColumn,
-            this.uxDataGridViewPresent});
+            this.uxColumnPresent});
             this.uxDataGridView.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.uxDataGridView.Location = new System.Drawing.Point(637, 129);
+            this.uxDataGridView.Location = new System.Drawing.Point(669, 129);
             this.uxDataGridView.Name = "uxDataGridView";
+            this.uxDataGridView.ReadOnly = true;
             this.uxDataGridView.Size = new System.Drawing.Size(331, 248);
             this.uxDataGridView.TabIndex = 21;
             // 
-            // columnName
+            // uxColumnName
             // 
-            this.columnName.HeaderText = "Name";
-            this.columnName.Name = "columnName";
+            this.uxColumnName.HeaderText = "Name";
+            this.uxColumnName.Name = "uxColumnName";
             // 
             // uxUnexcusedColumn
             // 
             this.uxUnexcusedColumn.HeaderText = "Unexcused";
             this.uxUnexcusedColumn.Name = "uxUnexcusedColumn";
             // 
-            // uxDataGridViewPresent
+            // uxColumnPresent
             // 
-            this.uxDataGridViewPresent.HeaderText = "Present";
-            this.uxDataGridViewPresent.Name = "uxDataGridViewPresent";
+            this.uxColumnPresent.HeaderText = "Present";
+            this.uxColumnPresent.Name = "uxColumnPresent";
+            // 
+            // uxReviseResults
+            // 
+            this.uxReviseResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.uxReviseResults.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.uxReviseResults.Location = new System.Drawing.Point(301, 330);
+            this.uxReviseResults.Name = "uxReviseResults";
+            this.uxReviseResults.Size = new System.Drawing.Size(178, 47);
+            this.uxReviseResults.TabIndex = 22;
+            this.uxReviseResults.Text = "Revise File";
+            this.uxReviseResults.UseVisualStyleBackColor = false;
+            this.uxReviseResults.Click += new System.EventHandler(this.UxReviseResults_Click_1);
             // 
             // Attendance3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(984, 443);
+            this.ClientSize = new System.Drawing.Size(1026, 443);
+            this.Controls.Add(this.uxReviseResults);
             this.Controls.Add(this.uxDataGridView);
             this.Controls.Add(this.uxRosterNamesTextBox);
             this.Controls.Add(this.uxUnexcused);
@@ -383,8 +398,9 @@
         private System.Windows.Forms.ToolStripMenuItem uxSaveToolStrip;
         private System.Windows.Forms.Label uxFilePreviewLabel;
         private System.Windows.Forms.DataGridView uxDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uxColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn uxUnexcusedColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uxDataGridViewPresent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uxColumnPresent;
+        private System.Windows.Forms.Button uxReviseResults;
     }
 }

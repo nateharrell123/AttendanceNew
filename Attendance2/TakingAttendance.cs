@@ -65,10 +65,9 @@ namespace Attendance
             int count = nameDisplay.Count - 1;
             if(nameDisplay.Count > 0)
             {
-
                 peoplePresent++;
 
-                uxNameTextBox.Text = allNames[count].Name;
+                uxDataGridView.Rows.Add(allNames[count].Name, "No", "Yes"); // insane!!!
 
                 if (allNames[count].Present == false)
                 {
@@ -97,7 +96,8 @@ namespace Attendance
             if (nameDisplay.Count > 0)
             {
                 peopleAbsent++;
-                uxNameTextBox.Text = allNames[counter].Name;
+
+                uxDataGridView.Rows.Add(allNames[count].Name, "No", "No");
                 uxAbsentCount.Text = peopleAbsent.ToString();
                 allNames[counter].Present = false;
                 attendanceStatus = " absent.";
@@ -121,8 +121,8 @@ namespace Attendance
             if(nameDisplay.Count > 0)
             {
                 absentUnexcused++;
-                    
-                uxNameTextBox.Text = allNames[count].Name;
+
+                uxDataGridView.Rows.Add(allNames[count].Name, "Yes", "No");
                 uxAbsentUnexcused.Text = absentUnexcused.ToString();
                 allNames[count].Unexcused = true;
                 attendanceStatus = " absent (unexcused).";
@@ -429,46 +429,25 @@ namespace Attendance
             }
         }
 
+        // Fix later: 
+        private void UxReviseResults_Click_1(object sender, EventArgs e)
+        {
+            bool submitChanges = false;
+            if(hasBeenImported)
+            {
+                uxFilePreviewLabel.Text = "Now editing results:";
+                uxDataGridView.ReadOnly = false;
+                uxReviseResults.Text = "Submit Changes";
+            }
+            else
+            {
+                MessageBox.Show("You need to import a roster before you can edit anything!");
+            }
+            if(uxReviseResults.Text.Equals("Submit Changes"))
+            {
+                uxFilePreviewLabel.Text = "Successfully edited your results.";
+            }
 
-        // Graveyard code:
-
-        //private void UndoToolStripMenuItem1_Click(object sender, EventArgs e)
-        //{
-        //    if(!allNames.ContainsKey(counter))
-        //    {
-        //        return;
-        //    }
-
-        //    if (counter > 0)
-        //    {
-        //        string attendee = allNames[counter - 1].Name;
-        //        bool isPresent = allNames[counter - 1].Present;
-        //        bool isUnexcused = allNames[counter - 1].Unexcused;
-        //        uxFilePreviewLabel.Text = attendee + " was removed.";
-
-        //        if (isPresent == true)
-        //        {
-        //            allNames[counter - 1].Present = false;
-        //            counter--;
-        //            peoplePresent--;
-        //            peopleAbsent++;
-        //        }
-        //        if (isUnexcused == false && isPresent == false)
-        //        {
-        //            allNames[counter - 1].Unexcused = true;
-        //            counter--;
-        //            peoplePresent++;
-        //        }
-        //        if (isUnexcused == true)
-        //        {
-        //            allNames[counter - 1].Unexcused = true;
-        //            counter--;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return;
-        //    }
-        //}
+        }
     }
 }
