@@ -240,14 +240,14 @@ namespace Attendance
 
             uxRosterNamesTextBox.Text = displayName;
 
-            try
+            if(nameDisplay.Count > 0)
             {
                 uxNameTextBox.Text = nameDisplay.Peek();
             }
-            catch(InvalidOperationException) // fix this
+            else
             {
                 uxNameTextBox.Text = "";
-                MessageBox.Show("Attendance taken for " + date + ". Export your results in the 'File' menu.");
+                return;
             }
         }
 
@@ -426,6 +426,46 @@ namespace Attendance
         private void Button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("finish this");
+        }
+
+
+        private void UndoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string label = uxFilePreviewLabel.Text;
+            bool isPresent = allNames[counter].Present;
+            bool isUnexcused = allNames[counter].Unexcused;
+            if (counter > 0)
+            {
+                if (nameDisplay.Count > 0)
+                {
+                    label = nameDisplay.Dequeue() + " was removed.";
+
+                    if (isPresent == false)
+                    {
+                        allNames[counter].Present = true;
+                        counter--;
+                    }
+                    else if (isPresent == true)
+                    {
+                        allNames[counter].Present = false;
+                        counter--;
+                    }
+                    else if (isUnexcused == false)
+                    {
+                        allNames[counter].Unexcused = true;
+                        counter--;
+                    }
+                    else if (isUnexcused == true)
+                    {
+                        allNames[counter].Unexcused = true;
+                        counter--;
+                    }
+                }
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

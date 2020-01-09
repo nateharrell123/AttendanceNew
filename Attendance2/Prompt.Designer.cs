@@ -61,7 +61,7 @@
             this.uxYesButton.Name = "uxYesButton";
             this.uxYesButton.Size = new System.Drawing.Size(160, 27);
             this.uxYesButton.TabIndex = 2;
-            this.uxYesButton.Text = "Use Roster:";
+            this.uxYesButton.Text = "Use Roster";
             this.uxYesButton.UseVisualStyleBackColor = false;
             this.uxYesButton.Click += new System.EventHandler(this.UxYesButton_Click);
             // 
@@ -73,7 +73,7 @@
             this.uxNoButton.Name = "uxNoButton";
             this.uxNoButton.Size = new System.Drawing.Size(160, 30);
             this.uxNoButton.TabIndex = 2;
-            this.uxNoButton.Text = "Add Roster:";
+            this.uxNoButton.Text = "Add Roster";
             this.uxNoButton.UseVisualStyleBackColor = false;
             this.uxNoButton.Click += new System.EventHandler(this.UxNoButton_Click);
             // 

@@ -51,8 +51,9 @@
             this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importRosterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uxSaveToolStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.uxFilePreviewLabel = new System.Windows.Forms.Label();
             this.uxFilePreviewTextBox = new System.Windows.Forms.TextBox();
+            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +85,7 @@
             // 
             this.uxRosterNameLabel.AutoSize = true;
             this.uxRosterNameLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxRosterNameLabel.Location = new System.Drawing.Point(137, 106);
+            this.uxRosterNameLabel.Location = new System.Drawing.Point(127, 104);
             this.uxRosterNameLabel.Name = "uxRosterNameLabel";
             this.uxRosterNameLabel.Size = new System.Drawing.Size(0, 19);
             this.uxRosterNameLabel.TabIndex = 5;
@@ -245,7 +246,8 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainMenuToolStripMenuItem,
             this.importRosterToolStripMenuItem,
-            this.uxSaveToolStrip});
+            this.uxSaveToolStrip,
+            this.undoToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -274,15 +276,15 @@
             this.uxSaveToolStrip.Text = "Export Results";
             this.uxSaveToolStrip.Click += new System.EventHandler(this.UxSaveToolStrip_Click);
             // 
-            // label1
+            // uxFilePreviewLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.label1.Location = new System.Drawing.Point(691, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 19);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "File Preview:";
+            this.uxFilePreviewLabel.AutoSize = true;
+            this.uxFilePreviewLabel.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.uxFilePreviewLabel.Location = new System.Drawing.Point(691, 106);
+            this.uxFilePreviewLabel.Name = "uxFilePreviewLabel";
+            this.uxFilePreviewLabel.Size = new System.Drawing.Size(99, 19);
+            this.uxFilePreviewLabel.TabIndex = 5;
+            this.uxFilePreviewLabel.Text = "File Preview:";
             // 
             // uxFilePreviewTextBox
             // 
@@ -295,6 +297,14 @@
             this.uxFilePreviewTextBox.ReadOnly = true;
             this.uxFilePreviewTextBox.Size = new System.Drawing.Size(259, 260);
             this.uxFilePreviewTextBox.TabIndex = 19;
+            // 
+            // undoToolStripMenuItem
+            // 
+            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
+            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.undoToolStripMenuItem.Text = "Undo";
+            this.undoToolStripMenuItem.Click += new System.EventHandler(this.UndoToolStripMenuItem_Click);
             // 
             // Attendance3
             // 
@@ -316,7 +326,7 @@
             this.Controls.Add(this.uxNameTextBox);
             this.Controls.Add(this.uxAbsentExcusedButton);
             this.Controls.Add(this.uxPresentButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.uxFilePreviewLabel);
             this.Controls.Add(this.uxRosterNameLabel);
             this.Controls.Add(this.uxCurrentRosterLabel);
             this.Controls.Add(this.uxDateLabel);
@@ -358,7 +368,8 @@
         private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importRosterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uxSaveToolStrip;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label uxFilePreviewLabel;
         private System.Windows.Forms.TextBox uxFilePreviewTextBox;
+        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
     }
 }
