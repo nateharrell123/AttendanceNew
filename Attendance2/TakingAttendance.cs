@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Attendance2;
+using Microsoft.VisualBasic;
 
 namespace Attendance
 {
@@ -22,7 +23,7 @@ namespace Attendance
 
         string date = DateTime.Now.ToShortDateString();
         Prompt prompt = new Prompt();
-        
+        string eventName;
 
 
         /// <summary>
@@ -67,13 +68,12 @@ namespace Attendance
             {
                 peoplePresent++;
 
-                uxDataGridView.Rows.Add(allNames[count].Name, "No", "Yes"); // insane!!!
+                uxDataGridView.Rows.Add(allNames[count].Name, "Yes", "No"); // insane!!!
 
                 if (allNames[count].Present == false)
                 {
                     allNames[count].Present = true;
                 }
-                uxPeoplePresentCount.Text = peoplePresent.ToString();
 
                 attendanceStatus = " present.";
                 IncrementNames();
@@ -98,7 +98,6 @@ namespace Attendance
                 peopleAbsent++;
 
                 uxDataGridView.Rows.Add(allNames[count].Name, "No", "No");
-                uxAbsentCount.Text = peopleAbsent.ToString();
                 allNames[counter].Present = false;
                 attendanceStatus = " absent.";
 
@@ -122,8 +121,7 @@ namespace Attendance
             {
                 absentUnexcused++;
 
-                uxDataGridView.Rows.Add(allNames[count].Name, "Yes", "No");
-                uxAbsentUnexcused.Text = absentUnexcused.ToString();
+                uxDataGridView.Rows.Add(allNames[count].Name, "No", "Yes");
                 allNames[count].Unexcused = true;
                 attendanceStatus = " absent (unexcused).";
 
@@ -192,13 +190,6 @@ namespace Attendance
                 nameDisplay.Enqueue(name);
             }
 
-
-            if (!nameDisplay.Peek().Equals(string.Empty))
-            {
-                nameDisplay.Dequeue();
-                everyName.Dequeue();
-            }
-
         }
 
         public void StartupDisplay()
@@ -235,7 +226,7 @@ namespace Attendance
                 displayName += name + "\r\n";
             }
 
-            uxDataGridView.Text += allNames[counter - 1].Name + " was" + attendanceStatus + "\r\n";
+            // uxDataGridView.Text += allNames[counter - 1].Name + " was" + attendanceStatus + "\r\n";
 
             uxRosterNamesTextBox.Text = displayName;
 
@@ -429,25 +420,33 @@ namespace Attendance
             }
         }
 
-        // Fix later: 
         private void UxReviseResults_Click_1(object sender, EventArgs e)
         {
             bool submitChanges = false;
-            if(hasBeenImported)
+            if(hasBeenImported && submitChanges == false)
             {
-                uxFilePreviewLabel.Text = "Now editing results:";
+                uxFilePreviewLabel.Text = "Press 'TAB' to submit your results.";
                 uxDataGridView.ReadOnly = false;
-                uxReviseResults.Text = "Submit Changes";
             }
-            else
+            else 
             {
                 MessageBox.Show("You need to import a roster before you can edit anything!");
             }
-            if(uxReviseResults.Text.Equals("Submit Changes"))
-            {
-                uxFilePreviewLabel.Text = "Successfully edited your results.";
-            }
 
+        }
+
+        private void UxDataGridView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Tab)
+            {
+                uxFilePreviewLabel.Text = "Successfully edited results.";
+            }
+        }
+
+        private void Attendance3_Load(object sender, EventArgs e)
+        {
+            eventName = Interaction.InputBox("What are we taking attendance for? (e.g., ' Jan 1st chapter', 'ritual', etc.", "Take Attendance", "", -1, -1);
+            
         }
     }
 }
