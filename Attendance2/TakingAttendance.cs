@@ -375,7 +375,7 @@ namespace Attendance
                         string fileName = uxSaveFileDialog.FileName;
                         using (StreamWriter sw = new StreamWriter(fileName))
                         {
-                            sw.WriteLine("Attendance report for " + date + ":");
+                            sw.WriteLine("Attendance report for " + "eventname " + date + ":");
                             foreach (var atn in allNames)
                             {
                                 if (atn.Value.Present == true)
@@ -445,8 +445,7 @@ namespace Attendance
 
         private void Attendance3_Load(object sender, EventArgs e)
         {
-            eventName = Interaction.InputBox("What are we taking attendance for? (e.g., ' Jan 1st chapter', 'ritual', etc.", "Take Attendance", "", -1, -1);
-            
+            string eventName = Interaction.InputBox("What are we taking attendance for? (e.g., 'Chapter', 'ritual', etc.", "Take Attendance", "", -1, -1);
         }
     }
 }
