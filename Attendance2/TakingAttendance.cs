@@ -23,7 +23,7 @@ namespace Attendance
 
         string date = DateTime.Now.ToShortDateString();
         Prompt prompt = new Prompt();
-        string eventName;
+       // string eventName;
 
 
         /// <summary>
@@ -63,16 +63,16 @@ namespace Attendance
         /// <param name="e"></param>
         private void UxPresentButton_Click(object sender, EventArgs e)
         {
-            int count = nameDisplay.Count - 1;
+            // int count = nameDisplay.Count - 1;
             if(nameDisplay.Count > 0)
             {
                 peoplePresent++;
 
-                uxDataGridView.Rows.Add(allNames[count].Name, "Yes", "No"); // insane!!!
+                uxDataGridView.Rows.Add(nameDisplay.Dequeue(), "Yes", "No"); 
 
-                if (allNames[count].Present == false)
+                if (allNames[counter].Present == false)
                 {
-                    allNames[count].Present = true;
+                    allNames[counter].Present = true;
                 }
 
                 attendanceStatus = " present.";
@@ -92,12 +92,12 @@ namespace Attendance
         /// <param name="e"></param>
         private void UxAbsentButton_Click(object sender, EventArgs e)
         {
-            int count = nameDisplay.Count - 1;
+            // int count = nameDisplay.Count - 1;
             if (nameDisplay.Count > 0)
             {
                 peopleAbsent++;
 
-                uxDataGridView.Rows.Add(allNames[count].Name, "No", "No");
+                uxDataGridView.Rows.Add(nameDisplay.Dequeue(), "No", "No");
                 allNames[counter].Present = false;
                 attendanceStatus = " absent.";
 
@@ -116,13 +116,13 @@ namespace Attendance
         /// <param name="e"></param>
         private void UxUnexcused_Click(object sender, EventArgs e)
         {
-            int count = nameDisplay.Count - 1;
+            // int count = nameDisplay.Count - 1;
             if(nameDisplay.Count > 0)
             {
                 absentUnexcused++;
 
-                uxDataGridView.Rows.Add(allNames[count].Name, "No", "Yes");
-                allNames[count].Unexcused = true;
+                uxDataGridView.Rows.Add(nameDisplay.Dequeue(), "No", "Yes");
+                allNames[counter].Unexcused = true;
                 attendanceStatus = " absent (unexcused).";
 
                 IncrementNames();
@@ -183,8 +183,14 @@ namespace Attendance
         public void ClearNames()
         {
             nameDisplay.Clear();
-
-
+            if(everyName.Count > 0)
+            {
+                everyName.Dequeue();
+            }
+            else
+            {
+                return;
+            }
             foreach (string name in everyName)
             {
                 nameDisplay.Enqueue(name);
@@ -299,7 +305,6 @@ namespace Attendance
                         allNames.Add(i, new Attendee(fileContents[i], false, false));
                         nameDisplay.Enqueue(fileContents[i]);
                         everyName.Enqueue(fileContents[i]);
-                        
                     }
                     hasBeenImported = true;
                     StartupDisplay();
@@ -351,17 +356,9 @@ namespace Attendance
             {
                 MessageBox.Show("You need to import a roster before you can export anything.");
             }
-            if (hasBeenImported && uxDataGridView.Text == "")
-            {
-                MessageBox.Show("There are no results to export!");
-            }
             if (uxRosterNamesTextBox.Text != "" && uxDataGridView.Text != string.Empty)
             {
                 MessageBox.Show("There are still names that haven't been entered yet!");
-                return;
-            }
-            if (uxDataGridView.Text == "")
-            {
                 return;
             }
             else if (hasBeenImported == true)
@@ -375,7 +372,7 @@ namespace Attendance
                         string fileName = uxSaveFileDialog.FileName;
                         using (StreamWriter sw = new StreamWriter(fileName))
                         {
-                            sw.WriteLine("Attendance report for " + "eventname " + date + ":");
+                            sw.WriteLine("Attendance report for " + date + ":");
                             foreach (var atn in allNames)
                             {
                                 if (atn.Value.Present == true)
@@ -443,9 +440,9 @@ namespace Attendance
             }
         }
 
-        private void Attendance3_Load(object sender, EventArgs e)
-        {
-            string eventName = Interaction.InputBox("What are we taking attendance for? (e.g., 'Chapter', 'ritual', etc.", "Take Attendance", "", -1, -1);
-        }
+        //private void Attendance3_Load(object sender, EventArgs e)
+        //{
+        //    string eventName = Interaction.InputBox("What are we taking attendance for? (e.g., 'Chapter', 'ritual', etc.", "Take Attendance", "", -1, -1);
+        //}
     }
 }

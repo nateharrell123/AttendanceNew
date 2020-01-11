@@ -47,7 +47,6 @@
             this.uxSaveToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.uxFilePreviewLabel = new System.Windows.Forms.Label();
             this.uxDataGridView = new System.Windows.Forms.DataGridView();
-            this.uxReviseResults = new System.Windows.Forms.Button();
             this.uxColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxColumnPresent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uxUnexcusedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -244,18 +243,6 @@
             this.uxDataGridView.TabIndex = 21;
             this.uxDataGridView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UxDataGridView_KeyPress);
             // 
-            // uxReviseResults
-            // 
-            this.uxReviseResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.uxReviseResults.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.uxReviseResults.Location = new System.Drawing.Point(290, 330);
-            this.uxReviseResults.Name = "uxReviseResults";
-            this.uxReviseResults.Size = new System.Drawing.Size(178, 47);
-            this.uxReviseResults.TabIndex = 22;
-            this.uxReviseResults.Text = "Revise File";
-            this.uxReviseResults.UseVisualStyleBackColor = false;
-            this.uxReviseResults.Click += new System.EventHandler(this.UxReviseResults_Click_1);
-            // 
             // uxColumnName
             // 
             this.uxColumnName.HeaderText = "Name";
@@ -280,7 +267,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(766, 418);
-            this.Controls.Add(this.uxReviseResults);
             this.Controls.Add(this.uxDataGridView);
             this.Controls.Add(this.uxRosterNamesTextBox);
             this.Controls.Add(this.uxUnexcused);
@@ -301,7 +287,6 @@
             this.MaximizeBox = false;
             this.Name = "Attendance3";
             this.Text = "Attendance";
-            this.Load += new System.EventHandler(this.Attendance3_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uxDataGridView)).EndInit();
@@ -330,7 +315,6 @@
         private System.Windows.Forms.ToolStripMenuItem uxSaveToolStrip;
         private System.Windows.Forms.Label uxFilePreviewLabel;
         private System.Windows.Forms.DataGridView uxDataGridView;
-        private System.Windows.Forms.Button uxReviseResults;
         private System.Windows.Forms.DataGridViewTextBoxColumn uxColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn uxColumnPresent;
         private System.Windows.Forms.DataGridViewTextBoxColumn uxUnexcusedColumn;
